@@ -1,0 +1,3 @@
+mutation AddProductTranslationsCSV($csv: Upload!) {
+  addProductTranslationsCSV(csv: $csv)
+}

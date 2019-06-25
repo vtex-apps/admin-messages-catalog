@@ -1,0 +1,6 @@
+{
+  "admin.app.messages": {
+      "component": "AdminMessages",
+      "path": "/admin/app/messages"
+  }
+}

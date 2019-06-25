@@ -1,0 +1,36 @@
+{
+  "name": "admin-messages",
+  "vendor": "vtex",
+  "version": "0.1.0",
+  "title": "Admin Messages",
+  "description": "Translation functionalities inside the Store Admin",
+  "mustUpdateAt": "2020-06-25",
+  "categories": [],
+  "dependencies": {},
+  "builders": {
+    "admin": "0.x",
+    "graphql": "1.x",
+    "messages": "1.x",
+    "node": "4.x",
+    "react": "3.x"
+  },
+  "scripts": {
+    "prereleasy": "bash lint.sh"
+  },
+  "credentialType": "absolute",
+  "policies": [
+    {
+      "name": "colossus-fire-event"
+    },
+    {
+      "name": "colossus-write-logs"
+    },
+    {
+      "name": "graphql-query"
+    }
+  ],
+  "registries": [
+    "smartcheckout"
+  ],
+  "$schema": "https://raw.githubusercontent.com/vtex/node-vtex-api/master/gen/manifest.schema"
+}

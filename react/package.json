@@ -1,0 +1,30 @@
+{
+  "name": "vtex.admin-example",
+  "version": null,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@types/graphql": "^14.2.2",
+    "@types/node": "^11.12.1",
+    "@types/react": "^16.8.10",
+    "@types/react-dropzone": "^4.2.2",
+    "@types/react-intl": "^2.3.17",
+    "apollo-client": "^2.6.3",
+    "graphql": "^14.0.2",
+    "graphql-tag": "^2.10.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-apollo": "^2.5.8",
+    "react-dom": "^16.8.6",
+    "react-intl": "^2.7.2",
+    "tslint": "^5.14.0",
+    "tslint-config-vtex": "^2.1.0",
+    "typescript": "3.5.2"
+  },
+  "dependencies": {
+    "@types/faker": "^4.1.5",
+    "faker": "^4.1.0",
+    "react-dropzone": "^10.1.5"
+  }
+}

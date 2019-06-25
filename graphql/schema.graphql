@@ -1,0 +1,8 @@
+type Query {
+  # Apparently you can only add a mutation if you have a query
+  getProductTranslationsCSV: String
+}
+
+type Mutation {
+  addProductTranslationsCSV(csv: Upload!): Boolean
+}
