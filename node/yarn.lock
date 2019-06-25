@@ -210,10 +210,10 @@
     "@types/events" "*"
     "@types/node" "*"
 
-"@vtex/api@^3.8.1":
-  version "3.8.1"
-  resolved "https://registry.yarnpkg.com/@vtex/api/-/api-3.8.1.tgz#968eb07e3831955ca4b36b46806f2a0b4565d712"
-  integrity sha512-QIRc9aWVIMnMGSzrasqzXPD/blPd8aBMqJx7TdM7XPnVNfGSSLeLpzV0GAln5UQdnFoWMYmTSdl6nVoSMKbvYA==
+"@vtex/api@^3.21.3":
+  version "3.26.3"
+  resolved "https://registry.yarnpkg.com/@vtex/api/-/api-3.26.3.tgz#000826238b7f8448ed37b522928e85dc3951fe2a"
+  integrity sha512-g9ZD47h90T92xvqeZlGnjggMRTp+swWd2PuQLFn6wod1aK5+1N9ooSQ5kgZyt3xsMKG/f300JbZ6KrH7/B8mTQ==
   dependencies:
     "@types/koa" "^2.0.48"
     "@types/koa-compose" "^3.2.3"
@@ -223,6 +223,7 @@
     archiver "^3.0.0"
     axios "^0.18.0"
     axios-retry "^3.1.2"
+    bluebird "^3.5.4"
     co-body "^6.0.0"
     cookie "^0.3.1"
     dataloader "^1.4.0"
@@ -493,6 +494,11 @@ bl@^3.0.0:
   integrity sha512-EUAyP5UHU5hxF8BPT0LKW8gjYLhq1DQIcneOX/pL/m2Alo+OYDQAJlHq+yseMP50Os2nHXOSic6Ss3vSQeyf4A==
   dependencies:
     readable-stream "^3.0.1"
+
+bluebird@^3.5.4:
+  version "3.5.5"
+  resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.5.tgz#a8d0afd73251effbbd5fe384a77d73003c17a71f"
+  integrity sha512-5am6HnnfN+urzt4yfg7IgTbotDjIT/u8AJpEt0sIU9FtXfVeezXAPKswrG+xKUCOYAINpSdgZVDU6QFh+cuH3w==
 
 brace-expansion@^1.1.7:
   version "1.1.11"
@@ -1298,7 +1304,7 @@ sprintf-js@~1.0.2:
   version "1.0.3"
   resolved "http://registry.npmjs.org/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
 
-stats-lite@vtex/node-stats-lite#dist:
+"stats-lite@github:vtex/node-stats-lite#dist":
   version "2.2.0"
   resolved "https://codeload.github.com/vtex/node-stats-lite/tar.gz/1b0d39cc41ef7aaecfd541191f877887a2044797"
   dependencies:

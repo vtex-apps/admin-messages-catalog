@@ -1,9 +1,9 @@
 import parseCSV from 'csv-parse'
 
-async function parse(csv: FileUpload): Promise<any> {
+async function parse(csv: FileUpload): Promise<string[][]> {
   return new Promise((resolve, reject) => {
     const parser = parseCSV({ delimiter: ',' })
-    const result: string[] = []
+    const result: string[][] = []
 
     parser.on('readable', () => {
       while (true) {

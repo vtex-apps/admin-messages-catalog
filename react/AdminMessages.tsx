@@ -16,9 +16,10 @@ const AdminMessages : FC<AdminMessagesProps> = ({csvMutation}) => {
     accept: ['.csv'],
     maxSize: 3 * MEGA,
     multiple: false,
-    onDrop: (f) => {
+    onDrop: async (f) => {
       console.log(`------> SENDING FILE`, f[0])
-      csvMutation({ variables: { csv: f[0] } })
+      const x = await csvMutation({ variables: { csv: f[0], translateTo: 'en-US' } })
+      console.log(`------> x`, JSON.stringify([x], null, 2))
     },
   })
 

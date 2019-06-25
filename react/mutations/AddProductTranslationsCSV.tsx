@@ -1,10 +1,11 @@
 import { Mutation, MutationFn } from 'react-apollo'
 import AddProductTranslationsCSV from '../graphql/AddProductTranslationsCSV.graphql'
 
-type AddProductTranslationsCSVData = boolean
+type AddProductTranslationsCSVData = string[]
 
 interface AddProductTranslationsCSVVariables {
   csv : File
+  translateTo: string
 }
 
 export type AddProductTranslationsCSVMutationFn = MutationFn<
