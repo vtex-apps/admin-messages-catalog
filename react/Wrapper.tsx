@@ -1,13 +1,14 @@
-import React, { FC } from 'react'
+import React, {FC} from 'react'
+import AdminMessages from './AdminMessages'
 import AddProductTranslationsCSVMutation, {
-  AddProductTranslationsCSVMutationFn
+  AddProductTranslationsCSVMutationFn,
 } from './mutations/AddProductTranslationsCSV'
 
 const Wrapper: FC = () => {
   return (
     <AddProductTranslationsCSVMutation>
       {(csvMutation: AddProductTranslationsCSVMutationFn) => {
-        return <AdminMessages csvMutation={csvMutation}/>
+        return <AdminMessages />
       }}
     </AddProductTranslationsCSVMutation>
   )
