@@ -1,0 +1,3 @@
+mutation AddProductTranslations($translations: [MessagesFromProvider]!, $translateTo: String!) {
+  addProductTranslations(translations: $translations, translateTo: $translateTo)
+}

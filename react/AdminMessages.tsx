@@ -1,13 +1,12 @@
 import React, { FC } from 'react'
 import { useDropzone } from 'react-dropzone'
-import AddProductTranslationsCSVMutation, {
-  AddProductTranslationsCSVMutationFn
-} from './mutations/AddProductTranslationsCSV'
+import AddProductTranslationsMutation, { AddProductTranslationsMutationFn } from './mutations/AddProductTranslations'
+import { getMessages } from './utils/csv'
 
 const MEGA = (2 ** 20)
 
 interface AdminMessagesProps {
-  csvMutation: AddProductTranslationsCSVMutationFn
+  csvMutation: AddProductTranslationsMutationFn
 }
 
 const AdminMessages : FC<AdminMessagesProps> = ({csvMutation}) => {
@@ -16,9 +15,9 @@ const AdminMessages : FC<AdminMessagesProps> = ({csvMutation}) => {
     accept: ['.csv'],
     maxSize: 3 * MEGA,
     multiple: false,
-    onDrop: (f) => {
-      console.log(`------> SENDING FILE`, f[0])
-      csvMutation({ variables: { csv: f[0] } })
+    onDrop: async (f) => {
+      const translations = await getMessages(f[0])
+      await csvMutation({ variables: { translations, translateTo: 'en-US' } })
     },
   })
 
@@ -32,11 +31,11 @@ const AdminMessages : FC<AdminMessagesProps> = ({csvMutation}) => {
 
 const Wrapper: FC = () => {
   return (
-    <AddProductTranslationsCSVMutation>
-      {(csvMutation: AddProductTranslationsCSVMutationFn) => {
+    <AddProductTranslationsMutation>
+      {(csvMutation: AddProductTranslationsMutationFn) => {
         return <AdminMessages csvMutation={csvMutation}/>
       }}
-    </AddProductTranslationsCSVMutation>
+    </AddProductTranslationsMutation>
   )
 }
 
