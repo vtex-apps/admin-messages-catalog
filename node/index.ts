@@ -1,5 +1,5 @@
 import { IOClients, Service, ServiceContext } from '@vtex/api'
-import addProductTranslationsCSV from './resolvers/addProductTranslationsCSV'
+import addProductTranslations from './resolvers/addProductTranslations'
 
 const SMALL_TIMEOUT_MS = 500
 
@@ -7,21 +7,19 @@ declare global {
   type Context = ServiceContext<IOClients>
 }
 
-export default new Service({
+export default new Service<IOClients>({
   clients: {
     options: {
       messagesGraphQL: {
-        concurrency: 50,
-        retries: 2,
+        concurrency: 20,
+        retries: 3,
         timeout: SMALL_TIMEOUT_MS,
       },
     },
   },
   graphql: {
     resolvers: {
-      Mutation: {
-        addProductTranslationsCSV,
-      },
+      Mutation: { addProductTranslations },
     },
   },
 })
