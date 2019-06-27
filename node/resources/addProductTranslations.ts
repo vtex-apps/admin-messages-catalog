@@ -4,7 +4,7 @@ import { evolve } from 'ramda'
 type MessagesOfProvider = TranslateMessageArgs['messagesByProvider'][0]
 
 function formatTranslationData(data: MessagesOfProvider): MessagesOfProvider {
-  return evolve({ provider: id => `Product-id.${id}` }, data)
+  return evolve({ provider: (id: string) => `Product-id.${id}` }, data)
 }
 
 function getProductId({ provider }: MessagesOfProvider) {

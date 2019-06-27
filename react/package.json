@@ -2,6 +2,7 @@
   "name": "vtex.admin-example",
   "version": null,
   "scripts": {
+    "lint": "tsc --noEmit --pretty && tslint -c tslint.json './**/*.ts'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
