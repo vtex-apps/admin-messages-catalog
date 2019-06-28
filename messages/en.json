@@ -1,3 +1,18 @@
 {
-  "admin-messages.navigation.label": "Messages"
+  "admin/messages.step1.exportCatalog": "Export Catalog",
+  "admin/messages.headerTitle": "Products translation",
+  "admin/messages.navigation.label": "Translation",
+  "admin/messages.next": "Next",
+  "admin/messages.required": "Required",
+  "admin/messages.step1.instruction1": "1. Export your product catalog to email",
+  "admin/messages.step1.instruction2": "2. After exorting:  open your email and download the attached file",
+  "admin/messages.step1.instruction3": "3. Open {file} file on Excel or Numbers",
+  "admin/messages.step1.instruction4": "4. Translate the following columns in the speadsheet:",
+  "admin/messages.step1.instruction5": "5. After translating:  save the file and click Next to continue",
+  "admin/messages.step1.keywords": "Alternative words",
+  "admin/messages.step1.metaTagDescription": "Search results and link summary description",
+  "admin/messages.step1.name": "Name",
+  "admin/messages.step1.productDescription": "Product description",
+  "admin/messages.step1.siteTitle": "Page title",
+  "admin/messages.stepCounter": "Step {current} of {total}"
 }
