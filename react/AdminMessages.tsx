@@ -71,34 +71,10 @@ const AdminMessages: FC<Props> = ({intl}) => {
                   </span>
                 </p>
                 <p>
-                  <span className="mr3 fw5">_Keywords</span>{' '}
-                  <span className="f6">
-                    {intl.formatMessage({
-                      id: 'admin/messages.step1.keywords',
-                    })}
-                  </span>
-                </p>
-                <p>
-                  <span className="mr3 fw5">_SiteTitle</span>{' '}
-                  <span className="f6">
-                    {intl.formatMessage({
-                      id: 'admin/messages.step1.siteTitle',
-                    })}
-                  </span>
-                </p>
-                <p>
                   <span className="mr3 fw5">_ProductDescription</span>{' '}
                   <span className="f6">
                     {intl.formatMessage({
                       id: 'admin/messages.step1.productDescription',
-                    })}
-                  </span>
-                </p>
-                <p>
-                  <span className="mr3 fw5">_MetaTagDescription</span>{' '}
-                  <span className="f6">
-                    {intl.formatMessage({
-                      id: 'admin/messages.step1.metaTagDescription',
                     })}
                   </span>
                 </p>
