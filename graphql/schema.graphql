@@ -1,8 +1,24 @@
+input MessageTranslation {
+  id: String!
+  content: String
+  description: String
+}
+
+input MessagesFromProvider {
+  provider: String!
+  messages: [MessageTranslation]
+}
+
+# Apparently you can only add a mutation if you have a query
 type Query {
-  # Apparently you can only add a mutation if you have a query
-  getProductTranslationsCSV: String
+  MOCK_DO_NOT_CALL: String
+}
+
+
+type FailedTranslation {
+  provider: String!
 }
 
 type Mutation {
-  addProductTranslationsCSV(csv: Upload!): Boolean
+  addProductTranslations(translations: [MessagesFromProvider]!, language: String!): [FailedTranslation]
 }

@@ -1,8 +1,7 @@
-type StreamFunction = () => import('stream').Readable
+import { SaveArgs as TranslateMessageArgs } from '@vtex/api'
 
-interface FileUpload {
-  createReadStream: StreamFunction
-  filename: string
-  mimetype: string
-  encoding: string
+type MessagesOfProvider = TranslateMessageArgs['messagesByProvider'][0]
+
+interface FailedTranslation {
+  provider: string
 }
