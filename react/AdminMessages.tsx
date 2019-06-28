@@ -17,7 +17,7 @@ const AdminMessages : FC<AdminMessagesProps> = ({csvMutation}) => {
     multiple: false,
     onDrop: async (f) => {
       const translations = await getMessages(f[0])
-      await csvMutation({ variables: { translations, translateTo: 'en-US' } })
+      await csvMutation({ variables: { translations, language: 'en-US' } })
     },
   })
 

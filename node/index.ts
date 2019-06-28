@@ -1,6 +1,8 @@
 import { IOClients, Service, ServiceContext } from '@vtex/api'
 import addProductTranslations from './resolvers/addProductTranslations'
 
+const TRANSLATION_CONCURRENCY = 20
+const TRANSLATION_RETRIES = 3
 const SMALL_TIMEOUT_MS = 500
 
 declare global {
@@ -11,8 +13,8 @@ export default new Service<IOClients>({
   clients: {
     options: {
       messagesGraphQL: {
-        concurrency: 20,
-        retries: 3,
+        concurrency: TRANSLATION_CONCURRENCY,
+        retries: TRANSLATION_RETRIES,
         timeout: SMALL_TIMEOUT_MS,
       },
     },

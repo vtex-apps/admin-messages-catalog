@@ -1,17 +1,17 @@
 import addProductTranslations from '../resources/addProductTranslations'
-import { MessagesOfProvider } from '../typings/typings'
+import { FailedTranslation, MessagesOfProvider } from '../typings/typings'
 
-interface AddProductTranslationsCSVArgs {
+interface AddProductTranslationsArgs {
   translations : MessagesOfProvider[]
-  translateTo: string
+  language: string
 }
 
 async function addProductTranslationsResolver(
   _: unknown,
-  { translateTo, translations }: AddProductTranslationsCSVArgs,
+  { language, translations }: AddProductTranslationsArgs,
   ctx: Context
-): Promise<string[]> {
-  return await addProductTranslations(translations, translateTo, ctx)
+): Promise<FailedTranslation[]> {
+  return await addProductTranslations(translations, language, ctx)
 }
 
 export default addProductTranslationsResolver

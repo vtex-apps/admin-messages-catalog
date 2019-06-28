@@ -15,6 +15,10 @@ type Query {
 }
 
 
+type FailedTranslation {
+  provider: String!
+}
+
 type Mutation {
-  addProductTranslations(translations: [MessagesFromProvider]!, translateTo: String!): [String]!
+  addProductTranslations(translations: [MessagesFromProvider]!, language: String!): [FailedTranslation]
 }

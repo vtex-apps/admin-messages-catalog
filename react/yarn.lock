@@ -18,11 +18,6 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
-"@types/faker@^4.1.5":
-  version "4.1.5"
-  resolved "https://registry.yarnpkg.com/@types/faker/-/faker-4.1.5.tgz#8f620f9c9a67150aa0a32b4e8a407da43fca61d4"
-  integrity sha512-YSDqoBEWYGdNk53xSkkb6REaUaVSlIjxIAGjj/nbLzlZOit7kUU+nA2zC2qQkIVO4MQ+3zl4Sz7aw+kbpHHHUQ==
-
 "@types/graphql@^14.2.2":
   version "14.2.2"
   resolved "https://registry.yarnpkg.com/@types/graphql/-/graphql-14.2.2.tgz#10f197e6f8559c11b16d630c5e9c10c3c8e61c5e"
@@ -234,11 +229,6 @@ esutils@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/esutils/-/esutils-2.0.2.tgz#0abf4f1caa5bcb1f7a9d8acc6dea4faaa04bac9b"
   integrity sha1-Cr9PHKpbyx96nYrMbepPqqBLrJs=
-
-faker@^4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/faker/-/faker-4.1.0.tgz#1e45bbbecc6774b3c195fad2835109c6d748cc3f"
-  integrity sha1-HkW7vsxndLPBlfrSg1EJxtdIzD8=
 
 fast-json-stable-stringify@^2.0.0:
   version "2.0.0"

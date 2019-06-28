@@ -1,5 +1,6 @@
 import { SaveArgs as TranslateMessageArgs } from '@vtex/api'
 import { evolve } from 'ramda'
+import { FailedTranslation } from '../typings/typings'
 
 type MessagesOfProvider = TranslateMessageArgs['messagesByProvider'][0]
 
@@ -7,11 +8,15 @@ function formatTranslationData(data: MessagesOfProvider): MessagesOfProvider {
   return evolve({ provider: (id: string) => `Product-id.${id}` }, data)
 }
 
-function getProductId({ provider }: MessagesOfProvider) {
-   return provider.split('.')[1]
+function removeDotPrefix(message : string) {
+  return message.split('.').slice(1).join('.')
 }
 
-async function addProductTranslations(messages: MessagesOfProvider[], translateTo: string, ctx: Context): Promise<string[]> {
+function formatFailedTransaction({ provider }: MessagesOfProvider): FailedTranslation {
+   return { provider: removeDotPrefix(provider) }
+}
+
+async function addProductTranslations(messages: MessagesOfProvider[], language: string, ctx: Context): Promise<FailedTranslation[]> {
   const { messagesGraphQL } = ctx.clients
 
   const results = await Promise.all(
@@ -19,14 +24,14 @@ async function addProductTranslations(messages: MessagesOfProvider[], translateT
       messagesGraphQL
         .save({
           messagesByProvider: [formatTranslationData(data)],
-          to: translateTo,
+          to: language,
         })
         .then(success => [success, data] as [boolean, MessagesOfProvider])
     )
   )
 
-  const failures = results
-  return failures.map(([_, data]) => getProductId(data))
+  const failures = results.filter(([success]) => !success)
+  return failures.map(([_, data]) => formatFailedTransaction(data))
 }
 
 export default addProductTranslations

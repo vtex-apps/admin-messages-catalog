@@ -2,11 +2,15 @@ import { Mutation, MutationFn } from 'react-apollo'
 import AddProductTranslations from '../graphql/AddProductTranslations.graphql'
 import { MessagesOfProvider } from '../typings/global'
 
-type AddProductTranslationsData = string[]
+interface FailedTranslation {
+  provider: string
+}
+
+type AddProductTranslationsData = FailedTranslation[]
 
 interface AddProductTranslationsVariables {
   translations : MessagesOfProvider[]
-  translateTo: string
+  language: string
 }
 
 export type AddProductTranslationsMutationFn = MutationFn<
