@@ -23,9 +23,5 @@
     "tslint-config-vtex": "^2.1.0",
     "typescript": "3.5.2"
   },
-  "dependencies": {
-    "csv-parse": "^4.4.3",
-    "ramda": "^0.26.1",
-    "react-dropzone": "^10.1.5"
-  }
+  "dependencies": {}
 }

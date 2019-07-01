@@ -6,7 +6,9 @@
   "description": "Translation functionalities inside the Store Admin",
   "mustUpdateAt": "2020-06-25",
   "categories": [],
-  "dependencies": {},
+  "dependencies": {
+    "vtex.styleguide": "9.x"
+  },
   "builders": {
     "admin": "0.x",
     "graphql": "1.x",
