@@ -1,7 +1,18 @@
 import React, {FC} from 'react'
+
+import { Helmet } from 'vtex.render-runtime'
+
+import { defineMessages, InjectedIntlProps, injectIntl } from 'react-intl'
 import AdminMessages from './components/AdminMessages'
 import AddProductTranslationsMutation from './mutations/AddProductTranslations'
 import GetUserEmailQuery, { EmailData } from './queries/GetUserEmail'
+
+const { headerMessage } = defineMessages({
+  headerMessage: {
+    defaultMessage: '',
+    id: 'admin/messages.navigation.label',
+  },
+})
 
 function extractEmail(data: EmailData | undefined): string {
   try {
@@ -11,23 +22,28 @@ function extractEmail(data: EmailData | undefined): string {
   }
 }
 
-const AdminMessagesWrapper: FC = () => {
+const AdminMessagesWrapper: FC<InjectedIntlProps> = ({ intl }) => {
   return (
-    <GetUserEmailQuery>
-      {result => (
-        <AddProductTranslationsMutation>
-          {(addProductTranslations) => {
-            return (
-              <AdminMessages
-                addProductTranslations={addProductTranslations}
-                email={extractEmail(result.data)}
-              />
-            )
-          }}
-        </AddProductTranslationsMutation>
-      )}
-    </GetUserEmailQuery>
+    <>
+      <Helmet>
+        <title>{intl.formatMessage(headerMessage)}</title>
+      </Helmet>
+      <GetUserEmailQuery>
+        {result => (
+          <AddProductTranslationsMutation>
+            {addProductTranslations => {
+              return (
+                <AdminMessages
+                  addProductTranslations={addProductTranslations}
+                  email={extractEmail(result.data)}
+                />
+              )
+            }}
+          </AddProductTranslationsMutation>
+        )}
+      </GetUserEmailQuery>
+    </>
   )
 }
 
-export default AdminMessagesWrapper
+export default injectIntl(AdminMessagesWrapper)
