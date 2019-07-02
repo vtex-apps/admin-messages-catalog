@@ -7,28 +7,28 @@ import { SupportedLocale } from '../typings/typings'
 
 export function getLocaleMessage(locale: SupportedLocale) {
   switch(locale) {
-    case 'en-US':
-      return { id: 'admin/messages.messages-upload.pick-lang.en-us' }
-    case 'pt-BR':
-      return { id: 'admin/messages.messages-upload.pick-lang.pt-br' }
-    case 'es-AR':
-      return { id: 'admin/messages.messages-upload.pick-lang.es-ar' }
+    case 'en':
+      return { id: 'admin/messages.messages-upload.pick-lang.en' }
+    case 'pt':
+      return { id: 'admin/messages.messages-upload.pick-lang.pt' }
+    case 'es':
+      return { id: 'admin/messages.messages-upload.pick-lang.es' }
   }
 }
 
 function getLanguageOptions(intl: InjectedIntl) { 
   return [
     {
-      label: intl.formatMessage(getLocaleMessage('en-US')),
-      value: 'en-US',
+      label: intl.formatMessage(getLocaleMessage('en')),
+      value: 'en',
     },
     {
-      label: intl.formatMessage(getLocaleMessage('pt-BR')),
-      value: 'pt-BR',
+      label: intl.formatMessage(getLocaleMessage('pt')),
+      value: 'pt',
     },
     {
-      label: intl.formatMessage(getLocaleMessage('es-AR')),
-      value: 'es-AR',
+      label: intl.formatMessage(getLocaleMessage('es')),
+      value: 'es',
     },
   ]
 }

@@ -46,4 +46,4 @@ export interface ButtonProps {
   disabled: boolean
 }
 
-export type SupportedLocale = 'en-US' | 'pt-BR' | 'es-AR'
+export type SupportedLocale = 'en' | 'pt' | 'es'
