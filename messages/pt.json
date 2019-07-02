@@ -19,6 +19,10 @@
   "admin/messages.messages-upload.pick-lang": "Escolha uma língua",
   "admin/messages.messages-upload.pick-lang.en-us": "Inglês (EUA)",
   "admin/messages.messages-upload.pick-lang.es-ar": "Espanhol (AR)",
+<<<<<<< HEAD
   "admin/messages.messages-upload.pick-lang.pt-br": "Português (BR)",
+=======
+  "admin/messages.messages-upload.pick-lang.pt-br": "Portugus (BR)",
+>>>>>>> Fix messages
   "admin/messages.messages-upload.product-catalog-label": "Catálogo de Produto Traduzido"
 }
