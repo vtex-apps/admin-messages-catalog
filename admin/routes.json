@@ -1,6 +1,6 @@
 {
   "admin.app.messages": {
-      "component": "Wrapper",
+      "component": "AdminMessagesWrapper",
       "path": "/admin/app/messages"
   }
 }
