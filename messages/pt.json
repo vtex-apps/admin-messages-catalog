@@ -4,6 +4,9 @@
   "admin/messages.next": "Próximo",
   "admin/messages.back": "Voltar",
   "admin/messages.required": "Requerido",
+  "admin/messages.cancel": "Cancelar",
+  "admin/messages.retry": "Tentar novamente",
+  "admin/messages.done": "Finalizar",
   "admin/messages.step1.exportCatalog": "Exportar Catálogo",
   "admin/messages.step1.instruction1": "1. Exporte seu catálogo de produtos para seu email",
   "admin/messages.step1.instruction2": "2. Depois de exportar, abra seu e-mail e faça o download do arquivo em anexo",
@@ -20,5 +23,8 @@
   "admin/messages.messages-upload.pick-lang.en-us": "Inglês (EUA)",
   "admin/messages.messages-upload.pick-lang.es-ar": "Espanhol (AR)",
   "admin/messages.messages-upload.pick-lang.pt-br": "Português (BR)",
-  "admin/messages.messages-upload.product-catalog-label": "Catálogo de Produto Traduzido"
+  "admin/messages.messages-upload.product-catalog-label": "Catálogo de Produto Traduzido",
+  "admin/messages.messages-progress.translate-progress": "{progress} de {total} produtos foram traduzidos para {language}",
+  "admin/messages.messages-progress.translate-failed": "{failed} traduções falharam. Gostaria de tentar novamente?",
+  "admin/messages.messages-progress.translate-success": "Traduções para {language} foram realizadas com sucesso"
 }
