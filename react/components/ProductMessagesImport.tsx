@@ -22,7 +22,6 @@ const ProductMessagesImport: FC<Props> = ({
     messages: [messages, setMessages],
   },
 }) => {
-
   return (
     <PageBlock>
       <CSVUploader intl={intl} setMessages={setMessages} />
