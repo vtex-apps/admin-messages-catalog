@@ -1,6 +1,6 @@
 import { Mutation, MutationFn } from 'react-apollo'
 import AddProductTranslations from '../graphql/AddProductTranslations.graphql'
-import { MessagesOfProvider } from '../typings/global'
+import { MessagesOfProvider } from '../typings/typings'
 
 interface FailedTranslation {
   provider: string
@@ -28,4 +28,3 @@ class AddProductTranslationsMutation extends Mutation<
 }
 
 export default AddProductTranslationsMutation
-
