@@ -8,11 +8,11 @@ import { getMessages } from '../utils/csv'
 
 const { productCatalogMessage, uploadMessage } = defineMessages({
   productCatalogMessage: {
-    defaultMessage: 'Translated product catalog',
+    defaultMessage: '',
     id: 'admin/messages.messages-upload.product-catalog-label',
   },
   uploadMessage: {
-    defaultMessage: 'Upload',
+    defaultMessage: '',
     id: 'admin/messages.messages-upload.upload-label',
   },
 })

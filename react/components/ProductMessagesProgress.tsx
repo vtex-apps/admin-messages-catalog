@@ -21,11 +21,11 @@ const {
   translateSuccessMessage,
 } = defineMessages({
   cancelMessage: {
-    defaultMessage: 'Cancel',
+    defaultMessage: '',
     id: 'admin/messages.cancel',
   },
   doneMessage: {
-    defaultMessage: 'Done',
+    defaultMessage: '',
     id: 'admin/messages.done',
   },
   progressMessage: {
@@ -34,7 +34,7 @@ const {
     id: 'admin/messages.messages-progress.translate-progress',
   },
   retryMessage: {
-    defaultMessage: 'Retry',
+    defaultMessage: '',
     id: 'admin/messages.retry',
   },
   translateFailedMessage: {
@@ -43,7 +43,7 @@ const {
     id: 'admin/messages.messages-progress.translate-failed',
   },
   translateSuccessMessage: {
-    defaultMessage: 'Translation in {language} completed successfully',
+    defaultMessage: '',
     id: 'admin/messages.messages-progress.translate-success',
   },
 })

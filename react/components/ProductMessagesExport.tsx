@@ -17,11 +17,11 @@ const {
   step1Name,
 } = defineMessages({
   exportCatalogMessage: {
-    defaultMessage: 'Export Catalog',
+    defaultMessage: '',
     id: 'admin/messages.step1.exportCatalog',
   },
   inst1Message: {
-    defaultMessage: '1. Export your product catalog to your email',
+    defaultMessage: '',
     id: 'admin/messages.step1.instruction1',
   },
   inst2Message: {
@@ -30,11 +30,11 @@ const {
     id: 'admin/messages.step1.instruction2',
   },
   inst3Message: {
-    defaultMessage: '3. Open {file} file on Excel or Numbers',
+    defaultMessage: '',
     id: 'admin/messages.step1.instruction3',
   },
   inst4Message: {
-    defaultMessage: '4. Translate the following columns in the speadsheet:',
+    defaultMessage: '',
     id: 'admin/messages.step1.instruction4',
   },
   inst5Message: {
@@ -43,15 +43,15 @@ const {
     id: 'admin/messages.step1.instruction5',
   },
   requiredMessage: {
-    defaultMessage: 'Required',
+    defaultMessage: '',
     id: 'admin/messages.required',
   },
   step1Description: {
-    defaultMessage: 'Product description',
+    defaultMessage: '',
     id: 'admin/messages.step1.productDescription',
   },
   step1Name: {
-    defaultMessage: 'Name',
+    defaultMessage: '',
     id: 'admin/messages.step1.name',
   },
 })

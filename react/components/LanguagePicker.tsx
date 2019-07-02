@@ -13,23 +13,23 @@ const {
   targetLangMessage,
 } = defineMessages({
   english: {
-    defaultMessage: 'English',
+    defaultMessage: '',
     id: 'admin/messages.messages-upload.pick-lang.en',
   },
   pickLangMessage: {
-    defaultMessage: 'Pick a language',
+    defaultMessage: '',
     id: 'admin/messages.messages-upload.pick-lang',
   },
   portuguese: {
-    defaultMessage: 'Portuguese',
+    defaultMessage: '',
     id: 'admin/messages.messages-upload.pick-lang.pt',
   },
   spanish: {
-    defaultMessage: 'Spanish',
+    defaultMessage: '',
     id: 'admin/messages.messages-upload.pick-lang.es',
   },
   targetLangMessage: {
-    defaultMessage: 'Target language',
+    defaultMessage: '',
     id: 'admin/messages.messages-upload.target-lang',
   },
 })

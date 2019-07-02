@@ -6,15 +6,15 @@ import { StepCounterControl } from '../typings/typings'
 
 const { backMessage, nextMessage, stepCounterMessage } = defineMessages({
   backMessage: {
-    defaultMessage: 'Back',
+    defaultMessage: '',
     id: 'admin/messages.back',
   },
   nextMessage: {
-    defaultMessage: 'Next',
+    defaultMessage: '',
     id: 'admin/messages.next',
   },
   stepCounterMessage: {
-    defaultMessage: 'Step {current} of {total}',
+    defaultMessage: '',
     id: 'admin/messages.stepCounter',
   },
 })

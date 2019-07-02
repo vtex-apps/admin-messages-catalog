@@ -13,7 +13,7 @@ const TOTAL_STEPS = 3
 
 const { titleMessage } = defineMessages({
   titleMessage: {
-    defaultMessage: 'Products translation',
+    defaultMessage: '',
     id: 'admin/messages.headerTitle',
   },
 })
