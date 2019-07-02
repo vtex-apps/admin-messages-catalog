@@ -4,7 +4,7 @@ import { InjectedIntl, injectIntl } from 'react-intl'
 import { Layout, PageHeader } from 'vtex.styleguide'
 
 import { AddProductTranslationsMutationFn } from '../mutations/AddProductTranslations'
-import { MessagesOfProvider, StepCounterControl } from '../typings/typings'
+import { MessagesOfProvider, StepCounterControl, SupportedLocale } from '../typings/typings'
 import ProductMessagesExport from './ProductMessagesExport'
 import ProductMessagesImport from './ProductMessagesImport'
 
@@ -16,16 +16,27 @@ interface Props {
   email: string
 }
 
-const AdminMessages: FC<Props> = ({ email, intl }) => {
+const AdminMessages: FC<Props> = ({ addProductTranslations, email, intl }) => {
   const [step, setStep] = useState(1)
 
   const translationDataHooks = {
-    language: useState(''),
+    locale: useState<SupportedLocale | null>(null),
     messages: useState<MessagesOfProvider[] | null>(null),
   }
 
+  const {
+    locale: [locale, setLocale],
+    messages: [messages, setMessages],
+  } = translationDataHooks
+
   const next = () => setStep(step + 1)
   const back = () => setStep(step - 1)
+
+  const done = () => {
+    setLocale(null)
+    setMessages(null)
+    setStep(1)
+  }
 
   const stepCounterControl: StepCounterControl = {
     back,

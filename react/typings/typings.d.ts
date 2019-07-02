@@ -38,10 +38,12 @@ export interface StepCounterControl {
 type StateHook<T> = [T, Dispatch<SetStateAction<T>>]
 
 export interface TranslationDataHooks {
-  language: StateHook<string>
+  locale: StateHook<SupportedLocale | null>
   messages: StateHook<MessagesOfProvider[] | null>
 }
 
 export interface ButtonProps {
   disabled: boolean
 }
+
+export type SupportedLocale = 'en-US' | 'pt-BR' | 'es-AR'
