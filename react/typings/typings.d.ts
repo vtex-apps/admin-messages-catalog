@@ -5,11 +5,6 @@ declare global {
     const value: DocumentNode
     export default value
   }
-
-  declare module 'vtex.styleguide' {
-    const value: any
-    export default value
-  }
 }
 
 export interface TranslationMessage {
