@@ -6,15 +6,17 @@ import { StepCounterControl } from '../typings/typings'
 
 interface Props extends StepCounterControl {
   intl: InjectedIntl
+  removeBack?: boolean
   nextDisabled?: boolean
 }
 
 const StepCounter: FC<Props> = ({
   intl,
   back,
+  current,
   next,
   nextDisabled,
-  current,
+  removeBack,
   total,
 }) => {
   return (
@@ -26,18 +28,20 @@ const StepCounter: FC<Props> = ({
         )}
       </div>
       <div className="flex-grow-1 tr">
-        {current === 1 ? null : (
+        {current === 1 || removeBack ? null : (
           <span className="mh2">
             <Button variation="tertiary" onClick={back}>
               {intl.formatMessage({ id: 'admin/messages.back' })}
             </Button>
           </span>
         )}
-        <span className="mh2">
-          <Button disabled={nextDisabled} onClick={next}>
-            {intl.formatMessage({ id: 'admin/messages.next' })}
-          </Button>
-        </span>
+        {current === total ? null : (
+          <span className="mh2">
+            <Button disabled={nextDisabled} onClick={next}>
+              {intl.formatMessage({ id: 'admin/messages.next' })}
+            </Button>
+          </span>
+        )}
       </div>
     </div>
   )
