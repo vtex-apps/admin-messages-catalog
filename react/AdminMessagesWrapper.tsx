@@ -1,8 +1,6 @@
 import React, {FC} from 'react'
 import AdminMessages from './components/AdminMessages'
-import AddProductTranslationsMutation, {
-  AddProductTranslationsMutationFn,
-} from './mutations/AddProductTranslations'
+import AddProductTranslationsMutation from './mutations/AddProductTranslations'
 import GetUserEmailQuery, { EmailData } from './queries/GetUserEmail'
 
 function extractEmail(data: EmailData | undefined): string {
@@ -18,7 +16,7 @@ const AdminMessagesWrapper: FC = () => {
     <GetUserEmailQuery>
       {result => (
         <AddProductTranslationsMutation>
-          {(addProductTranslations: AddProductTranslationsMutationFn) => {
+          {(addProductTranslations) => {
             return (
               <AdminMessages
                 addProductTranslations={addProductTranslations}

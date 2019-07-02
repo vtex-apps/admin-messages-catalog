@@ -4,6 +4,9 @@
   "admin/messages.next": "Next",
   "admin/messages.back": "Back",
   "admin/messages.required": "Required",
+  "admin/messages.cancel": "Cancel",
+  "admin/messages.retry": "Retry",
+  "admin/messages.done": "Done",
   "admin/messages.step1.exportCatalog": "Export Catalog",
   "admin/messages.step1.instruction1": "1. Export your product catalog to your email",
   "admin/messages.step1.instruction2": "2. After exporting: open your email and download the attached file",
@@ -20,5 +23,8 @@
   "admin/messages.messages-upload.pick-lang.en-us": "English (US)",
   "admin/messages.messages-upload.pick-lang.es-ar": "Spanish (AR)",
   "admin/messages.messages-upload.pick-lang.pt-br": "Portuguese (BR)",
-  "admin/messages.messages-upload.product-catalog-label": "Translated product catalog"
+  "admin/messages.messages-upload.product-catalog-label": "Translated product catalog",
+  "admin/messages.messages-progress.translate-progress": "Translated {progress} out of {total} products to {language}",
+  "admin/messages.messages-progress.translate-failed": "{failed} translations failed. Would you like to retry them?",
+  "admin/messages.messages-progress.translate-success": "Translation in {language} completed successfully"
 }

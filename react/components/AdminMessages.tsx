@@ -4,9 +4,10 @@ import { InjectedIntl, injectIntl } from 'react-intl'
 import { Layout, PageHeader } from 'vtex.styleguide'
 
 import { AddProductTranslationsMutationFn } from '../mutations/AddProductTranslations'
-import { MessagesOfProvider, StepCounterControl } from '../typings/typings'
+import { MessagesOfProvider, StepCounterControl, SupportedLocale } from '../typings/typings'
 import ProductMessagesExport from './ProductMessagesExport'
 import ProductMessagesImport from './ProductMessagesImport'
+import ProductMessagesProgress from './ProductMessagesProgress'
 
 const TOTAL_STEPS = 3
 
@@ -16,16 +17,27 @@ interface Props {
   email: string
 }
 
-const AdminMessages: FC<Props> = ({ email, intl }) => {
+const AdminMessages: FC<Props> = ({ addProductTranslations, email, intl }) => {
   const [step, setStep] = useState(1)
 
   const translationDataHooks = {
-    language: useState(''),
+    locale: useState<SupportedLocale | null>(null),
     messages: useState<MessagesOfProvider[] | null>(null),
   }
 
+  const {
+    locale: [locale, setLocale],
+    messages: [messages, setMessages],
+  } = translationDataHooks
+
   const next = () => setStep(step + 1)
   const back = () => setStep(step - 1)
+
+  const done = () => {
+    setLocale(null)
+    setMessages(null)
+    setStep(1)
+  }
 
   const stepCounterControl: StepCounterControl = {
     back,
@@ -53,6 +65,16 @@ const AdminMessages: FC<Props> = ({ email, intl }) => {
           <ProductMessagesImport
             stepCounterControl={stepCounterControl}
             translationDataHooks={translationDataHooks}
+          />
+        )}
+        {step !== 3 ? null : (
+          <ProductMessagesProgress
+            addProductTranslations={addProductTranslations}
+            done={done}
+            locale={locale!}
+            stepCounterControl={stepCounterControl}
+            messages={messages!}
+            setMessages={setMessages}
           />
         )}
       </Layout>

@@ -18,23 +18,22 @@ const ProductMessagesImport: FC<Props> = ({
   intl,
   stepCounterControl,
   translationDataHooks: {
-    language: [language, setLanguage],
+    locale: [locale, setLocale],
     messages: [messages, setMessages],
   },
 }) => {
-
   return (
     <PageBlock>
       <CSVUploader intl={intl} setMessages={setMessages} />
       <LanguagePicker
         intl={intl}
-        language={language}
-        setLanguage={setLanguage}
+        locale={locale}
+        setLocale={setLocale}
       />
       <StepCounter
         {...stepCounterControl}
         intl={intl}
-        nextDisabled={!language || !messages}
+        nextDisabled={!locale || !messages}
       />
     </PageBlock>
   )

@@ -6,7 +6,9 @@ interface FailedTranslation {
   provider: string
 }
 
-type AddProductTranslationsData = FailedTranslation[]
+interface AddProductTranslationsData {
+  addProductTranslations: FailedTranslation[]
+}
 
 interface AddProductTranslationsVariables {
   translations : MessagesOfProvider[]

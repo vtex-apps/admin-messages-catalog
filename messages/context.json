@@ -4,6 +4,9 @@
   "admin/messages.next": "",
   "admin/messages.back": "",
   "admin/messages.required": "",
+  "admin/messages.cancel": "",
+  "admin/messages.retry": "",
+  "admin/messages.done": "",
   "admin/messages.step1.exportCatalog": "",
   "admin/messages.step1.instruction1": "",
   "admin/messages.step1.instruction2": "",
@@ -20,5 +23,8 @@
   "admin/messages.messages-upload.pick-lang.en-us": "",
   "admin/messages.messages-upload.pick-lang.es-ar": "",
   "admin/messages.messages-upload.pick-lang.pt-br": "",
-  "admin/messages.messages-upload.product-catalog-label": ""
+  "admin/messages.messages-upload.product-catalog-label": "",
+  "admin/messages.messages-progress.translate-progress": "",
+  "admin/messages.messages-progress.translate-failed": "",
+  "admin/messages.messages-progress.translate-success": ""
 }
