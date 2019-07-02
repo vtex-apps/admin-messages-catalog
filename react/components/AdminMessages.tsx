@@ -7,6 +7,7 @@ import { AddProductTranslationsMutationFn } from '../mutations/AddProductTransla
 import { MessagesOfProvider, StepCounterControl, SupportedLocale } from '../typings/typings'
 import ProductMessagesExport from './ProductMessagesExport'
 import ProductMessagesImport from './ProductMessagesImport'
+import ProductMessagesProgress from './ProductMessagesProgress'
 
 const TOTAL_STEPS = 3
 
@@ -64,6 +65,16 @@ const AdminMessages: FC<Props> = ({ addProductTranslations, email, intl }) => {
           <ProductMessagesImport
             stepCounterControl={stepCounterControl}
             translationDataHooks={translationDataHooks}
+          />
+        )}
+        {step !== 3 ? null : (
+          <ProductMessagesProgress
+            addProductTranslations={addProductTranslations}
+            done={done}
+            locale={locale!}
+            stepCounterControl={stepCounterControl}
+            messages={messages!}
+            setMessages={setMessages}
           />
         )}
       </Layout>
