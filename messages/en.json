@@ -18,7 +18,7 @@
   "admin/messages.messages-upload.upload-label": "Upload",
   "admin/messages.messages-upload.pick-lang": "Pick a language",
   "admin/messages.messages-upload.pick-lang.en-us": "English (US)",
-  "admin/messages.messages-upload.pick-lang.es-ar": "Portuguese (BR)",
-  "admin/messages.messages-upload.pick-lang.pt-br": "Spanish (AR)",
+  "admin/messages.messages-upload.pick-lang.es-ar": "Spanish (AR)",
+  "admin/messages.messages-upload.pick-lang.pt-br": "Portuguese (BR)",
   "admin/messages.messages-upload.product-catalog-label": "Translated product catalog"
 }
