@@ -2,6 +2,7 @@
   "admin/messages.headerTitle": "",
   "admin/messages.navigation.label": "",
   "admin/messages.next": "",
+  "admin/messages.back": "",
   "admin/messages.required": "",
   "admin/messages.step1.exportCatalog": "",
   "admin/messages.step1.instruction1": "",
@@ -12,5 +13,12 @@
   "admin/messages.step1.metaTagDescription": "",
   "admin/messages.step1.name": "",
   "admin/messages.step1.productDescription": "",
-  "admin/messages.stepCounter": ""
+  "admin/messages.stepCounter": "",
+  "admin/messages.messages-upload.target-lang": "",
+  "admin/messages.messages-upload.upload-label": "",
+  "admin/messages.messages-upload.pick-lang": "",
+  "admin/messages.messages-upload.pick-lang.en-us": "",
+  "admin/messages.messages-upload.pick-lang.es-ar": "",
+  "admin/messages.messages-upload.pick-lang.pt-br": "",
+  "admin/messages.messages-upload.product-catalog-label": ""
 }
