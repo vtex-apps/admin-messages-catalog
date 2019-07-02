@@ -1,6 +1,6 @@
 import parseCSV from 'csv-parse/lib/sync'
 import { uniqBy } from 'ramda'
-import { MessagesOfProvider } from '../typings/global'
+import { MessagesOfProvider, TranslationMessage } from '../typings/typings'
 
 enum TranslatableField {
   description = 'description',
@@ -25,6 +25,22 @@ async function parse(csv: File): Promise<string[][]> {
   })
 }
 
+function getProviderMessages(
+  fieldAndIndex: Array<[string, number]>,
+  row: string[]
+): TranslationMessage[] {
+  return (
+    fieldAndIndex
+      .map(([key, index]) => ({
+        content: row[index!],
+        description: '',
+        id: key,
+      }))
+      // TODO: check if this filter is right
+      .filter(({ content }) => !!content)
+  )
+}
+
 export async function getMessages(csv: File): Promise<MessagesOfProvider[]> {
   const [headers, ...data] = await parse(csv)
   const fieldToIndex: Partial<Record<TranslatableField, number>> = {}
@@ -38,17 +54,22 @@ export async function getMessages(csv: File): Promise<MessagesOfProvider[]> {
     }
   })
 
-  const idIndex = headers.findIndex(header => header.startsWith(ID_CSV_DESC))
-  const fieldAndIndex = Object.entries(fieldToIndex)
+  const fieldAndIndex = Object.entries(fieldToIndex) as Array<[string, number]>
+  if (fieldAndIndex.length === 0) {
+    throw new Error('NO_TRANSLATABLE_FIELD_FOUND')
+  }
 
-  return uniqueByProvider(
+  const idIndex = headers.findIndex(header => header.startsWith(ID_CSV_DESC))
+  if (idIndex === -1) {
+    throw new Error('ID_NOT_FOUND')
+  }
+
+  const messagesByProvider = uniqueByProvider(
     data.map(row => ({
-      messages: fieldAndIndex.map(([key, index]) => ({
-        content: row[index!],
-        description: '',
-        id: key,
-      })),
+      messages: getProviderMessages(fieldAndIndex, row),
       provider: row[idIndex],
     }))
-  )
+  ).filter(({ messages, provider }) => messages.length > 0 && !!provider)
+
+  return messagesByProvider
 }

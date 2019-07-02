@@ -23,5 +23,8 @@
     "tslint-config-vtex": "^2.1.0",
     "typescript": "3.5.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "csv-parse": "^4.4.3",
+    "react-dropzone": "^10.1.5"
+  }
 }
