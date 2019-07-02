@@ -27,12 +27,12 @@ const AdminMessages: FC<Props> = ({ email, intl }) => {
   const next = () => setStep(step + 1)
   const back = () => setStep(step - 1)
 
-  const stepCounterControl = ({
+  const stepCounterControl: StepCounterControl = {
     back,
-    current: step.toString(),
+    current: step,
     next,
-    total: TOTAL_STEPS.toString(),
-  } as unknown) as StepCounterControl
+    total: TOTAL_STEPS,
+  }
 
   return (
     <div className="min-vh-100 bg-muted-5">
