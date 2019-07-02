@@ -7,6 +7,7 @@
   "mustUpdateAt": "2020-06-25",
   "categories": [],
   "dependencies": {
+    "vtex.admin-graphql": "1.x",
     "vtex.styleguide": "9.x"
   },
   "builders": {
