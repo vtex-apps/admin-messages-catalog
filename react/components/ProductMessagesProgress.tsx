@@ -1,15 +1,52 @@
 import React, { Dispatch, FC, SetStateAction, useEffect, useState } from 'react'
-import { InjectedIntl, injectIntl } from 'react-intl'
+import { defineMessages, InjectedIntl, injectIntl } from 'react-intl'
 
 import { Button, PageBlock, ProgressBar } from 'vtex.styleguide'
 
 import { AddProductTranslationsMutationFn } from '../mutations/AddProductTranslations'
 import { MessagesOfProvider, StepCounterControl, SupportedLocale } from '../typings/typings'
-import { getLocaleMessage } from './LanguagePicker'
+import { LOCALE_TO_MESSAGE } from './LanguagePicker'
 import StepCounter from './StepCounter'
 
 const BATCH_SIZE = 10
 const PROGRESS_BARS = 50
+
+
+const {
+  cancelMessage,
+  doneMessage,
+  progressMessage,
+  retryMessage,
+  translateFailedMessage,
+  translateSuccessMessage,
+} = defineMessages({
+  cancelMessage: {
+    defaultMessage: 'Cancel',
+    id: 'admin/messages.cancel',
+  },
+  doneMessage: {
+    defaultMessage: 'Done',
+    id: 'admin/messages.done',
+  },
+  progressMessage: {
+    defaultMessage:
+      'Translated {progress} out of {total} products to {language}',
+    id: 'admin/messages.messages-progress.translate-progress',
+  },
+  retryMessage: {
+    defaultMessage: 'Retry',
+    id: 'admin/messages.retry',
+  },
+  translateFailedMessage: {
+    defaultMessage:
+      '{failed} translations failed. Would you like to retry them?',
+    id: 'admin/messages.messages-progress.translate-failed',
+  },
+  translateSuccessMessage: {
+    defaultMessage: 'Translation in {language} completed successfully',
+    id: 'admin/messages.messages-progress.translate-success',
+  },
+})
 
 function getProgressBarState(progress: number, total: number): string[] {
   const completed = Math.floor((progress / total) * PROGRESS_BARS)
@@ -36,20 +73,20 @@ function getUploadProgressMessage(
 ) {
   if (uploaded < total) {
     return intl.formatMessage(
-      { id: 'admin/messages.messages-progress.translate-progress' },
+      progressMessage,
       { progress: uploaded - failed, total, language }
     )
  }
 
   if (failed > 0) {
     return intl.formatMessage(
-      { id: 'admin/messages.messages-progress.translate-failed' },
+      translateFailedMessage,
       { failed }
     )
   }
 
   return intl.formatMessage(
-    { id: 'admin/messages.messages-progress.translate-success' },
+    translateSuccessMessage,
     { language }
   )
 }
@@ -114,7 +151,7 @@ const ProductMessagesImport: FC<Props> = ({
   const progress = Math.min(batchProgress * BATCH_SIZE, messages.length)
   const total = messages.length
 
-  const language = intl.formatMessage(getLocaleMessage(locale))
+  const language = intl.formatMessage(LOCALE_TO_MESSAGE[locale])
 
   const retry = () => {
     setMessages(failedTranslations)
@@ -147,15 +184,15 @@ const ProductMessagesImport: FC<Props> = ({
         <p>{getCurrentProgressPercentage(progress, total)}</p>
         {progress < total ? (
           <Button variation="secondary" onClick={cancel}>
-            {intl.formatMessage({ id: 'admin/messages.cancel' })}
+            {intl.formatMessage(cancelMessage)}
           </Button>
         ) : failedTranslations.length > 0 ? (
           <Button onClick={retry}>
-            {intl.formatMessage({ id: 'admin/messages.retry' })}
+            {intl.formatMessage(retryMessage)}
           </Button>
         ) : (
           <Button onClick={done}>
-            {intl.formatMessage({ id: 'admin/messages.done' })}
+            {intl.formatMessage(doneMessage)}
           </Button>
         )}
       </div>

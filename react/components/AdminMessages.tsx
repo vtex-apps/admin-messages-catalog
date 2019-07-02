@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react'
-import { InjectedIntl, injectIntl } from 'react-intl'
+import { defineMessages, InjectedIntl, injectIntl } from 'react-intl'
 
 import { Layout, PageHeader } from 'vtex.styleguide'
 
@@ -10,6 +10,13 @@ import ProductMessagesImport from './ProductMessagesImport'
 import ProductMessagesProgress from './ProductMessagesProgress'
 
 const TOTAL_STEPS = 3
+
+const { titleMessage } = defineMessages({
+  titleMessage: {
+    defaultMessage: 'Products translation',
+    id: 'admin/messages.headerTitle',
+  },
+})
 
 interface Props {
   intl: InjectedIntl
@@ -51,7 +58,7 @@ const AdminMessages: FC<Props> = ({ addProductTranslations, email, intl }) => {
       <Layout
         pageHeader={
           <PageHeader
-            title={intl.formatMessage({ id: 'admin/messages.headerTitle' })}
+            title={intl.formatMessage(titleMessage)}
           />
         }
       >
