@@ -1,6 +1,6 @@
 import React, { FC, useCallback, useState } from 'react'
 import { defineMessages, InjectedIntl, injectIntl } from 'react-intl'
-import { Box, Button, PageBlock, ShowToastFunction, withToast, ToastProps } from 'vtex.styleguide'
+import { Box, Button, PageBlock, ToastProps, withToast } from 'vtex.styleguide'
 import { ExportProductCatalogMutationFn } from '../mutations/ExportProductCatalog'
 import { StepCounterControl } from '../typings/typings'
 import StepCounter from './StepCounter'

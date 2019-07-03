@@ -25,6 +25,7 @@ declare module 'vtex.styleguide' {
     component: ComponentType<P & ToastProps>
   ): ComponentClass<Pick<P, Exclude<keyof P, keyof ToastProps>>>
 
+  export const Alert: any
   export const Box: any
   export const Button: any
   export const Dropdown: any
