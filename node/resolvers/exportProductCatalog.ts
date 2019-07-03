@@ -24,6 +24,8 @@ async function exportProductCatalog(
     const email = profileData && profileData.profile && profileData.profile.email
     const locale = segmentData.cultureInfo
 
+    // Cannot await this promise because it can take several minutes to get resolved.
+    // In practice the connection will timeout before it...
     admin.exportCatalogToEmail(email, locale)
 
     return true
