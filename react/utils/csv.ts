@@ -1,4 +1,5 @@
-import parseCSV from 'csv-parse/lib/sync'
+import { read, utils } from 'xlsx'
+
 import { uniqBy } from 'ramda'
 import { MessagesOfProvider, TranslationMessage } from '../typings/typings'
 
@@ -18,12 +19,30 @@ const uniqueByProvider = uniqBy(({ provider }: MessagesOfProvider) => provider)
 async function parse(csv: File): Promise<string[][]> {
   return new Promise((resolve, reject) => {
     const reader = new FileReader()
-    reader.readAsText(csv)
-    reader.onload = () =>
-      resolve(parseCSV(reader.result as string))
+    reader.readAsBinaryString(csv)
+    reader.onload = () => {
+      const book = read(reader.result, {type: 'binary'})
+
+      if (book.SheetNames.length !== 1) {
+        throw new Error('XLS_SINGLE_SHEET')
+      }
+
+      const sheet = Object.values(book.Sheets)[0]
+
+      const data = utils.sheet_to_json(sheet) as Array<Record<string, string>>
+      const headers = Object.keys(data[0])
+
+      // Export as CSV table, first line contain headers and subsequent lines contain data
+      resolve([
+        headers,
+        ...data.map(row => headers.map(header => row[header])),
+      ])
+    }
+
     reader.onerror = (e) => reject(e)
   })
 }
+
 
 function getProviderMessages(
   fieldAndIndex: Array<[string, number]>,
