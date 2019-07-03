@@ -1,10 +1,9 @@
 import React, { FC, useCallback, useState } from 'react'
 import { defineMessages, InjectedIntl, injectIntl } from 'react-intl'
-import { Box, Button, PageBlock, ToastProps, withToast } from 'vtex.styleguide'
+import { Alert, Box, Button, PageBlock, ToastProps, withToast } from 'vtex.styleguide'
 import { ExportProductCatalogMutationFn } from '../mutations/ExportProductCatalog'
 import { StepCounterControl } from '../typings/typings'
 import StepCounter from './StepCounter'
-
 
 const {
   catalogExportedMessage,
@@ -72,6 +71,8 @@ const {
   },
 })
 
+type State = null | 'exporting' | 'exported' | 'error'
+
 
 interface Props extends ToastProps {
   email: string
@@ -87,24 +88,27 @@ const ProductMessagesExport: FC<Props> = ({
   showToast,
   stepCounterControl,
 }) => {
-  const [exporting, setExporting] = useState(false)
-  const [exported, setExported] = useState(false)
+  const [state, setState] = useState<State>(null)
 
   const exportCatalog = useCallback(() => {
-    setExporting(true)
+    setState('exporting')
     exportProductCatalog()
-      .catch(() => {
-        setExported(false)
-        showToast(intl.formatMessage(somethingWrongMessage))
-      })
+      .catch(() => setState('error'))
       .then(() => {
-        setExported(true)
+        setState('exported')
         showToast(intl.formatMessage(exportBeganMessage))
       })
   }, [])
 
   return (
     <PageBlock>
+      {state === 'error' ? (
+        <div className="mb7">
+          <Alert type="error" onClose>
+            {intl.formatMessage(somethingWrongMessage)}
+          </Alert>
+        </div>
+      ) : null}
       <div className="bb b--muted-4  nh7 ph7 pb7 mb7">
         <div className="flex">
           <div>
@@ -114,11 +118,11 @@ const ProductMessagesExport: FC<Props> = ({
           <div className="flex-grow-1 tr">
             <Button
               variation="secondary"
-              isLoading={!exported && exporting}
-              disabled={exported}
+              isLoading={state === 'exporting'}
+              disabled={state === 'exported'}
               onClick={exportCatalog}
             >
-              {exported
+              {state === 'exported'
                 ? intl.formatMessage(catalogExportedMessage)
                 : intl.formatMessage(exportCatalogMessage)}
             </Button>
@@ -126,9 +130,7 @@ const ProductMessagesExport: FC<Props> = ({
         </div>
       </div>
       <p className="mv7">{intl.formatMessage(inst2Message)}</p>
-      <p className="mv7">
-        {intl.formatMessage(inst3Message)}
-      </p>
+      <p className="mv7">{intl.formatMessage(inst3Message)}</p>
       <div>
         <p className="mv7">{intl.formatMessage(inst4Message)}</p>
         <Box noPadding>
