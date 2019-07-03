@@ -9,17 +9,22 @@ async function exportProductCatalog(
 ): Promise<boolean> {
   const {
     cookies,
-    clients: { admin, licenseManager },
+    clients: { admin, licenseManager, segment },
   } = ctx
     const VtexIdclientAutCookie = cookies.get('VtexIdclientAutCookie')
     if (!VtexIdclientAutCookie) {
       throw new AuthenticationError(E_AUTH)
     }
 
-    const data = await licenseManager.getTopbarData(VtexIdclientAutCookie)
-    const email = data && data.profile && data.profile.email
+    const [profileData, segmentData] = await Promise.all([
+      licenseManager.getTopbarData(VtexIdclientAutCookie),
+      segment.getSegment(),
+    ])
 
-    await admin.exportCatalogToEmail(email)
+    const email = profileData && profileData.profile && profileData.profile.email
+    const locale = segmentData.cultureInfo
+
+    admin.exportCatalogToEmail(email, locale)
 
     return true
 }

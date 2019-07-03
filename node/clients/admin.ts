@@ -17,12 +17,12 @@ export class Admin extends ExternalClient {
     )
   }
 
-  public exportCatalogToEmail = (email: string) =>
+  public exportCatalogToEmail = (email: string, locale: string) =>
     this.http.post(`StockKeepingUnitReport/ExportToEmail/`, {
       Email: email,
       Filters: {
         StoreId: 0,
       },
-      Locale: 'en-US',
+      Locale: locale,
     })
 }
