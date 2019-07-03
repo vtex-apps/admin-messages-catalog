@@ -128,7 +128,7 @@ const ProductMessagesExport: FC<Props> = ({
       </div>
       <p className="mv7">{intl.formatMessage(inst2Message)}</p>
       <p className="mv7">
-        {intl.formatMessage(inst3Message, { file: 'catalog.csv' })}
+        {intl.formatMessage(inst3Message)}
       </p>
       <div>
         <p className="mv7">{intl.formatMessage(inst4Message)}</p>

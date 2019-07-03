@@ -13,7 +13,7 @@
   "admin/messages.step1.exportCatalog": "Exportar Catálogo",
   "admin/messages.step1.instruction1": "1. Exporte seu catálogo de produtos para seu email",
   "admin/messages.step1.instruction2": "2. Depois de exportar, abra seu e-mail e faça o download do arquivo em anexo",
-  "admin/messages.step1.instruction3": "3. Abra o arquivo {file} no Excel ou no Numbers",
+  "admin/messages.step1.instruction3": "3. Abra o arquivo exportado no Excel ou no Numbers",
   "admin/messages.step1.instruction4": "4. Traduza, na planilha, o conteúdo das seguintes colunas:",
   "admin/messages.step1.instruction5": "5. Após traduzir, salve o arquivo e clique em Próximo para continuar",
   "admin/messages.step1.name": "Nome",
