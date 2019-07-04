@@ -9,24 +9,19 @@ async function exportProductCatalog(
 ): Promise<boolean> {
   const {
     cookies,
-    clients: { admin, licenseManager, segment },
+    clients: { admin, licenseManager },
   } = ctx
     const VtexIdclientAutCookie = cookies.get('VtexIdclientAutCookie')
     if (!VtexIdclientAutCookie) {
       throw new AuthenticationError(E_AUTH)
     }
 
-    const [profileData, segmentData] = await Promise.all([
-      licenseManager.getTopbarData(VtexIdclientAutCookie),
-      segment.getSegment(),
-    ])
-
+    const profileData = await licenseManager.getTopbarData(VtexIdclientAutCookie)
     const email = profileData && profileData.profile && profileData.profile.email
-    const locale = segmentData.cultureInfo
 
     // Cannot await this promise because it can take several minutes to get resolved.
     // In practice the connection will timeout before it...
-    admin.exportCatalogToEmail(email, locale)
+    admin.exportCatalogToEmail(email)
 
     return true
 }
