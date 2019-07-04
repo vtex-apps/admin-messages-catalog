@@ -64,6 +64,7 @@ function errorToMessage(
 const CSVUploader: FC<CSVUploaderProps> = ({ intl, setMessages }) => {
   const [name, setName] = useState('')
   const [error, setError] = useState<ErrorCode>(null)
+  const [loading, setLoading] = useState(false)
 
   const { getRootProps, getInputProps } = useDropzone({
     accept: ['.csv', '.xls', '.xlsx'],
@@ -76,10 +77,13 @@ const CSVUploader: FC<CSVUploaderProps> = ({ intl, setMessages }) => {
       }
 
       let errorCode: ErrorCode = null
-      const messages = await getMessages(upload).catch((e: Error) => {
-        errorCode = e.message as ErrorCode
-        return [] as MessagesOfProvider[]
-      })
+      setLoading(true)
+      const messages = await getMessages(upload)
+        .catch((e: Error) => {
+          errorCode = e.message as ErrorCode
+          return [] as MessagesOfProvider[]
+        })
+        .finally(() => setLoading(false))
 
       if (!errorCode) {
         setName(upload.name)
@@ -114,7 +118,7 @@ const CSVUploader: FC<CSVUploaderProps> = ({ intl, setMessages }) => {
         </div>
         {!name ? (
           <div {...getRootProps()}>
-            <Button variation="secondary">
+            <Button variation="secondary" isLoading={loading}>
               {intl.formatMessage(uploadMessage)}
             </Button>
             <input {...getInputProps()} />
