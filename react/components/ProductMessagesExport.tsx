@@ -104,7 +104,7 @@ const ProductMessagesExport: FC<Props> = ({
     <PageBlock>
       {state === 'error' ? (
         <div className="mb7">
-          <Alert type="error" onClose>
+          <Alert type="error" onClose={() => setState(null)}>
             {intl.formatMessage(somethingWrongMessage)}
           </Alert>
         </div>

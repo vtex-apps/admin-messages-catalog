@@ -2,11 +2,31 @@ import React, { FC, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { defineMessages, InjectedIntl } from 'react-intl'
 
-import { Button, IconClose } from 'vtex.styleguide'
+import { Alert, Button, IconClose } from 'vtex.styleguide'
 import { MessagesOfProvider } from '../typings/typings'
 import { getMessages } from '../utils/csv'
 
-const { productCatalogMessage, uploadMessage } = defineMessages({
+const MEGA = 2**20
+
+const {
+  productCatalogMessage,
+  uploadMessage,
+  noIdColumnMessage,
+  notSupportedFileMessage,
+  noTranslatableFieldMessage,
+} = defineMessages({
+  noIdColumnMessage: {
+    defaultMessage: '',
+    id: 'admin/messages.messages-upload.error-id-column',
+  },
+  noTranslatableFieldMessage: {
+    defaultMessage: '',
+    id: 'admin/messages.messages-upload.error-no-translatable-field',
+  },
+  notSupportedFileMessage: {
+    defaultMessage: '',
+    id: 'admin/messages.messages-upload.error-supported-file',
+  },
   productCatalogMessage: {
     defaultMessage: '',
     id: 'admin/messages.messages-upload.product-catalog-label',
@@ -23,31 +43,52 @@ interface CSVUploaderProps {
   setMessages: (messages: MessagesOfProvider[] | null) => void
 }
 
+type ErrorCode = null | 'REJECTED' | 'NO_TRANSLATABLE_FIELD_FOUND' | 'ID_NOT_FOUND'
+
+function errorToMessage(
+  error: ErrorCode,
+  { formatMessage }: InjectedIntl
+): string {
+  switch (error) {
+    case null:
+      return ''
+    case 'REJECTED':
+      return formatMessage(notSupportedFileMessage)
+    case 'NO_TRANSLATABLE_FIELD_FOUND':
+      return formatMessage(noTranslatableFieldMessage)
+    case 'ID_NOT_FOUND':
+      return formatMessage(noIdColumnMessage)
+  }
+}
+
 const CSVUploader: FC<CSVUploaderProps> = ({ intl, setMessages }) => {
   const [name, setName] = useState('')
+  const [error, setError] = useState<ErrorCode>(null)
 
   const { getRootProps, getInputProps } = useDropzone({
-    accept: ['.csv', '.xls'],
+    accept: ['.csv', '.xls', '.xlsx'],
+    maxSize: 20 * MEGA,
     multiple: false,
-    onDrop: async (accepted: File[], rejected: File[]) => {
-      const [upload] = accepted
+    onDrop: async ([upload]: File[]) => {
       if (!upload) {
-        return // TODO: Rejected file
+        setError('REJECTED')
+        return 
       }
 
-      let error = null
-      const messages = await getMessages(upload).catch(e => {
-        error = e
+      let errorCode: ErrorCode = null
+      const messages = await getMessages(upload).catch((e: Error) => {
+        errorCode = e.message as ErrorCode
         return [] as MessagesOfProvider[]
       })
 
-      if (!error) {
+      if (!errorCode) {
         setName(upload.name)
         setMessages(messages)
+        setError(null)
         return
       }
 
-      // TODO: treat errors
+      setError(errorCode)
     },
   })
 
@@ -58,6 +99,13 @@ const CSVUploader: FC<CSVUploaderProps> = ({ intl, setMessages }) => {
 
   return (
     <div className="bb b--muted-4 nh7 ph7 pb7 mb7">
+      {!!error ? (
+        <div className="mb7">
+          <Alert type="error" onClose={() => setError(null)}>
+            {errorToMessage(error, intl)}
+          </Alert>
+        </div>
+      ) : null}
       <div className="flex items-center">
         <div className="flex-grow-1 tl">
           <p className="mb1 mt0">
