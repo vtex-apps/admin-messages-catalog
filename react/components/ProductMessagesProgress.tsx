@@ -116,6 +116,7 @@ const ProductMessagesImport: FC<Props> = ({
 }) => {
   const [cancelled, setCancelled] = useState(false)
   const [batchProgress, setBatchProgress] = useState(0)
+  const [lastRetry, setLastRetry] = useState(-1)
   const [failedTranslations, setFailedTranslations] = useState(
     [] as MessagesOfProvider[]
   )
@@ -126,12 +127,18 @@ const ProductMessagesImport: FC<Props> = ({
     if (cancelled) {
       return
     }
-    const translations = messages.slice(batchProgress * BATCH_SIZE, BATCH_SIZE)
+
+    const start = batchProgress * BATCH_SIZE
+    const end = Math.min(start + BATCH_SIZE - 1, messages.length - 1)
+    const translations = messages.slice(start, end)
+
     addProductTranslations({ variables: { translations, language: locale! } })
       .then(result => {
         if (result && result.data) {
           const failedProviders = new Set(
-            result.data.addProductTranslations.map(({ provider }) => provider)
+            result.data.addProductTranslations.map(
+              ({ provider }) => provider
+            )
           )
           setFailedTranslations([
             ...failedTranslations,
@@ -141,12 +148,18 @@ const ProductMessagesImport: FC<Props> = ({
           ])
         }
       })
+      .catch(() => {
+        if (lastRetry === batchProgress) {
+          setFailedTranslations([...failedTranslations, ...translations])
+        }
+        setLastRetry(batchProgress)
+      })
       .then(() => {
         if (batchProgress < batchesNumber) {
           setBatchProgress(batchProgress + 1)
         }
       })
-  }, [batchProgress, cancelled])
+  }, [batchProgress, cancelled, lastRetry])
 
   const progress = Math.min(batchProgress * BATCH_SIZE, messages.length)
   const total = messages.length
@@ -156,6 +169,9 @@ const ProductMessagesImport: FC<Props> = ({
   const retry = () => {
     setMessages(failedTranslations)
     setFailedTranslations([])
+    setCancelled(false)
+    setBatchProgress(0)
+    setLastRetry(-1)
   }
 
   const cancel = () => {
