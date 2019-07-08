@@ -88,23 +88,23 @@ const ProductMessagesExport: FC<Props> = ({
   showToast,
   stepCounterControl,
 }) => {
-  const [state, setState] = useState<State>(null)
+  const [exportState, setExportState] = useState<State>(null)
 
   const exportCatalog = useCallback(() => {
-    setState('exporting')
+    setExportState('exporting')
     exportProductCatalog()
-      .catch(() => setState('error'))
+      .catch(() => setExportState('error'))
       .then(() => {
-        setState('exported')
+        setExportState('exported')
         showToast(intl.formatMessage(exportBeganMessage))
       })
   }, [])
 
   return (
     <PageBlock>
-      {state === 'error' ? (
+      {exportState === 'error' ? (
         <div className="mb7">
-          <Alert type="error" onClose={() => setState(null)}>
+          <Alert type="error" onClose={() => setExportState(null)}>
             {intl.formatMessage(somethingWrongMessage)}
           </Alert>
         </div>
@@ -118,11 +118,11 @@ const ProductMessagesExport: FC<Props> = ({
           <div className="flex-grow-1 tr">
             <Button
               variation="secondary"
-              isLoading={state === 'exporting'}
-              disabled={state === 'exported'}
+              isLoading={exportState === 'exporting'}
+              disabled={exportState === 'exported'}
               onClick={exportCatalog}
             >
-              {state === 'exported'
+              {exportState === 'exported'
                 ? intl.formatMessage(catalogExportedMessage)
                 : intl.formatMessage(exportCatalogMessage)}
             </Button>
