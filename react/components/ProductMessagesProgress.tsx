@@ -151,6 +151,7 @@ const ProductMessagesImport: FC<Props> = ({
       .catch(() => {
         if (lastRetry === batchProgress) {
           setFailedTranslations([...failedTranslations, ...translations])
+          return
         }
         setLastRetry(batchProgress)
       })
