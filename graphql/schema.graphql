@@ -14,11 +14,11 @@ type Query {
   MOCK_DO_NOT_CALL: String
 }
 
-
 type FailedTranslation {
   provider: String!
 }
 
 type Mutation {
   addProductTranslations(translations: [MessagesFromProvider]!, language: String!): [FailedTranslation]
+  exportProductCatalog: Boolean
 }

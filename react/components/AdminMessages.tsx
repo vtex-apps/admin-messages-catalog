@@ -1,9 +1,10 @@
 import React, { FC, useState } from 'react'
 import { defineMessages, InjectedIntl, injectIntl } from 'react-intl'
 
-import { Layout, PageHeader } from 'vtex.styleguide'
+import { Layout, PageHeader, ShowToastFunction } from 'vtex.styleguide'
 
 import { AddProductTranslationsMutationFn } from '../mutations/AddProductTranslations'
+import { ExportProductCatalogMutationFn } from '../mutations/ExportProductCatalog'
 import { MessagesOfProvider, StepCounterControl, SupportedLocale } from '../typings/typings'
 import ProductMessagesExport from './ProductMessagesExport'
 import ProductMessagesImport from './ProductMessagesImport'
@@ -19,12 +20,18 @@ const { titleMessage } = defineMessages({
 })
 
 interface Props {
-  intl: InjectedIntl
   addProductTranslations: AddProductTranslationsMutationFn
   email: string
+  exportProductCatalog: ExportProductCatalogMutationFn
+  intl: InjectedIntl
 }
 
-const AdminMessages: FC<Props> = ({ addProductTranslations, email, intl }) => {
+const AdminMessages: FC<Props> = ({
+  addProductTranslations,
+  email,
+  exportProductCatalog,
+  intl,
+}) => {
   const [step, setStep] = useState(1)
 
   const translationDataHooks = {
@@ -61,6 +68,7 @@ const AdminMessages: FC<Props> = ({ addProductTranslations, email, intl }) => {
         {step === 1 ? (
           <ProductMessagesExport
             email={email}
+            exportProductCatalog={exportProductCatalog}
             stepCounterControl={stepCounterControl}
           />
         ) : null}
