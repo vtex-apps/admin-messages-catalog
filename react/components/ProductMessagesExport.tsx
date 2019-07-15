@@ -1,65 +1,59 @@
 import React, { FC, useCallback, useState } from 'react'
 import { defineMessages, InjectedIntl, injectIntl } from 'react-intl'
-import { Alert, Box, Button, PageBlock, ToastProps, withToast } from 'vtex.styleguide'
+import {
+  Alert,
+  Box,
+  Button,
+  PageBlock,
+  ToastProps,
+  withToast
+} from 'vtex.styleguide'
 import { ExportProductCatalogMutationFn } from '../mutations/ExportProductCatalog'
 import { StepCounterControl } from '../typings/typings'
 import StepCounter from './StepCounter'
 
-const {
-  catalogExportedMessage,
-  exportBeganMessage,
-  exportCatalogMessage,
-  inst1Message,
-  inst2Message,
-  inst3Message,
-  inst4Message,
-  inst5Message,
-  requiredMessage,
-  somethingWrongMessage,
-  step1Description,
-  step1Name,
-} = defineMessages({
-  catalogExportedMessage: {
+const messages = defineMessages({
+  catalogExported: {
     defaultMessage: '',
     id: 'admin/messages.step1.catalog-exported',
   },
-  exportBeganMessage: {
+  exportBegan: {
     defaultMessage: '',
-    id: 'admin/messages.step1.export-began-toast',
+    id: 'admin/messages.step1.export-began',
   },
-  exportCatalogMessage: {
+  exportCatalog: {
     defaultMessage: '',
     id: 'admin/messages.step1.exportCatalog',
   },
-  inst1Message: {
+  instruction1: {
     defaultMessage: '',
     id: 'admin/messages.step1.instruction1',
   },
-  inst2Message: {
+  instruction2: {
     defaultMessage:
       '2. After exporting: open your email and download the attached file',
     id: 'admin/messages.step1.instruction2',
   },
-  inst3Message: {
+  instruction3: {
     defaultMessage: '',
     id: 'admin/messages.step1.instruction3',
   },
-  inst4Message: {
+  instruction4: {
     defaultMessage: '',
     id: 'admin/messages.step1.instruction4',
   },
-  inst5Message: {
+  instruction5: {
     defaultMessage:
       '5. After translating:  save the file and click Next to continue',
     id: 'admin/messages.step1.instruction5',
   },
-  requiredMessage: {
+  required: {
     defaultMessage: '',
     id: 'admin/messages.required',
   },
-  somethingWrongMessage: {
+  somethingWrong: {
     defaultMessage: '',
-    id: 'admin/messages.step1.something-wrong-toast',
+    id: 'admin/messages.step1.something-wrong',
   },
   step1Description: {
     defaultMessage: '',
@@ -72,7 +66,6 @@ const {
 })
 
 type State = null | 'exporting' | 'exported' | 'error'
-
 
 interface Props extends ToastProps {
   email: string
@@ -96,7 +89,7 @@ const ProductMessagesExport: FC<Props> = ({
       .catch(() => setExportState('error'))
       .then(() => {
         setExportState('exported')
-        showToast(intl.formatMessage(exportBeganMessage))
+        showToast(intl.formatMessage(messages.exportBegan))
       })
   }, [])
 
@@ -105,14 +98,16 @@ const ProductMessagesExport: FC<Props> = ({
       {exportState === 'error' ? (
         <div className="mb7">
           <Alert type="error" onClose={() => setExportState(null)}>
-            {intl.formatMessage(somethingWrongMessage)}
+            {intl.formatMessage(messages.somethingWrong)}
           </Alert>
         </div>
       ) : null}
       <div className="bb b--muted-4  nh7 ph7 pb7 mb7">
         <div className="flex">
           <div>
-            <p className="mb1 mt0">{intl.formatMessage(inst1Message)}</p>
+            <p className="mb1 mt0">
+              {intl.formatMessage(messages.instruction1)}
+            </p>
             <p className="t-mini c-muted-2 mt1 pl5">{email}</p>
           </div>
           <div className="flex-grow-1 tr">
@@ -123,34 +118,36 @@ const ProductMessagesExport: FC<Props> = ({
               onClick={exportCatalog}
             >
               {exportState === 'exported'
-                ? intl.formatMessage(catalogExportedMessage)
-                : intl.formatMessage(exportCatalogMessage)}
+                ? intl.formatMessage(messages.catalogExported)
+                : intl.formatMessage(messages.exportCatalog)}
             </Button>
           </div>
         </div>
       </div>
-      <p className="mv7">{intl.formatMessage(inst2Message)}</p>
-      <p className="mv7">{intl.formatMessage(inst3Message)}</p>
+      <p className="mv7">{intl.formatMessage(messages.instruction2)}</p>
+      <p className="mv7">{intl.formatMessage(messages.instruction3)}</p>
       <div>
-        <p className="mv7">{intl.formatMessage(inst4Message)}</p>
+        <p className="mv7">{intl.formatMessage(messages.instruction4)}</p>
         <Box noPadding>
           <div className="c-muted-1 ph5 pv2">
             <p>
               <span className="mr3 fw5">
-                _ProductName ({intl.formatMessage(requiredMessage)})
+                _ProductName ({intl.formatMessage(messages.required)})
               </span>{' '}
-              <span className="f6">{intl.formatMessage(step1Name)}</span>
+              <span className="f6">
+                {intl.formatMessage(messages.step1Name)}
+              </span>
             </p>
             <p>
               <span className="mr3 fw5">_ProductDescription</span>{' '}
               <span className="f6">
-                {intl.formatMessage(step1Description)}
+                {intl.formatMessage(messages.step1Description)}
               </span>
             </p>
           </div>
         </Box>
       </div>
-      <p className="mv7">{intl.formatMessage(inst5Message)}</p>
+      <p className="mv7">{intl.formatMessage(messages.instruction5)}</p>
       <StepCounter intl={intl} {...stepCounterControl} />
     </PageBlock>
   )

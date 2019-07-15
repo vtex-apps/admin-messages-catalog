@@ -7,16 +7,16 @@ import { SupportedLocale } from '../typings/typings'
 
 const {
   english,
-  pickLangMessage,
+  pickLang,
   portuguese,
   spanish,
-  targetLangMessage,
+  targetLang,
 } = defineMessages({
   english: {
     defaultMessage: '',
     id: 'admin/messages.messages-upload.pick-lang.en',
   },
-  pickLangMessage: {
+  pickLang: {
     defaultMessage: '',
     id: 'admin/messages.messages-upload.pick-lang',
   },
@@ -28,7 +28,7 @@ const {
     defaultMessage: '',
     id: 'admin/messages.messages-upload.pick-lang.es',
   },
-  targetLangMessage: {
+  targetLang: {
     defaultMessage: '',
     id: 'admin/messages.messages-upload.target-lang',
   },
@@ -77,12 +77,12 @@ const LanguagePicker: FC<Props> = ({ intl, locale, setLocale }) => {
     <div className="flex items-center mv7">
       <div className="flex-grow-1">
         <p className="mb1 mt0">
-          {intl.formatMessage(targetLangMessage)}
+          {intl.formatMessage(targetLang)}
         </p>
       </div>
       <div className="w-40 tr">
         <Dropdown
-          placeholder={intl.formatMessage(pickLangMessage)}
+          placeholder={intl.formatMessage(pickLang)}
           onChange={onChangeLanguage(setLocale)}
           options={getLanguageOptions(intl)}
           value={locale || ''}

@@ -8,8 +8,8 @@
   "admin/messages.retry": "Retry",
   "admin/messages.done": "Done",
   "admin/messages.step1.catalog-exported": "Catalog exported",
-  "admin/messages.step1.something-wrong-toast": "Something went wrong, please try again",
-  "admin/messages.step1.export-began-toast": "Catalog being exported. Check your email in a few moments",
+  "admin/messages.step1.something-wrong": "Something went wrong, please try again",
+  "admin/messages.step1.export-began": "Catalog being exported. Check your email in a few moments",
   "admin/messages.step1.exportCatalog": "Export Catalog",
   "admin/messages.step1.instruction1": "1. Export your product catalog to your email",
   "admin/messages.step1.instruction2": "2. After exporting: open your email and download the attached file",
@@ -30,6 +30,6 @@
   "admin/messages.messages-upload.error-no-translatable-field": "No translatable field found.",
   "admin/messages.messages-upload.product-catalog-label": "Translated product catalog",
   "admin/messages.messages-progress.translate-progress": "Translated {progress} out of {total} products to {language}",
-  "admin/messages.messages-progress.translate-failed": "{failed} translations failed. Would you like to retry them?",
-  "admin/messages.messages-progress.translate-success": "Translation in {language} completed successfully"
+  "admin/messages.messages-progress.translation-faileded": "{failed} translations failed. Would you like to retry them?",
+  "admin/messages.messages-progress.translation-succeeded": "Translation in {language} completed successfully"
 }

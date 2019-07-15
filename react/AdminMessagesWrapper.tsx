@@ -9,8 +9,8 @@ import AddProductTranslationsMutation from './mutations/AddProductTranslations'
 import ExportProductCatalogMutation from './mutations/ExportProductCatalog'
 import GetUserEmailQuery, { EmailData } from './queries/GetUserEmail'
 
-const { headerMessage } = defineMessages({
-  headerMessage: {
+const { header } = defineMessages({
+  header: {
     defaultMessage: '',
     id: 'admin/messages.navigation.label',
   },
@@ -28,7 +28,7 @@ const AdminMessagesWrapper: FC<InjectedIntlProps> = ({ intl }) => {
   return (
     <>
       <Helmet>
-        <title>{intl.formatMessage(headerMessage)}</title>
+        <title>{intl.formatMessage(header)}</title>
       </Helmet>
       <ToastProvider positioning="parent">
         <GetUserEmailQuery>

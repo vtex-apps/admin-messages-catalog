@@ -8,8 +8,8 @@
   "admin/messages.retry": "Procesar de nuevo",
   "admin/messages.done": "Finalizar",
   "admin/messages.step1.catalog-exported": "Catálogo exportado",
-  "admin/messages.step1.something-wrong-toast": "Algo salió mal. Por favor, vuelva a intentarlo",
-  "admin/messages.step1.export-began-toast": "Catálogo que se está exportando. Revise su correo electrónico en unos momentos",
+  "admin/messages.step1.something-wrong": "Algo salió mal. Por favor, vuelva a intentarlo",
+  "admin/messages.step1.export-began": "Catálogo que se está exportando. Revise su correo electrónico en unos momentos",
   "admin/messages.step1.exportCatalog": "Exportar catálogo",
   "admin/messages.step1.instruction1": "1. Exporta tu catálogo de productos a su email",
   "admin/messages.step1.instruction2": "2. Después de exportar: abra su correo electrónico y descargue el archivo adjunto",
@@ -30,6 +30,6 @@
   "admin/messages.messages-upload.error-no-translatable-field": "No se ha encontrado ningún campo traducible.",
   "admin/messages.messages-upload.product-catalog-label": "Catálogo de productos traducidos",
   "admin/messages.messages-progress.translate-progress": "{progress} de {total} productos se han traducido al {language}",
-  "admin/messages.messages-progress.translate-failed": "{failed} traducciones fallidas. ¿Te gustaría volver a intentarlo?",
-  "admin/messages.messages-progress.translate-success": "Traducción en {language} completada exitosamente"
+  "admin/messages.messages-progress.translation-faileded": "{failed} traducciones fallidas. ¿Te gustaría volver a intentarlo?",
+  "admin/messages.messages-progress.translation-succeeded": "Traducción en {language} completada exitosamente"
 }

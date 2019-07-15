@@ -12,39 +12,32 @@ const BATCH_SIZE = 10
 const PROGRESS_BARS = 50
 
 
-const {
-  cancelMessage,
-  doneMessage,
-  progressMessage,
-  retryMessage,
-  translateFailedMessage,
-  translateSuccessMessage,
-} = defineMessages({
-  cancelMessage: {
+const messages = defineMessages({
+  cancel: {
     defaultMessage: '',
     id: 'admin/messages.cancel',
   },
-  doneMessage: {
+  done: {
     defaultMessage: '',
     id: 'admin/messages.done',
   },
-  progressMessage: {
+  progress: {
     defaultMessage:
       'Translated {progress} out of {total} products to {language}',
     id: 'admin/messages.messages-progress.translate-progress',
   },
-  retryMessage: {
+  retry: {
     defaultMessage: '',
     id: 'admin/messages.retry',
   },
-  translateFailedMessage: {
+  translationFaileded: {
     defaultMessage:
       '{failed} translations failed. Would you like to retry them?',
-    id: 'admin/messages.messages-progress.translate-failed',
+    id: 'admin/messages.messages-progress.translation-faileded',
   },
-  translateSuccessMessage: {
+  translationSucceeded: {
     defaultMessage: '',
-    id: 'admin/messages.messages-progress.translate-success',
+    id: 'admin/messages.messages-progress.translation-succeeded',
   },
 })
 
@@ -73,20 +66,20 @@ function getUploadProgressMessage(
 ) {
   if (uploaded < total) {
     return intl.formatMessage(
-      progressMessage,
+      messages.progress,
       { progress: uploaded - failed, total, language }
     )
  }
 
   if (failed > 0) {
     return intl.formatMessage(
-      translateFailedMessage,
+      messages.translationFaileded,
       { failed }
     )
   }
 
   return intl.formatMessage(
-    translateSuccessMessage,
+    messages.translationSucceeded,
     { language }
   )
 }
@@ -110,7 +103,7 @@ const ProductMessagesImport: FC<Props> = ({
   done,
   intl,
   locale,
-  messages,
+  messages: translationMessages,
   setMessages,
   stepCounterControl,
 }) => {
@@ -121,7 +114,7 @@ const ProductMessagesImport: FC<Props> = ({
     [] as MessagesOfProvider[]
   )
 
-  const batchesNumber = Math.ceil(messages.length / BATCH_SIZE)
+  const batchesNumber = Math.ceil(translationMessages.length / BATCH_SIZE)
 
   useEffect(() => {
     if (cancelled) {
@@ -129,8 +122,8 @@ const ProductMessagesImport: FC<Props> = ({
     }
 
     const start = batchProgress * BATCH_SIZE
-    const end = Math.min(start + BATCH_SIZE - 1, messages.length - 1)
-    const translations = messages.slice(start, end)
+    const end = Math.min(start + BATCH_SIZE - 1, translationMessages.length - 1)
+    const translations = translationMessages.slice(start, end)
 
     addProductTranslations({ variables: { translations, language: locale! } })
       .then(result => {
@@ -162,8 +155,8 @@ const ProductMessagesImport: FC<Props> = ({
       })
   }, [batchProgress, cancelled, lastRetry])
 
-  const progress = Math.min(batchProgress * BATCH_SIZE, messages.length)
-  const total = messages.length
+  const progress = Math.min(batchProgress * BATCH_SIZE, translationMessages.length)
+  const total = translationMessages.length
 
   const language = intl.formatMessage(LOCALE_TO_MESSAGE[locale])
 
@@ -201,15 +194,15 @@ const ProductMessagesImport: FC<Props> = ({
         <p>{getCurrentProgressPercentage(progress, total)}</p>
         {progress < total ? (
           <Button variation="secondary" onClick={cancel}>
-            {intl.formatMessage(cancelMessage)}
+            {intl.formatMessage(messages.cancel)}
           </Button>
         ) : failedTranslations.length > 0 ? (
           <Button onClick={retry}>
-            {intl.formatMessage(retryMessage)}
+            {intl.formatMessage(messages.retry)}
           </Button>
         ) : (
           <Button onClick={done}>
-            {intl.formatMessage(doneMessage)}
+            {intl.formatMessage(messages.done)}
           </Button>
         )}
       </div>

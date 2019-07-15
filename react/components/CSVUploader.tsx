@@ -9,29 +9,29 @@ import { getMessages } from '../utils/csv'
 const MEGA = 2**20
 
 const {
-  productCatalogMessage,
-  uploadMessage,
-  noIdColumnMessage,
-  notSupportedFileMessage,
-  noTranslatableFieldMessage,
+  productCatalog,
+  upload,
+  noIdColumn,
+  notSupportedFile,
+  noTranslatableField,
 } = defineMessages({
-  noIdColumnMessage: {
+  noIdColumn: {
     defaultMessage: '',
     id: 'admin/messages.messages-upload.error-id-column',
   },
-  noTranslatableFieldMessage: {
+  noTranslatableField: {
     defaultMessage: '',
     id: 'admin/messages.messages-upload.error-no-translatable-field',
   },
-  notSupportedFileMessage: {
+  notSupportedFile: {
     defaultMessage: '',
     id: 'admin/messages.messages-upload.error-supported-file',
   },
-  productCatalogMessage: {
+  productCatalog: {
     defaultMessage: '',
     id: 'admin/messages.messages-upload.product-catalog-label',
   },
-  uploadMessage: {
+  upload: {
     defaultMessage: '',
     id: 'admin/messages.messages-upload.upload-label',
   },
@@ -53,11 +53,11 @@ function errorToMessage(
     case null:
       return ''
     case 'REJECTED':
-      return formatMessage(notSupportedFileMessage)
+      return formatMessage(notSupportedFile)
     case 'NO_TRANSLATABLE_FIELD_FOUND':
-      return formatMessage(noTranslatableFieldMessage)
+      return formatMessage(noTranslatableField)
     case 'ID_NOT_FOUND':
-      return formatMessage(noIdColumnMessage)
+      return formatMessage(noIdColumn)
   }
 }
 
@@ -70,15 +70,15 @@ const CSVUploader: FC<CSVUploaderProps> = ({ intl, setMessages }) => {
     accept: ['.csv', '.xls', '.xlsx'],
     maxSize: 20 * MEGA,
     multiple: false,
-    onDrop: async ([upload]: File[]) => {
-      if (!upload) {
+    onDrop: async ([uploadedFile]: File[]) => {
+      if (!uploadedFile) {
         setError('REJECTED')
         return 
       }
 
       let errorCode: ErrorCode = null
       setLoading(true)
-      const messages = await getMessages(upload)
+      const messages = await getMessages(uploadedFile)
         .catch((e: Error) => {
           errorCode = e.message as ErrorCode
           return [] as MessagesOfProvider[]
@@ -86,7 +86,7 @@ const CSVUploader: FC<CSVUploaderProps> = ({ intl, setMessages }) => {
         .finally(() => setLoading(false))
 
       if (!errorCode) {
-        setName(upload.name)
+        setName(uploadedFile.name)
         setMessages(messages)
         setError(null)
         return
@@ -113,13 +113,13 @@ const CSVUploader: FC<CSVUploaderProps> = ({ intl, setMessages }) => {
       <div className="flex items-center">
         <div className="flex-grow-1 tl">
           <p className="mb1 mt0">
-            {intl.formatMessage(productCatalogMessage)}
+            {intl.formatMessage(productCatalog)}
           </p>
         </div>
         {!name ? (
           <div {...getRootProps()}>
             <Button variation="secondary" isLoading={loading}>
-              {intl.formatMessage(uploadMessage)}
+              {intl.formatMessage(upload)}
             </Button>
             <input {...getInputProps()} />
           </div>
