@@ -1,34 +1,61 @@
 import React, { Dispatch, FC, SetStateAction } from 'react'
-import { InjectedIntl } from 'react-intl'
+import { defineMessages, FormattedMessage, InjectedIntl } from 'react-intl'
 
 import { Dropdown } from 'vtex.styleguide'
 
 import { SupportedLocale } from '../typings/typings'
 
-export function getLocaleMessage(locale: SupportedLocale) {
-  switch(locale) {
-    case 'en-US':
-      return { id: 'admin/messages.messages-upload.pick-lang.en-us' }
-    case 'pt-BR':
-      return { id: 'admin/messages.messages-upload.pick-lang.pt-br' }
-    case 'es-AR':
-      return { id: 'admin/messages.messages-upload.pick-lang.es-ar' }
-  }
+const {
+  english,
+  pickLangMessage,
+  portuguese,
+  spanish,
+  targetLangMessage,
+} = defineMessages({
+  english: {
+    defaultMessage: '',
+    id: 'admin/messages.messages-upload.pick-lang.en',
+  },
+  pickLangMessage: {
+    defaultMessage: '',
+    id: 'admin/messages.messages-upload.pick-lang',
+  },
+  portuguese: {
+    defaultMessage: '',
+    id: 'admin/messages.messages-upload.pick-lang.pt',
+  },
+  spanish: {
+    defaultMessage: '',
+    id: 'admin/messages.messages-upload.pick-lang.es',
+  },
+  targetLangMessage: {
+    defaultMessage: '',
+    id: 'admin/messages.messages-upload.target-lang',
+  },
+})
+
+export const LOCALE_TO_MESSAGE: Record<
+  SupportedLocale,
+  FormattedMessage.MessageDescriptor
+> = {
+  en: english,
+  es: spanish,
+  pt: portuguese,
 }
 
 function getLanguageOptions(intl: InjectedIntl) { 
   return [
     {
-      label: intl.formatMessage(getLocaleMessage('en-US')),
-      value: 'en-US',
+      label: intl.formatMessage(LOCALE_TO_MESSAGE.en),
+      value: 'en',
     },
     {
-      label: intl.formatMessage(getLocaleMessage('pt-BR')),
-      value: 'pt-BR',
+      label: intl.formatMessage(LOCALE_TO_MESSAGE.pt),
+      value: 'pt',
     },
     {
-      label: intl.formatMessage(getLocaleMessage('es-AR')),
-      value: 'es-AR',
+      label: intl.formatMessage(LOCALE_TO_MESSAGE.es),
+      value: 'es',
     },
   ]
 }
@@ -50,16 +77,12 @@ const LanguagePicker: FC<Props> = ({ intl, locale, setLocale }) => {
     <div className="flex items-center mv7">
       <div className="flex-grow-1">
         <p className="mb1 mt0">
-          {intl.formatMessage({
-            id: 'admin/messages.messages-upload.target-lang',
-          })}
+          {intl.formatMessage(targetLangMessage)}
         </p>
       </div>
       <div className="w-40 tr">
         <Dropdown
-          placeholder={intl.formatMessage({
-            id: 'admin/messages.messages-upload.target-lang',
-          })}
+          placeholder={intl.formatMessage(pickLangMessage)}
           onChange={onChangeLanguage(setLocale)}
           options={getLanguageOptions(intl)}
           value={locale || ''}

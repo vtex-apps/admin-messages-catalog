@@ -1,10 +1,22 @@
 import React, { FC, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
-import { InjectedIntl } from 'react-intl'
+import { defineMessages, InjectedIntl } from 'react-intl'
 
 import { Button, IconClose } from 'vtex.styleguide'
 import { MessagesOfProvider } from '../typings/typings'
 import { getMessages } from '../utils/csv'
+
+const { productCatalogMessage, uploadMessage } = defineMessages({
+  productCatalogMessage: {
+    defaultMessage: '',
+    id: 'admin/messages.messages-upload.product-catalog-label',
+  },
+  uploadMessage: {
+    defaultMessage: '',
+    id: 'admin/messages.messages-upload.upload-label',
+  },
+})
+
 
 interface CSVUploaderProps {
   intl: InjectedIntl
@@ -48,17 +60,13 @@ const CSVUploader: FC<CSVUploaderProps> = ({ intl, setMessages }) => {
       <div className="flex items-center">
         <div className="flex-grow-1 tl">
           <p className="mb1 mt0">
-            {intl.formatMessage({
-              id: 'admin/messages.messages-upload.product-catalog-label',
-            })}
+            {intl.formatMessage(productCatalogMessage)}
           </p>
         </div>
         {!name ? (
           <div {...getRootProps()}>
             <Button variation="secondary">
-              {intl.formatMessage({
-                id: 'admin/messages.messages-upload.upload-label',
-              })}
+              {intl.formatMessage(uploadMessage)}
             </Button>
             <input {...getInputProps()} />
           </div>

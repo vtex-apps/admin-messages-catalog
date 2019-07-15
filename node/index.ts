@@ -1,7 +1,7 @@
 import { IOClients, Service, ServiceContext } from '@vtex/api'
 import addProductTranslations from './resolvers/addProductTranslations'
 
-const TRANSLATION_CONCURRENCY = 20
+const TRANSLATION_CONCURRENCY = 5
 const TRANSLATION_RETRIES = 3
 const SMALL_TIMEOUT_MS = 500
 

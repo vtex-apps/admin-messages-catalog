@@ -1,5 +1,6 @@
 mutation AddProductTranslations($translations: [MessagesFromProvider]!, $language: String!) {
   addProductTranslations(translations: $translations, language: $language) {
+    # Returns provider of failed translations
     provider
   }
 }
