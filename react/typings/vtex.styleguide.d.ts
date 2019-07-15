@@ -1,6 +1,8 @@
-/* Typings for `vtex.styleguide` */
 
+/* Typings for `vtex.styleguide` */
 declare module 'vtex.styleguide' {
+  import { ComponentClass, ComponentType } from 'react'
+
   interface ShowToastOptions {
     action?: {
       label: string
@@ -13,6 +15,17 @@ declare module 'vtex.styleguide' {
 
   export type ShowToastFunction = (a: ShowToastOptions | string) => void
 
+  export interface ToastProps {
+    showToast: ShowToastFunction
+    hideToast: () => void
+    toastState: unknown
+  }
+
+  export function withToast<P>(
+    component: ComponentType<P & ToastProps>
+  ): ComponentClass<Pick<P, Exclude<keyof P, keyof ToastProps>>>
+
+  export const Alert: any
   export const Box: any
   export const Button: any
   export const Dropdown: any
@@ -22,5 +35,4 @@ declare module 'vtex.styleguide' {
   export const PageHeader: any
   export const ProgressBar: any
   export const ToastProvider: any 
-  export const withToast: any
 }

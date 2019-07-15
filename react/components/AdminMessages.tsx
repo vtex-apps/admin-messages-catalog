@@ -12,8 +12,8 @@ import ProductMessagesProgress from './ProductMessagesProgress'
 
 const TOTAL_STEPS = 3
 
-const { titleMessage } = defineMessages({
-  titleMessage: {
+const { title } = defineMessages({
+  title: {
     defaultMessage: '',
     id: 'admin/messages.headerTitle',
   },
@@ -63,22 +63,22 @@ const AdminMessages: FC<Props> = ({
   return (
     <div className="min-vh-100 bg-muted-5">
       <Layout
-        pageHeader={<PageHeader title={intl.formatMessage(titleMessage)} />}
+        pageHeader={<PageHeader title={intl.formatMessage(title)} />}
       >
-        {step === 1 ? (
+        {step === 1 && (
           <ProductMessagesExport
             email={email}
             exportProductCatalog={exportProductCatalog}
             stepCounterControl={stepCounterControl}
           />
-        ) : null}
-        {step === 2 ? (
+        )}
+        {step === 2 && (
           <ProductMessagesImport
             stepCounterControl={stepCounterControl}
             translationDataHooks={translationDataHooks}
           />
-        ) : null}
-        {step === 3 ? (
+        )}
+        {step === 3 && (
           <ProductMessagesProgress
             addProductTranslations={addProductTranslations}
             done={done}
@@ -87,7 +87,7 @@ const AdminMessages: FC<Props> = ({
             messages={messages!}
             setMessages={setMessages}
           />
-        ) : null}
+        )}
       </Layout>
     </div>
   )

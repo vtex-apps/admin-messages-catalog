@@ -8,8 +8,8 @@
   "admin/messages.retry": "",
   "admin/messages.done": "",
   "admin/messages.step1.catalog-exported": "",
-  "admin/messages.step1.something-wrong-toast": "",
-  "admin/messages.step1.export-began-toast": "",
+  "admin/messages.step1.something-wrong": "",
+  "admin/messages.step1.export-began": "",
   "admin/messages.step1.exportCatalog": "",
   "admin/messages.step1.instruction1": "",
   "admin/messages.step1.instruction2": "",
@@ -25,8 +25,11 @@
   "admin/messages.messages-upload.pick-lang.en": "",
   "admin/messages.messages-upload.pick-lang.es": "",
   "admin/messages.messages-upload.pick-lang.pt": "",
+  "admin/messages.messages-upload.error-supported-file": "",
+  "admin/messages.messages-upload.error-id-column": "",
+  "admin/messages.messages-upload.error-no-translatable-field": "",
   "admin/messages.messages-upload.product-catalog-label": "",
   "admin/messages.messages-progress.translate-progress": "",
-  "admin/messages.messages-progress.translate-failed": "",
-  "admin/messages.messages-progress.translate-success": ""
+  "admin/messages.messages-progress.translation-faileded": "",
+  "admin/messages.messages-progress.translation-succeeded": ""
 }

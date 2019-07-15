@@ -8,8 +8,8 @@
   "admin/messages.retry": "Tentar novamente",
   "admin/messages.done": "Finalizar",
   "admin/messages.step1.catalog-exported": "Catálogo exportado",
-  "admin/messages.step1.something-wrong-toast": "Algo deu errado, por favor tente novamente",
-  "admin/messages.step1.export-began-toast": "Catálogo sendo exportado. Cheque seu email em alguns instantes",
+  "admin/messages.step1.something-wrong": "Algo deu errado, por favor tente novamente",
+  "admin/messages.step1.export-began": "Catálogo sendo exportado. Cheque seu email em alguns instantes",
   "admin/messages.step1.exportCatalog": "Exportar Catálogo",
   "admin/messages.step1.instruction1": "1. Exporte seu catálogo de produtos para seu email",
   "admin/messages.step1.instruction2": "2. Depois de exportar, abra seu e-mail e faça o download do arquivo em anexo",
@@ -25,8 +25,11 @@
   "admin/messages.messages-upload.pick-lang.en": "Inglês",
   "admin/messages.messages-upload.pick-lang.es": "Espanhol",
   "admin/messages.messages-upload.pick-lang.pt": "Português",
+  "admin/messages.messages-upload.error-supported-file": "Arquivo não suportado. Por favor, inclua apenas .csv e .xls de até 20MB.",
+  "admin/messages.messages-upload.error-id-column": "Coluna \"_ProductId\" não encontrada no arquivo enviado.",
+  "admin/messages.messages-upload.error-no-translatable-field": "Nenhum campo traduzível encontrado.",
   "admin/messages.messages-upload.product-catalog-label": "Catálogo de Produto Traduzido",
   "admin/messages.messages-progress.translate-progress": "{progress} de {total} produtos foram traduzidos para {language}",
-  "admin/messages.messages-progress.translate-failed": "{failed} traduções falharam. Gostaria de tentar novamente?",
-  "admin/messages.messages-progress.translate-success": "Traduções para {language} foram realizadas com sucesso"
+  "admin/messages.messages-progress.translation-faileded": "{failed} traduções falharam. Gostaria de tentar novamente?",
+  "admin/messages.messages-progress.translation-succeeded": "Traduções para {language} foram realizadas com sucesso"
 }

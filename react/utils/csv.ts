@@ -86,7 +86,7 @@ export async function getMessages(csv: File): Promise<MessagesOfProvider[]> {
   const messagesByProvider = uniqueByProvider(
     data.map(row => ({
       messages: getProviderMessages(fieldAndIndex, row),
-      provider: row[idIndex],
+      provider: row[idIndex].toString(),
     }))
   ).filter(({ messages, provider }) => messages.length > 0 && !!provider)
 
