@@ -21,10 +21,11 @@
     "react-intl": "^2.7.2",
     "tslint": "^5.14.0",
     "tslint-config-vtex": "^2.1.0",
+    "types": "^0.1.1",
     "typescript": "3.5.2"
   },
   "dependencies": {
-    "csv-parse": "^4.4.3",
-    "react-dropzone": "^10.1.5"
+    "react-dropzone": "^10.1.5",
+    "xlsx": "^0.14.3"
   }
 }

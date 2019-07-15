@@ -27,9 +27,10 @@ const CSVUploader: FC<CSVUploaderProps> = ({ intl, setMessages }) => {
   const [name, setName] = useState('')
 
   const { getRootProps, getInputProps } = useDropzone({
-    accept: ['.csv'],
+    accept: ['.csv', '.xls'],
     multiple: false,
-    onDrop: async ([upload]: File[]) => {
+    onDrop: async (accepted: File[], rejected: File[]) => {
+      const [upload] = accepted
       if (!upload) {
         return // TODO: Rejected file
       }
