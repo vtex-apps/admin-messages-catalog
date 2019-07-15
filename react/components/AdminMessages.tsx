@@ -65,20 +65,20 @@ const AdminMessages: FC<Props> = ({
       <Layout
         pageHeader={<PageHeader title={intl.formatMessage(titleMessage)} />}
       >
-        {step === 1 ? (
+        {step === 1 && (
           <ProductMessagesExport
             email={email}
             exportProductCatalog={exportProductCatalog}
             stepCounterControl={stepCounterControl}
           />
-        ) : null}
-        {step === 2 ? (
+        )}
+        {step === 2 && (
           <ProductMessagesImport
             stepCounterControl={stepCounterControl}
             translationDataHooks={translationDataHooks}
           />
-        ) : null}
-        {step === 3 ? (
+        )}
+        {step === 3 && (
           <ProductMessagesProgress
             addProductTranslations={addProductTranslations}
             done={done}
@@ -87,7 +87,7 @@ const AdminMessages: FC<Props> = ({
             messages={messages!}
             setMessages={setMessages}
           />
-        ) : null}
+        )}
       </Layout>
     </div>
   )
