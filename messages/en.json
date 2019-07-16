@@ -1,6 +1,11 @@
 {
   "admin/messages.headerTitle": "Products translation",
   "admin/messages.navigation.label": "Translation",
+  "admin/messages.navigation.product-label": "Product",
+  "admin/messages.navigation.sku-label": "SKU",
+  "admin/messages.navigation.category-label": "Category",
+  "admin/messages.navigation.brand-label": "Brand",
+  "admin/messages.navigation.specification-label": "Specification",
   "admin/messages.next": "Next",
   "admin/messages.back": "Back",
   "admin/messages.required": "Required",

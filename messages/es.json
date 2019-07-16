@@ -1,6 +1,11 @@
 {
   "admin/messages.headerTitle": "Traducción de productos",
   "admin/messages.navigation.label": "Traducción",
+  "admin/messages.navigation.product-label": "Producto",
+  "admin/messages.navigation.sku-label": "SKU",
+  "admin/messages.navigation.category-label": "Categoría",
+  "admin/messages.navigation.brand-label": "Marca",
+  "admin/messages.navigation.specification-label": "Especificación",
   "admin/messages.next": "Siguiente",
   "admin/messages.back": "Atrás",
   "admin/messages.required": "Necesario",

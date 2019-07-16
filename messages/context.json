@@ -1,6 +1,11 @@
 {
   "admin/messages.headerTitle": "",
   "admin/messages.navigation.label": "",
+  "admin/messages.navigation.product-label": "",
+  "admin/messages.navigation.sku-label": "",
+  "admin/messages.navigation.category-label": "",
+  "admin/messages.navigation.brand-label": "",
+  "admin/messages.navigation.specification-label": "",
   "admin/messages.next": "",
   "admin/messages.back": "",
   "admin/messages.required": "",
