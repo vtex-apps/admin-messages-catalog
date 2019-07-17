@@ -58,11 +58,11 @@ const messages = defineMessages({
   },
   step1Description: {
     defaultMessage: '',
-    id: 'admin/messages.step1.productDescription',
+    id: 'admin/messages.catalog.productDescription',
   },
   step1Name: {
     defaultMessage: '',
-    id: 'admin/messages.step1.name',
+    id: 'admin/messages.catalog.name',
   },
 })
 
