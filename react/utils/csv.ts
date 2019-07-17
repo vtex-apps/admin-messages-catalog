@@ -2,18 +2,10 @@ import { read, utils } from 'xlsx'
 
 import { uniqBy } from 'ramda'
 import { MessagesOfProvider, TranslationMessage } from '../typings/typings'
-
-enum TranslatableField {
-  description = 'description',
-  name = 'name',
-}
+import { FIELDS_TO_CSV_DESC, TranslatableField } from './constants'
 
 const ID_CSV_DESC = '_ProductId'
 
-const FIELDS_TO_CSV_DESC : Record<TranslatableField, string> = {
-  'description': '_ProductDescription',
-  'name': '_ProductName',
-}
 const uniqueByProvider = uniqBy(({ provider }: MessagesOfProvider) => provider)
 
 async function parse(csv: File): Promise<string[][]> {

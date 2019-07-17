@@ -10,6 +10,7 @@ import {
 } from 'vtex.styleguide'
 import { ExportProductCatalogMutationFn } from '../mutations/ExportProductCatalog'
 import { StepCounterControl } from '../typings/typings'
+import { TranslatableField } from '../utils/constants'
 import StepCounter from './StepCounter'
 
 const messages = defineMessages({
