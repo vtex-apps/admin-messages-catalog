@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useState } from 'react'
+import React, { FC, useCallback, useMemo, useState } from 'react'
 import { defineMessages, InjectedIntl, injectIntl } from 'react-intl'
 import {
   Alert,
@@ -11,6 +11,7 @@ import {
 import { ExportProductCatalogMutationFn } from '../mutations/ExportProductCatalog'
 import { StepCounterControl } from '../typings/typings'
 import { TranslatableField } from '../utils/constants'
+import ColumnDescription from './ColumnDescription'
 import StepCounter from './StepCounter'
 
 const messages = defineMessages({
@@ -94,6 +95,11 @@ const ProductMessagesExport: FC<Props> = ({
       })
   }, [])
 
+  const translatableFields : TranslatableField[] = useMemo(
+    () => Object.values(TranslatableField),
+    []
+  )
+
   return (
     <PageBlock>
       {exportState === 'error' ? (
@@ -131,20 +137,9 @@ const ProductMessagesExport: FC<Props> = ({
         <p className="mv7">{intl.formatMessage(messages.instruction4)}</p>
         <Box noPadding>
           <div className="c-muted-1 ph5 pv2">
-            <p>
-              <span className="mr3 fw5">
-                _ProductName ({intl.formatMessage(messages.required)})
-              </span>{' '}
-              <span className="f6">
-                {intl.formatMessage(messages.step1Name)}
-              </span>
-            </p>
-            <p>
-              <span className="mr3 fw5">_ProductDescription</span>{' '}
-              <span className="f6">
-                {intl.formatMessage(messages.step1Description)}
-              </span>
-            </p>
+            {translatableFields.map((field: TranslatableField) => (
+              <ColumnDescription field={field} key={field} />
+            ))}
           </div>
         </Box>
       </div>
