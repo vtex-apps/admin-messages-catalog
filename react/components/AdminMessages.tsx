@@ -1,27 +1,31 @@
 import React, { FC, useState } from 'react'
 import { defineMessages, InjectedIntl, injectIntl } from 'react-intl'
 
-import { Layout, PageHeader, ShowToastFunction } from 'vtex.styleguide'
+import { Layout, PageHeader } from 'vtex.styleguide'
 
-import { AddProductTranslationsMutationFn } from '../mutations/AddProductTranslations'
+import { AddTranslationsMutationFn } from '../mutations/AddTranslations'
 import { ExportProductCatalogMutationFn } from '../mutations/ExportProductCatalog'
 import { MessagesOfProvider, StepCounterControl, SupportedLocale } from '../typings/typings'
-import ProductMessagesExport from './ProductMessagesExport'
-import ProductMessagesImport from './ProductMessagesImport'
-import ProductMessagesProgress from './ProductMessagesProgress'
+import { Entity } from '../utils/constants'
+import MessagesExport from './MessagesExport'
+import MessagesImport from './MessagesImport'
+import MessagesProgress from './MessagesProgress'
 
 const TOTAL_STEPS = 3
 
-const { title } = defineMessages({
-  title: {
-    defaultMessage: '',
-    id: 'admin/messages.headerTitle',
-  },
+const title = defineMessages({
+  brand: { defaultMessage: '', id: 'admin/messages.header.brand.title' },
+  category: { defaultMessage: '', id: 'admin/messages.header.category.title' },
+  product: { defaultMessage: '', id: 'admin/messages.header.product.title' },
+  sku: { defaultMessage: '', id: 'admin/messages.header.sku.title' },
+  specification: { defaultMessage: '', id: 'admin/messages.header.specification.title' },
 })
 
+
 interface Props {
-  addProductTranslations: AddProductTranslationsMutationFn
+  addProductTranslations: AddTranslationsMutationFn
   email: string
+  entity: Entity
   exportProductCatalog: ExportProductCatalogMutationFn
   intl: InjectedIntl
 }
@@ -29,6 +33,7 @@ interface Props {
 const AdminMessages: FC<Props> = ({
   addProductTranslations,
   email,
+  entity,
   exportProductCatalog,
   intl,
 }) => {
@@ -47,12 +52,6 @@ const AdminMessages: FC<Props> = ({
   const next = () => setStep(step + 1)
   const back = () => setStep(step - 1)
 
-  const done = () => {
-    setLocale(null)
-    setMessages(null)
-    setStep(1)
-  }
-
   const stepCounterControl: StepCounterControl = {
     back,
     current: step,
@@ -60,28 +59,37 @@ const AdminMessages: FC<Props> = ({
     total: TOTAL_STEPS,
   }
 
+  const done = () => {
+    setLocale(null)
+    setMessages(null)
+    setStep(1)
+  }
+
   return (
     <div className="min-vh-100 bg-muted-5">
       <Layout
-        pageHeader={<PageHeader title={intl.formatMessage(title)} />}
+        pageHeader={<PageHeader title={intl.formatMessage(title[entity])} />}
       >
         {step === 1 && (
-          <ProductMessagesExport
+          <MessagesExport
             email={email}
-            exportProductCatalog={exportProductCatalog}
+            entity={entity}
+            exportCSV={exportProductCatalog}
             stepCounterControl={stepCounterControl}
           />
         )}
         {step === 2 && (
-          <ProductMessagesImport
+          <MessagesImport
+            entity={entity}
             stepCounterControl={stepCounterControl}
             translationDataHooks={translationDataHooks}
           />
         )}
         {step === 3 && (
-          <ProductMessagesProgress
-            addProductTranslations={addProductTranslations}
+          <MessagesProgress
+            addTranslations={addProductTranslations}
             done={done}
+            entity={entity}
             locale={locale!}
             stepCounterControl={stepCounterControl}
             messages={messages!}

@@ -4,8 +4,8 @@ import { defineMessages, InjectedIntl } from 'react-intl'
 
 import { Alert, Button, IconClose } from 'vtex.styleguide'
 import { MessagesOfProvider } from '../typings/typings'
+import { Entity } from '../utils/constants'
 import { getMessages } from '../utils/csv'
-
 const MEGA = 2**20
 
 const {
@@ -37,12 +37,6 @@ const {
   },
 })
 
-
-interface CSVUploaderProps {
-  intl: InjectedIntl
-  setMessages: (messages: MessagesOfProvider[] | null) => void
-}
-
 type ErrorCode = null | 'REJECTED' | 'NO_TRANSLATABLE_FIELD_FOUND' | 'ID_NOT_FOUND'
 
 function errorToMessage(
@@ -59,6 +53,12 @@ function errorToMessage(
     case 'ID_NOT_FOUND':
       return formatMessage(noIdColumn)
   }
+}
+
+interface CSVUploaderProps {
+  entity: Entity
+  intl: InjectedIntl
+  setMessages: (messages: MessagesOfProvider[] | null) => void
 }
 
 const CSVUploader: FC<CSVUploaderProps> = ({ intl, setMessages }) => {

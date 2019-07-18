@@ -1,13 +1,14 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import { defineMessages, InjectedIntlProps, injectIntl } from 'react-intl'
 
 import { Helmet } from 'vtex.render-runtime'
 
 import { ToastProvider } from 'vtex.styleguide'
-import AdminMessages from './components/AdminMessages'
-import AddProductTranslationsMutation from './mutations/AddProductTranslations'
-import ExportProductCatalogMutation from './mutations/ExportProductCatalog'
-import GetUserEmailQuery, { EmailData } from './queries/GetUserEmail'
+import AddTranslationsMutation from '../mutations/AddTranslations'
+import ExportProductCatalogMutation from '../mutations/ExportProductCatalog'
+import GetUserEmailQuery, { EmailData } from '../queries/GetUserEmail'
+import { Entity } from '../utils/constants'
+import AdminMessages from './AdminMessages'
 
 const { header } = defineMessages({
   header: {
@@ -24,7 +25,11 @@ function extractEmail(data: EmailData | undefined): string {
   }
 }
 
-const AdminMessagesWrapper: FC<InjectedIntlProps> = ({ intl }) => {
+interface Props extends InjectedIntlProps {
+  entity: Entity
+}
+
+const AdminMessagesWrapper: FC<Props> = ({ entity, intl }) => {
   return (
     <>
       <Helmet>
@@ -33,19 +38,20 @@ const AdminMessagesWrapper: FC<InjectedIntlProps> = ({ intl }) => {
       <ToastProvider positioning="parent">
         <GetUserEmailQuery>
           {result => (
-            <AddProductTranslationsMutation>
+            <AddTranslationsMutation>
               {addProductTranslations => (
                 <ExportProductCatalogMutation>
                   {exportProductCatalog => (
                     <AdminMessages
                       addProductTranslations={addProductTranslations}
                       email={extractEmail(result.data)}
+                      entity={entity}
                       exportProductCatalog={exportProductCatalog}
                     />
                   )}
                 </ExportProductCatalogMutation>
               )}
-            </AddProductTranslationsMutation>
+            </AddTranslationsMutation>
           )}
         </GetUserEmailQuery>
       </ToastProvider>

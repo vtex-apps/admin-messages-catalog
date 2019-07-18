@@ -1,5 +1,9 @@
 {
-  "admin/messages.headerTitle": "",
+  "admin/messages.header.product.title": "",
+  "admin/messages.header.sku.title": "",
+  "admin/messages.header.brand.title": "",
+  "admin/messages.header.category.title": "",
+  "admin/messages.header.specification.title": "",
   "admin/messages.navigation.label": "",
   "admin/messages.navigation.product-label": "",
   "admin/messages.navigation.sku-label": "",

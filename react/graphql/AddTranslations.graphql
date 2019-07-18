@@ -1,0 +1,6 @@
+mutation AddTranslations($translations: [MessagesFromProvider]!, $entity: Entity!, $language: String!) {
+  addTranslations(translations: $translations, entity: $entity, language: $language) {
+    # Returns provider of failed translations
+    provider
+  }
+}

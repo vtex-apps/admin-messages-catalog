@@ -3,7 +3,7 @@ import { defineMessages, FormattedMessage, InjectedIntl } from 'react-intl'
 
 import { Dropdown } from 'vtex.styleguide'
 
-import { SupportedLocale } from '../typings/typings'
+import { SupportedLocale } from '../../typings/typings'
 
 const {
   english,

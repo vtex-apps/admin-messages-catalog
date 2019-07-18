@@ -1,5 +1,9 @@
 {
-  "admin/messages.headerTitle": "Traducción de productos",
+  "admin/messages.header.product.title": "Traducciones de productos",
+  "admin/messages.header.sku.title": "Traducciones SKU",
+  "admin/messages.header.brand.title": "Traducciones de marca",
+  "admin/messages.header.category.title": "Categoria de traducciones",
+  "admin/messages.header.specification.title": "Traducciones de especificación",
   "admin/messages.navigation.label": "Traducción",
   "admin/messages.navigation.product-label": "Producto",
   "admin/messages.navigation.sku-label": "SKU",

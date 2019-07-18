@@ -2,7 +2,7 @@ import { read, utils } from 'xlsx'
 
 import { uniqBy } from 'ramda'
 import { MessagesOfProvider, TranslationMessage } from '../typings/typings'
-import { FIELDS_TO_CSV_DESC, TranslatableField } from './constants'
+import { PRODUCT_FIELD_TO_CSV_DESC, ProductTranslatableField } from './constants'
 
 const ID_CSV_DESC = '_ProductId'
 
@@ -54,11 +54,11 @@ function getProviderMessages(
 
 export async function getMessages(csv: File): Promise<MessagesOfProvider[]> {
   const [headers, ...data] = await parse(csv)
-  const fieldToIndex: Partial<Record<TranslatableField, number>> = {}
+  const fieldToIndex: Partial<Record<ProductTranslatableField, number>> = {}
 
-  const keys = Object.values(TranslatableField) as TranslatableField[]
+  const keys = Object.values(ProductTranslatableField) as ProductTranslatableField[]
   keys.forEach(key => {
-    const desc = FIELDS_TO_CSV_DESC[key]
+    const desc = PRODUCT_FIELD_TO_CSV_DESC[key]
     const index = headers.findIndex(header => header.startsWith(desc))
     if (index !== -1) {
       fieldToIndex[key] = index

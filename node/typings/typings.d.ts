@@ -5,3 +5,5 @@ type MessagesOfProvider = TranslateMessageArgs['messagesByProvider'][0]
 interface FailedTranslation {
   provider: string
 }
+
+type Entity = 'product' | 'sku' | 'brand' | 'category' | 'specification' 

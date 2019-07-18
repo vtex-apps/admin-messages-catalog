@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import { defineMessages, InjectedIntl } from 'react-intl'
 
 import { Button } from 'vtex.styleguide'
-import { StepCounterControl } from '../typings/typings'
+import { StepCounterControl } from '../../typings/typings'
 
 const messages = defineMessages({
   back: {

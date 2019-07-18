@@ -1,6 +1,6 @@
 import { Service, ServiceContext } from '@vtex/api'
 import { Clients } from './clients'
-import addProductTranslations from './resolvers/addProductTranslations'
+import addTranslations from './resolvers/addTranslations'
 import exportProductCatalog from './resolvers/exportProductCatalog'
 
 const TRANSLATION_CONCURRENCY = 5
@@ -27,7 +27,7 @@ export default new Service<Clients>({
   },
   graphql: {
     resolvers: {
-      Mutation: { addProductTranslations, exportProductCatalog },
+      Mutation: { addTranslations, exportProductCatalog },
     },
   },
 })
