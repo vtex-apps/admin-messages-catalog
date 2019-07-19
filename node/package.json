@@ -1,7 +1,8 @@
 {
   "dependencies": {
     "csv-parse": "^4.4.3",
-    "ramda": "^0.26.1"
+    "ramda": "^0.26.1",
+    "xlsx": "^0.14.3"
   },
   "devDependencies": {
     "@types/csv-parse": "^1.2.2",

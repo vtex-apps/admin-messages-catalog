@@ -3,5 +3,17 @@
   "ttl": 5,
   "timeout": 1,
   "minReplicas": 4,
-  "maxReplicas": 8
+  "maxReplicas": 8,
+  "routes": {
+    "brands": {
+      "path": "/_v/private/vtex.admin-messages/v1/brands",
+      "public": true,
+      "smartcache": true
+    },
+    "categories": {
+      "path": "/_v/private/vtex.admin-messages/v1/categories",
+      "public": true,
+      "smartcache": true
+    }
+  }
 }
