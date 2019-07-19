@@ -4,26 +4,26 @@ import { Entity } from '../../utils/constants'
 import ColumnBox from './ColumnBox'
 import Instruction from './Instruction'
 
-const productMessages = defineMessages({
+const messages = defineMessages({
   instruction1: {
     defaultMessage: '',
-    id: 'admin/messages.step1.instruction1',
+    id: 'admin/messages.catalog.export.instruction1',
   },
   instruction2: {
     defaultMessage: '',
-    id: 'admin/messages.step1.instruction2',
+    id: 'admin/messages.catalog.export.instruction2',
   },
   instruction3: {
     defaultMessage: '',
-    id: 'admin/messages.step1.instruction3',
+    id: 'admin/messages.catalog.export.instruction3',
   },
   instruction4: {
     defaultMessage: '',
-    id: 'admin/messages.step1.instruction4',
+    id: 'admin/messages.catalog.export.instruction4',
   },
   instruction5: {
     defaultMessage: '',
-    id: 'admin/messages.step1.instruction5',
+    id: 'admin/messages.catalog.export.instruction5',
   },
 })
 
@@ -33,13 +33,13 @@ interface Props extends InjectedIntlProps {
 
 const CatalogRemainingInstructions = ({ entity, intl }: Props) => (
   <>
-    <Instruction intl={intl} message={productMessages.instruction2} />
-    <Instruction intl={intl} message={productMessages.instruction3} />
+    <Instruction intl={intl} message={messages.instruction2} />
+    <Instruction intl={intl} message={messages.instruction3} />
     <div>
-      <Instruction intl={intl} message={productMessages.instruction4} />
+      <Instruction intl={intl} message={messages.instruction4} />
       <ColumnBox entity={entity} />
     </div>
-    <Instruction intl={intl} message={productMessages.instruction5} />
+    <Instruction intl={intl} message={messages.instruction5} />
   </>
 )
 

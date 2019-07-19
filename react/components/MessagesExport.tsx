@@ -16,19 +16,19 @@ import StepCounter from './utils/StepCounter'
 const messages = defineMessages({
   catalogExported: {
     defaultMessage: '',
-    id: 'admin/messages.step1.catalog-exported',
+    id: 'admin/messages.catalog.export.catalog-exported',
   },
   exportBegan: {
     defaultMessage: '',
-    id: 'admin/messages.step1.export-began',
+    id: 'admin/messages.catalog.export.export-began',
   },
   exportCatalog: {
     defaultMessage: '',
-    id: 'admin/messages.step1.exportCatalog',
+    id: 'admin/messages.catalog.export.exportCatalog',
   },
   somethingWrong: {
     defaultMessage: '',
-    id: 'admin/messages.step1.something-wrong',
+    id: 'admin/messages.catalog.export.something-wrong',
   },
 })
 

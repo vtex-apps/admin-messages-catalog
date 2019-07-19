@@ -5,7 +5,7 @@ import { ExportInstructionProps } from '../MessagesExport'
 const messages = defineMessages({
   instruction1: {
     defaultMessage: '',
-    id: 'admin/messages.step1.instruction1',
+    id: 'admin/messages.catalog.export.instruction1',
   },
 })
 
