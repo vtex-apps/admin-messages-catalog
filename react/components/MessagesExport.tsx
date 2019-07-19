@@ -9,8 +9,8 @@ import {
 } from 'vtex.styleguide'
 import { StepCounterControl } from '../typings/typings'
 import { Entity } from '../utils/constants'
-import ProductExportInstruction from './utils/ProductExportInstruction'
-import ProductRemainingInstructions from './utils/ProductRemainingInstructions'
+import CatalogRemainingInstructions from './utils/CatalogRemainingInstructions'
+import ExportCatalogInstruction from './utils/ExportCatalogInstruction'
 import StepCounter from './utils/StepCounter'
 
 const messages = defineMessages({
@@ -39,7 +39,8 @@ export interface ExportInstructionProps extends InjectedIntlProps {
 const getExportInstruction = (entity: Entity, props: ExportInstructionProps) => {
   switch(entity) {
     case 'product':
-      return <ProductExportInstruction {...props} />
+    case 'sku':
+      return <ExportCatalogInstruction {...props} />
     default:
       return null
   }
@@ -48,7 +49,8 @@ const getExportInstruction = (entity: Entity, props: ExportInstructionProps) => 
 const getRemaningInstructions = (entity: Entity, props: InjectedIntlProps) => {
   switch(entity) {
     case 'product':
-      return <ProductRemainingInstructions {...props} />
+    case 'sku':
+      return <CatalogRemainingInstructions {...props} entity={entity} />
     default:
       return null
   }

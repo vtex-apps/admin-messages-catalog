@@ -9,7 +9,7 @@ const messages = defineMessages({
   },
 })
 
-const ProductExportInstruction = ({
+const ExportCatalogInstruction = ({
   email,
   intl,
 }: ExportInstructionProps) => (
@@ -19,4 +19,4 @@ const ProductExportInstruction = ({
   </div>
 )
 
-export default ProductExportInstruction
+export default ExportCatalogInstruction

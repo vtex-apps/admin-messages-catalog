@@ -125,7 +125,6 @@ const MessagesProgress: FC<Props> = ({
 
     addTranslations({ variables: { entity, translations, language: locale! } })
       .then(result => {
-        console.log(`------> result`, JSON.stringify([result], null, 2))
         if (result && result.data) {
           const failedProviders = new Set(
             result.data.addTranslations.map(({ provider }) => provider)

@@ -1,5 +1,6 @@
 import React from 'react'
 import { defineMessages, InjectedIntlProps } from 'react-intl'
+import { Entity } from '../../utils/constants'
 import ColumnBox from './ColumnBox'
 import Instruction from './Instruction'
 
@@ -26,16 +27,20 @@ const productMessages = defineMessages({
   },
 })
 
-const ProductRemainingInstructions = ({ intl }: InjectedIntlProps) => (
+interface Props extends InjectedIntlProps {
+  entity: Entity
+}
+
+const CatalogRemainingInstructions = ({ entity, intl }: Props) => (
   <>
     <Instruction intl={intl} message={productMessages.instruction2} />
     <Instruction intl={intl} message={productMessages.instruction3} />
     <div>
       <Instruction intl={intl} message={productMessages.instruction4} />
-      <ColumnBox entity="product" />
+      <ColumnBox entity={entity} />
     </div>
     <Instruction intl={intl} message={productMessages.instruction5} />
   </>
 )
 
-export default ProductRemainingInstructions
+export default CatalogRemainingInstructions

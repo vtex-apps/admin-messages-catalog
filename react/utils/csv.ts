@@ -2,9 +2,18 @@ import { read, utils } from 'xlsx'
 
 import { uniqBy } from 'ramda'
 import { MessagesOfProvider, TranslationMessage } from '../typings/typings'
-import { PRODUCT_FIELD_TO_CSV_DESC, ProductTranslatableField } from './constants'
+import { Entity, ENTITY_FIELDS } from './constants'
 
-const ID_CSV_DESC = '_ProductId'
+function getId(entity: Entity) {
+  switch(entity) {
+    case 'product':
+      return '_ProductId'
+    case 'sku':
+      return '_SkuId'
+    default:
+      return ''
+  }
+}
 
 const uniqueByProvider = uniqBy(({ provider }: MessagesOfProvider) => provider)
 
@@ -52,13 +61,11 @@ function getProviderMessages(
   )
 }
 
-export async function getMessages(csv: File): Promise<MessagesOfProvider[]> {
+export async function getMessages(entity: Entity, csv: File): Promise<MessagesOfProvider[]> {
   const [headers, ...data] = await parse(csv)
-  const fieldToIndex: Partial<Record<ProductTranslatableField, number>> = {}
+  const fieldToIndex: Partial<Record<string, number>> = {}
 
-  const keys = Object.values(ProductTranslatableField) as ProductTranslatableField[]
-  keys.forEach(key => {
-    const desc = PRODUCT_FIELD_TO_CSV_DESC[key]
+  Object.entries(ENTITY_FIELDS[entity]).forEach(([key, desc]) => {
     const index = headers.findIndex(header => header.startsWith(desc))
     if (index !== -1) {
       fieldToIndex[key] = index
@@ -70,7 +77,8 @@ export async function getMessages(csv: File): Promise<MessagesOfProvider[]> {
     throw new Error('NO_TRANSLATABLE_FIELD_FOUND')
   }
 
-  const idIndex = headers.findIndex(header => header.startsWith(ID_CSV_DESC))
+  const id = getId(entity)
+  const idIndex = headers.findIndex(header => header.startsWith(id))
   if (idIndex === -1) {
     throw new Error('ID_NOT_FOUND')
   }

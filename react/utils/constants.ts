@@ -7,7 +7,7 @@ export enum ProductTranslatableField {
   titleTag = 'titleTag',
 }
 
-export const PRODUCT_FIELD_TO_CSV_DESC : Record<ProductTranslatableField, string> = {
+export const PRODUCT_FIELD_TO_CSV_COL : Record<ProductTranslatableField, string> = {
   description: '_ProductDescription',
   descriptionShort : '_ProductShortDescription',
   keywords : '_Keywords',
@@ -16,12 +16,22 @@ export const PRODUCT_FIELD_TO_CSV_DESC : Record<ProductTranslatableField, string
   titleTag : '_SiteTitle',
 }
 
+export enum SKUTranslatableField {
+  name = 'name',
+  nameComplete = 'nameComplete',
+}
+
+export const SKU_FIELD_TO_CSV_DESC : Record<SKUTranslatableField, string> = {
+  name: '_SkuName',
+  nameComplete: '_SkuNameComplete',
+}
+
 export type Entity = 'product' | 'sku' | 'brand' | 'category' | 'specification'
 
 export const ENTITY_FIELDS: Record<Entity, Record<string, string>> = {
   brand: {},
   category: {},
-  product: PRODUCT_FIELD_TO_CSV_DESC,
-  sku: {},
+  product: PRODUCT_FIELD_TO_CSV_COL,
+  sku: SKU_FIELD_TO_CSV_DESC,
   specification: {},
 }
