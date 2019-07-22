@@ -7,12 +7,12 @@ interface AddTranslationsArgs {
   translations : MessagesOfProvider[]
 }
 
-async function addTranslationsResolver(
+function addTranslationsResolver(
   _: unknown,
   { entity, language, translations }: AddTranslationsArgs,
   ctx: Context
 ): Promise<FailedTranslation[]> {
-  return await addTranslations(translations, entity, language, ctx)
+  return addTranslations(translations, entity, language, ctx)
 }
 
 export default addTranslationsResolver
