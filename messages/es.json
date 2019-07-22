@@ -16,7 +16,7 @@
   "admin/messages.retry": "Procesar de nuevo",
   "admin/messages.done": "Finalizar",
   "admin/messages.catalog.download.instruction1": "1. Descarga los datos que quieres traducir de tu catálogo",
-  "admin/messages.catalog.download.instruction2": "2. Abra el archivo exportado en Excel o Números",
+  "admin/messages.catalog.download.instruction2": "2. Abra el archivo exportado en Excel o Numbers",
   "admin/messages.catalog.download.instruction3": "3. Traduzca las siguientes columnas en la hoja de cálculo:",
   "admin/messages.catalog.download.instruction4": "4. Después de traducir: guarde el archivo y haga clic en Siguiente para continuar",
   "admin/messages.catalog.export.catalog-exported": "Catálogo exportado",
