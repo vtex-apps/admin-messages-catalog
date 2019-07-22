@@ -10,9 +10,7 @@ const messages = defineMessages({
 })
 
 const DownloadCatalogDataInstruction = ({ intl }: ExportInstructionProps) => (
-  <div>
-    <p className="mb1 mt0">{intl.formatMessage(messages.instruction)}</p>
-  </div>
+  <p className="mb1 mt0">{intl.formatMessage(messages.instruction)}</p>
 )
 
 export default DownloadCatalogDataInstruction
