@@ -19,7 +19,7 @@ const jsonToXLSXField: BrandTranslatables = {
 
 export async function getBrandXLSX(ctx: Context) {
   const { clients: { catalog } } = ctx
-  const brands = await catalog.exportBrands() as Array<Record<string, string>>
+  const brands = await catalog.exportBrands()
   const brandsTranslatableFields = brands.map(getBrandTranslatableFields)
   const brandXLSX = brandsTranslatableFields.map(brand => jsonToXLSXFields(brand, jsonToXLSXField))
   return createXLSX(brandXLSX, 'Brands')

@@ -19,7 +19,7 @@ const jsonToXLSXField: CategoriesTranslatables = {
 
 export async function getCategoryXLSX(ctx: Context) {
   const { clients: { catalog } } = ctx
-  const categories = await catalog.exportCategories() as Array<Record<string, string>>
+  const categories = await catalog.exportCategories()
   const categoriesTranslatableFields = categories.map(getBrandTranslatableFields)
   const categoriesXLSX = categoriesTranslatableFields.map(category => jsonToXLSXFields(category, jsonToXLSXField))
   return createXLSX(categoriesXLSX, 'Categories')

@@ -20,9 +20,9 @@ export class Catalog extends ExternalClient {
     )
   }
 
-  public exportBrands = () =>
+  public exportBrands = (): Promise<Array<Record<string, string>>> =>
     this.http.get('pvt/brand/list')
 
-  public exportCategories = () =>
+  public exportCategories = (): Promise<Array<Record<string, string>>> =>
     this.http.get('pub/category/listAll')
 }
