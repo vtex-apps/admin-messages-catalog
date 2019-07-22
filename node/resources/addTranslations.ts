@@ -4,23 +4,16 @@ import { Entity, FailedTranslation } from '../typings/typings'
 
 type MessagesOfProvider = TranslateMessageArgs['messagesByProvider'][0]
 
-function getEntityProvider(entity: Entity) {
-  switch(entity) {
-    case 'product':
-      return 'Product-id'
-    case 'sku':
-      return 'SKU-id'
-    case 'brand':
-      return 'Brand-id'
-    case 'category':
-      return 'Category-id'
-    case 'specification':
-      return 'Specification-id'
-  }
+const entityProvider: Record<Entity, string> = {
+  brand: 'Brand-id',
+  category: 'Category-id',
+  product: 'Product-id',
+  sku: 'SKU-id',
+  specification: 'Specification-id',
 }
 
 function formatTranslationData(data: MessagesOfProvider, entity: Entity): MessagesOfProvider {
-  return evolve({ provider: (id: string) => `${getEntityProvider(entity)}.${id}` }, data)
+  return evolve({ provider: (id: string) => `${entityProvider[entity]}.${id}` }, data)
 }
 
 async function addProductTranslations(

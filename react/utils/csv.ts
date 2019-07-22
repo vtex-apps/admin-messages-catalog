@@ -4,15 +4,9 @@ import { uniqBy } from 'ramda'
 import { MessagesOfProvider, TranslationMessage } from '../typings/typings'
 import { Entity, ENTITY_FIELDS } from './constants'
 
-function getId(entity: Entity) {
-  switch(entity) {
-    case 'product':
-      return '_ProductId'
-    case 'sku':
-      return '_SkuId'
-    default:
-      return ''
-  }
+const entityId: Partial<Record<Entity, string>> = {
+  product: '_ProductId',
+  sku: '_SkuId',
 }
 
 const uniqueByProvider = uniqBy(({ provider }: MessagesOfProvider) => provider)
@@ -77,7 +71,7 @@ export async function getMessages(entity: Entity, csv: File): Promise<MessagesOf
     throw new Error('NO_TRANSLATABLE_FIELD_FOUND')
   }
 
-  const id = getId(entity)
+  const id = entityId[entity] || ''
   const idIndex = headers.findIndex(header => header.startsWith(id))
   if (idIndex === -1) {
     throw new Error('ID_NOT_FOUND')

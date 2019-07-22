@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
-import { defineMessages, InjectedIntl, InjectedIntlProps, injectIntl } from 'react-intl'
+import { defineMessages, InjectedIntlProps, injectIntl } from 'react-intl'
 import { Box } from 'vtex.styleguide'
-import { Entity, ENTITY_FIELDS, ProductTranslatableField, SKUTranslatableField } from '../../utils/constants'
+import { Entity, ENTITY_FIELDS } from '../../utils/constants'
 
 const productMessages = defineMessages({
   description: { defaultMessage: '', id: 'admin/messages.catalog.product.description' },
@@ -17,19 +17,12 @@ const skuMessages = defineMessages({
   nameComplete: { defaultMessage: '', id: 'admin/messages.catalog.sku.name-complete' },
 })
 
-function getFieldMessage(entity: Entity, field: string, intl: InjectedIntl) {
-  if (entity === 'product') {
-   const x =  field
-  }
-
-  switch(entity) {
-    case 'product':
-      return intl.formatMessage(productMessages[field as ProductTranslatableField])
-    case 'sku':
-      return intl.formatMessage(skuMessages[field as SKUTranslatableField])
-    default:
-      return ''
-  }
+const entityMessages: Record<Entity, ReactIntl.Messages> = {
+  brand: {},
+  category: {},
+  product: productMessages,
+  sku: skuMessages,
+  specification: {},
 }
 
 interface ColumnProps extends InjectedIntlProps {
@@ -41,7 +34,7 @@ const ColumnDescription: FC<ColumnProps> = ({ entity, field, intl }) => {
   return (
     <p>
       <span className="mr3 fw5">{ENTITY_FIELDS[entity][field]}</span>{' '}
-      <span className="f6">{getFieldMessage(entity, field, intl)}</span>
+      <span className="f6">{intl.formatMessage(entityMessages[entity][field])}</span>
     </p>
   )
 }
