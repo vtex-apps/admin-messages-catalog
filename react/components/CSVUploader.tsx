@@ -4,6 +4,7 @@ import { defineMessages, InjectedIntl } from 'react-intl'
 
 import { Alert, Button, IconClose } from 'vtex.styleguide'
 import { MessagesOfProvider } from '../typings/typings'
+import { Entity } from '../utils/constants'
 import { getMessages } from '../utils/csv'
 
 const MEGA = 2**20
@@ -29,19 +30,13 @@ const {
   },
   productCatalog: {
     defaultMessage: '',
-    id: 'admin/messages.messages-upload.product-catalog-label',
+    id: 'admin/messages.messages-upload.catalog-label',
   },
   upload: {
     defaultMessage: '',
     id: 'admin/messages.messages-upload.upload-label',
   },
 })
-
-
-interface CSVUploaderProps {
-  intl: InjectedIntl
-  setMessages: (messages: MessagesOfProvider[] | null) => void
-}
 
 type ErrorCode = null | 'REJECTED' | 'NO_TRANSLATABLE_FIELD_FOUND' | 'ID_NOT_FOUND'
 
@@ -61,7 +56,13 @@ function errorToMessage(
   }
 }
 
-const CSVUploader: FC<CSVUploaderProps> = ({ intl, setMessages }) => {
+interface CSVUploaderProps {
+  entity: Entity
+  intl: InjectedIntl
+  setMessages: (messages: MessagesOfProvider[] | null) => void
+}
+
+const CSVUploader: FC<CSVUploaderProps> = ({ entity, intl, setMessages }) => {
   const [name, setName] = useState('')
   const [error, setError] = useState<ErrorCode>(null)
   const [loading, setLoading] = useState(false)
@@ -78,7 +79,7 @@ const CSVUploader: FC<CSVUploaderProps> = ({ intl, setMessages }) => {
 
       let errorCode: ErrorCode = null
       setLoading(true)
-      const messages = await getMessages(uploadedFile)
+      const messages = await getMessages(entity, uploadedFile)
         .catch((e: Error) => {
           errorCode = e.message as ErrorCode
           return [] as MessagesOfProvider[]

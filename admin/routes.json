@@ -1,6 +1,22 @@
 {
-  "admin.app.messages": {
-      "component": "AdminMessagesWrapper",
-      "path": "/admin/app/messages"
+  "admin.app.messages-product": {
+      "component": "ProductMessages",
+      "path": "/admin/app/messages/product"
+  },
+  "admin.app.messages-sku": {
+      "component": "SKUMessages",
+      "path": "/admin/app/messages/sku"
+  },
+  "admin.app.messages-category": {
+      "component": "CategoryMessages",
+      "path": "/admin/app/messages/category"
+  },
+  "admin.app.messages-brand": {
+      "component": "BrandMessages",
+      "path": "/admin/app/messages/brand"
+  },
+  "admin.app.messages-specification": {
+      "component": "SpecificationMessages",
+      "path": "/admin/app/messages/specification"
   }
 }

@@ -4,17 +4,19 @@ import { InjectedIntl, injectIntl } from 'react-intl'
 import { PageBlock } from 'vtex.styleguide'
 
 import { StepCounterControl, TranslationDataHooks } from '../typings/typings'
+import { Entity } from '../utils/constants'
 import CSVUploader from './CSVUploader'
-import LanguagePicker from './LanguagePicker'
-import StepCounter from './StepCounter'
-
+import LanguagePicker from './utils/LanguagePicker'
+import StepCounter from './utils/StepCounter'
 interface Props {
+  entity: Entity
   intl: InjectedIntl
   stepCounterControl: StepCounterControl
   translationDataHooks: TranslationDataHooks
 }
 
-const ProductMessagesImport: FC<Props> = ({
+const MessagesImport: FC<Props> = ({
+  entity,
   intl,
   stepCounterControl,
   translationDataHooks: {
@@ -24,7 +26,7 @@ const ProductMessagesImport: FC<Props> = ({
 }) => {
   return (
     <PageBlock>
-      <CSVUploader intl={intl} setMessages={setMessages} />
+      <CSVUploader entity={entity} intl={intl} setMessages={setMessages} />
       <LanguagePicker
         intl={intl}
         locale={locale}
@@ -39,4 +41,4 @@ const ProductMessagesImport: FC<Props> = ({
   )
 }
 
-export default injectIntl(ProductMessagesImport)
+export default injectIntl(MessagesImport)

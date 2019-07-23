@@ -18,7 +18,15 @@ type FailedTranslation {
   provider: String!
 }
 
+enum Entity {
+  product
+  sku
+  brand
+  category
+  specification
+}
+
 type Mutation {
-  addProductTranslations(translations: [MessagesFromProvider]!, language: String!): [FailedTranslation]
+  addTranslations(translations: [MessagesFromProvider]!, entity: Entity!, language: String!): [FailedTranslation]
   exportProductCatalog: Boolean
 }
