@@ -9,8 +9,10 @@ import {
 } from 'vtex.styleguide'
 import { StepCounterControl } from '../typings/typings'
 import { Entity } from '../utils/constants'
-import CatalogRemainingInstructions from './utils/CatalogRemainingInstructions'
+import DownloadCatalogDataInstruction from './utils/DownloadCatalogDataInstruction'
+import DownloadCatalogRemainingInstructions from './utils/DownloadCatalogRemainingInstructions'
 import ExportCatalogInstruction from './utils/ExportCatalogInstruction'
+import ExportCatalogRemainingInstructions from './utils/ExportCatalogRemainingInstructions'
 import StepCounter from './utils/StepCounter'
 
 const messages = defineMessages({
@@ -32,6 +34,8 @@ const messages = defineMessages({
   },
 })
 
+type State = null | 'exporting' | 'exported' | 'error'
+
 export interface ExportInstructionProps extends InjectedIntlProps {
   email: string
 }
@@ -41,6 +45,9 @@ const getExportInstruction = (entity: Entity, props: ExportInstructionProps) => 
     case 'product':
     case 'sku':
       return <ExportCatalogInstruction {...props} />
+    case 'brand':
+    case 'category':
+      return <DownloadCatalogDataInstruction {...props} />
     default:
       return null
   }
@@ -50,13 +57,59 @@ const getRemaningInstructions = (entity: Entity, props: InjectedIntlProps) => {
   switch(entity) {
     case 'product':
     case 'sku':
-      return <CatalogRemainingInstructions {...props} entity={entity} />
+      return <ExportCatalogRemainingInstructions {...props} entity={entity} />
+    case 'brand':
+    case 'category':
+      return <DownloadCatalogRemainingInstructions {...props} entity={entity} />
     default:
       return null
   }
 }
 
-type State = null | 'exporting' | 'exported' | 'error'
+interface ButtonProps extends InjectedIntlProps {
+  entity: Entity
+  exportState: State
+  onExportCSV: () => void
+}
+
+const ExportButton = ({ entity, intl, exportState, onExportCSV }: ButtonProps) => {
+  switch (entity) {
+    case 'product':
+    case 'sku':
+      return (
+        <Button
+          variation="secondary"
+          isLoading={exportState === 'exporting'}
+          disabled={exportState === 'exported'}
+          onClick={onExportCSV}
+        >
+          {exportState === 'exported'
+            ? intl.formatMessage(messages.catalogExported)
+            : intl.formatMessage(messages.exportCatalog)}
+        </Button>
+      )
+    case 'brand':
+        return (
+          <Button
+            variation="secondary"
+            href="/_v/private/vtex.admin-messages/v1/brands"
+          >
+            {intl.formatMessage(messages.exportCatalog)}
+          </Button>
+        )
+    case 'category':
+        return (
+          <Button
+            variation="secondary"
+            href="/_v/private/vtex.admin-messages/v1/categories"
+          >
+            {intl.formatMessage(messages.exportCatalog)}
+          </Button>
+        )
+    default:
+      return null
+  }
+}
 
 interface Props extends ToastProps {
   email: string
@@ -99,16 +152,12 @@ const MessagesExport: FC<Props> = ({
         <div className="flex">
           {getExportInstruction(entity, { email, intl })}
           <div className="flex-grow-1 tr">
-            <Button
-              variation="secondary"
-              isLoading={exportState === 'exporting'}
-              disabled={exportState === 'exported'}
-              onClick={onExportCSV}
-            >
-              {exportState === 'exported'
-                ? intl.formatMessage(messages.catalogExported)
-                : intl.formatMessage(messages.exportCatalog)}
-            </Button>
+            <ExportButton
+              entity={entity}
+              intl={intl}
+              exportState={exportState}
+              onExportCSV={onExportCSV}
+            />
           </div>
         </div>
       </div>

@@ -17,9 +17,21 @@ const skuMessages = defineMessages({
   nameComplete: { defaultMessage: '', id: 'admin/messages.catalog.sku.name-complete' },
 })
 
+const brandMessages = defineMessages({
+  metaTagDescription: { defaultMessage: '', id: 'admin/messages.catalog.brand.metaTagDescription' },
+  name: { defaultMessage: '', id: 'admin/messages.catalog.brand.name' },
+  title: { defaultMessage: '', id: 'admin/messages.catalog.brand.title' },
+})
+
+const categoryMessages = defineMessages({
+  MetaTagDescription: { defaultMessage: '', id: 'admin/messages.catalog.category.metaTagDescription' },
+  Title: { defaultMessage: '', id: 'admin/messages.catalog.category.title' },
+  name: { defaultMessage: '', id: 'admin/messages.catalog.category.name' },
+})
+
 const entityMessages: Record<Entity, ReactIntl.Messages> = {
-  brand: {},
-  category: {},
+  brand: brandMessages,
+  category: categoryMessages,
   product: productMessages,
   sku: skuMessages,
   specification: {},

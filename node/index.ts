@@ -1,5 +1,6 @@
 import { Service, ServiceContext } from '@vtex/api'
 import { Clients } from './clients'
+import routes from './handlers'
 import addTranslations from './resolvers/addTranslations'
 import exportProductCatalog from './resolvers/exportProductCatalog'
 
@@ -30,4 +31,5 @@ export default new Service<Clients>({
       Mutation: { addTranslations, exportProductCatalog },
     },
   },
+  routes,
 })

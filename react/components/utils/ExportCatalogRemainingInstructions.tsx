@@ -31,7 +31,7 @@ interface Props extends InjectedIntlProps {
   entity: Entity
 }
 
-const CatalogRemainingInstructions = ({ entity, intl }: Props) => (
+const ExportCatalogRemainingInstructions = ({ entity, intl }: Props) => (
   <>
     <Instruction intl={intl} message={messages.instruction2} />
     <Instruction intl={intl} message={messages.instruction3} />
@@ -43,4 +43,4 @@ const CatalogRemainingInstructions = ({ entity, intl }: Props) => (
   </>
 )
 
-export default CatalogRemainingInstructions
+export default ExportCatalogRemainingInstructions
