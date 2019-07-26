@@ -1,17 +1,8 @@
-import { pick } from 'ramda'
+import { BrandTranslatables } from '../typings/typings'
 import { createXLSX, jsonToXLSXFields } from './xlsx'
 
-enum BrandTranslatableField {
-  metaTagDescription = 'metaTagDescription',
-  name = 'name',
-  title = 'title',
-}
-
-const getBrandTranslatableFields = pick(Object.values(BrandTranslatableField))
-
-type BrandTranslatables = Record<BrandTranslatableField, string>
-
-const jsonToXLSXField: BrandTranslatables = {
+const jsonToXLSXMap: Record<keyof BrandTranslatables, string> = {
+  id: '_BrandId',
   metaTagDescription: '_MetaTagDescription',
   name: '_Name',
   title: '_Title',
@@ -20,7 +11,6 @@ const jsonToXLSXField: BrandTranslatables = {
 export async function getBrandXLSX(ctx: Context) {
   const { clients: { catalog } } = ctx
   const brands = await catalog.exportBrands()
-  const brandsTranslatableFields = brands.map(getBrandTranslatableFields)
-  const brandXLSX = brandsTranslatableFields.map(brand => jsonToXLSXFields(brand, jsonToXLSXField))
-  return createXLSX(brandXLSX, 'Brands')
+
+  return createXLSX({ Brands: brands.map(brand => jsonToXLSXFields(brand, jsonToXLSXMap)) })
 }
