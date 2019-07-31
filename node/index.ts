@@ -7,6 +7,10 @@ import exportProductCatalog from './resolvers/exportProductCatalog'
 const TRANSLATION_CONCURRENCY = 5
 const TRANSLATION_RETRIES = 3
 
+const CATALOG_RETRIES = 3
+const CATALOG_CONCURRENCY = 50
+const CATALOG_TIMEOUT_MS = 5000
+
 const SMALL_TIMEOUT_MS = 500
 const HUGE_TIMEOUT_MS = 5000
 
@@ -19,6 +23,11 @@ export default new Service<Clients>({
     implementation: Clients,
     options: {
       admin: { timeout: HUGE_TIMEOUT_MS },
+      catalog: {
+        concurrency: CATALOG_CONCURRENCY,
+        retries: CATALOG_RETRIES,
+        timeout: CATALOG_TIMEOUT_MS,
+      },
       messagesGraphQL: {
         concurrency: TRANSLATION_CONCURRENCY,
         retries: TRANSLATION_RETRIES,

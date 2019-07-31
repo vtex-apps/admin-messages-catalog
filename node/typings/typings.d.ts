@@ -58,3 +58,51 @@ interface SpecificationValue extends SpecificationValueTranslatables {
   Position: number
   [key: string]: string
 }
+
+interface SpecificationValue extends SpecificationValueTranslatables {
+  IsActive: boolean
+  Position: number
+  [key: string]: string
+}
+
+interface SkusByProduct {
+  [productId: number]: [number]
+}
+
+interface ProductAndSkuByCategoryResult {
+  data: SkusByProduct
+  range: {
+    total: number
+    from: number
+    to: number
+  }
+}
+
+interface ProductSpecification {
+  productId: number | null
+  Value: string[]
+  Id: number
+  Name: string
+}
+
+interface SpecificationFields {
+  Name: string
+  CategoryId: number | null
+  FieldId: number
+  IsActive: boolean
+  IsRequired: boolean
+  FieldTypeId: number
+  FieldTypeName: string
+  FieldValueId: number | null
+  Description: string
+  IsStockKeepingUnit: boolean
+  IsFilter: boolean
+  IsOnProductDetails: boolean
+  Position: number
+  IsWizard: boolean
+  IsTopMenuLinkActive: boolean
+  IsSideMenuLinkActive: boolean
+  DefaultValue: string | number | null
+  FieldGroupId: number
+  FieldGroupName: string
+}

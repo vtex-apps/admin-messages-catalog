@@ -19,6 +19,11 @@
       "path": "/_v/private/vtex.admin-messages/v1/category/specifications",
       "public": true,
       "smartcache": true
+    },
+    "productSpecs": {
+      "path": "/_v/private/vtex.admin-messages/v1/product/specifications",
+      "public": true,
+      "smartcache": true
     }
   }
 }
