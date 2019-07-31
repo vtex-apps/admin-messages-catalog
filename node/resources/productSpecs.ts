@@ -1,7 +1,7 @@
 import { chain, uniq, unnest } from 'ramda'
 import { Catalog } from '../clients/catalog'
 import { Category, ProductSpecification, SpecificationFields } from '../typings/typings'
-import { getCategoriesSpecifications } from './categorySpecs'
+import { getSpecifications } from './categorySpecs'
 import { isProductSpecification, range } from './utils'
 import { createXLSX, jsonToXLSXFields } from './xlsx'
 
@@ -65,7 +65,7 @@ async function getCategoriesSpecificationsFieldsById(
   const {
     clients: { catalog },
   } = ctx
-  const specifications = await getCategoriesSpecifications(categories, ctx)
+  const specifications = await getSpecifications(categories, ctx)
   const specificationsFieldsById: Record<string, SpecificationFields> = {}
 
   await Promise.all(
@@ -79,7 +79,7 @@ async function getCategoriesSpecificationsFieldsById(
   return specificationsFieldsById
 }
 
-export async function getProductsSpecifications(ctx: Context) {
+export async function getTextSpecificationstValues(ctx: Context) {
   const { clients: { catalog } } = ctx
   const categories = await catalog.exportCategories()
 
@@ -105,6 +105,6 @@ export async function getProductsSpecifications(ctx: Context) {
   )
 
   return createXLSX({
-    'Product Specifications': specificationsXLSX,
+    'Text Specification Values': specificationsXLSX,
   })
 }

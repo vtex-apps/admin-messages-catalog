@@ -12,7 +12,7 @@ const valueToXLSXMap: Record<keyof SpecificationValueTranslatables, string> = {
   Value: '_Value',
 }
 
-export function getCategoriesSpecifications(
+export function getSpecifications(
   categories: Category[],
   { clients: { catalog } }: Context
 ): Promise<Specification[]> {
@@ -24,10 +24,10 @@ export function getCategoriesSpecifications(
     .then(uniqBy(({ FieldId }) => FieldId))
 }
 
-export async function getCategorySpecsXLXS(ctx: Context) {
+export async function getSpecificationsXLXS(ctx: Context) {
   const { clients: { catalog } } = ctx
   const categories = await catalog.exportCategories()
-  const specifications = await getCategoriesSpecifications(categories, ctx)
+  const specifications = await getSpecifications(categories, ctx)
 
   const specificationValues = await Promise.all(
     specifications.map(({ FieldId }) => catalog.getSpecificationValues(FieldId))

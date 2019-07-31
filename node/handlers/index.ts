@@ -1,12 +1,12 @@
 import brands from './brands'
 import categories from './categories'
-import categorySpecs from './categorySpecs'
-import productSpecs from './productSpecs'
+import specifications from './specifications'
+import textSpecificationstValues from './specificationsTextValues'
 
 
 export default {
   brands,
   categories,
-  categorySpecs,
-  productSpecs,
+  specifications,
+  textSpecificationstValues,
 }
