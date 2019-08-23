@@ -1,18 +1,22 @@
 import xlsx from 'xlsx'
 
-export function createXLSX(data: Array<unknown>, sheetName: string): Buffer {
-  const sheet = xlsx.utils.json_to_sheet(data)
+export function createXLSX(sheets: Record<string, Array<unknown>>): Buffer {
   const book = xlsx.utils.book_new()
-  xlsx.utils.book_append_sheet(book, sheet, sheetName)
+
+  Object.entries(sheets).forEach(([sheetName, data]) => {
+    const sheet = xlsx.utils.json_to_sheet(data)
+    xlsx.utils.book_append_sheet(book, sheet, sheetName)
+  })
 
   return xlsx.write(book, { type: 'buffer', bookType: 'xlsx' })
 }
 
-export function jsonToXLSXFields(data: Record<string, string>, jsonToXLSXField: Record<string, string>) {
-  const result: Record<string, string> = {}
-  const brandFieldAndValues = Object.entries(data)
-  brandFieldAndValues.forEach(
-    ([key, value]) => (result[jsonToXLSXField[key]] = value)
+export function jsonToXLSXFields(data: Record<string, unknown>, jsonToXLSXMap: Record<string, string>) {
+  return Object.entries(jsonToXLSXMap).reduce(
+    (result, [jsonKey, xlsxKey]) => {
+      result[xlsxKey] = data[jsonKey]
+      return result
+    },
+    {} as Record<string, unknown>
   )
-  return result
 }

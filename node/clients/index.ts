@@ -1,6 +1,6 @@
 import { IOClients } from '@vtex/api'
 import { Admin } from './admin'
-import { Catalog } from './catalog';
+import { Catalog } from './catalog'
 
 export class Clients extends IOClients {
   get admin(): Admin {

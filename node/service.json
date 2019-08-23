@@ -14,6 +14,16 @@
       "path": "/_v/private/vtex.admin-messages/v1/categories",
       "public": true,
       "smartcache": true
+    },
+    "specifications": {
+      "path": "/_v/private/vtex.admin-messages/v1/specifications",
+      "public": true,
+      "smartcache": true
+    },
+    "specificationsTextValues": {
+      "path": "/_v/private/vtex.admin-messages/v1/specifications/text-values",
+      "public": true,
+      "smartcache": true
     }
   }
 }

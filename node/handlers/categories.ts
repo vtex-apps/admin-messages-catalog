@@ -1,4 +1,4 @@
-import { getCategoryXLSX } from '../resources/category';
+import { getCategoryXLSX } from '../resources/category'
 
 export default async function categoriesHandler(ctx: Context) {
   ctx.status = 200
