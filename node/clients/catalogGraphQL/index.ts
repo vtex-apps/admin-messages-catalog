@@ -13,7 +13,7 @@ export class CatalogGraphQL extends AppGraphQLClient {
       ...opts, 
       headers: {
         ...opts && opts.headers,
-        cookie: `VtexIdclientAutCookie=${ctx.authToken}`
+        cookie: `VtexIdclientAutCookie=${ctx.authToken}`,
       }})
   }
 
