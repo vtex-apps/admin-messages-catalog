@@ -11,7 +11,7 @@ export function createXLSX(sheets: Record<string, Array<unknown>>): Buffer {
   return xlsx.write(book, { type: 'buffer', bookType: 'xlsx' })
 }
 
-export function jsonToXLSXFields(data: Record<string, unknown>, jsonToXLSXMap: Record<string, string>) {
+export function jsonToXLSXFields <T extends Record<string, unknown>>(data: T, jsonToXLSXMap: Record<string, string>) {
   return Object.entries(jsonToXLSXMap).reduce(
     (result, [jsonKey, xlsxKey]) => {
       result[xlsxKey] = data[jsonKey]

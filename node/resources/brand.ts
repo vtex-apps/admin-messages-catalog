@@ -1,4 +1,3 @@
-import { BrandTranslatables } from '../typings/typings'
 import { createXLSX, jsonToXLSXFields } from './xlsx'
 
 const jsonToXLSXMap: Record<keyof BrandTranslatables, string> = {
@@ -12,5 +11,5 @@ export async function getBrandXLSX(ctx: Context) {
   const { clients: { catalog } } = ctx
   const brands = await catalog.exportBrands()
 
-  return createXLSX({ Brands: brands.map(brand => jsonToXLSXFields(brand, jsonToXLSXMap)) })
+  return createXLSX({ Brands: brands.map(brand => jsonToXLSXFields(brand as any, jsonToXLSXMap)) })
 }

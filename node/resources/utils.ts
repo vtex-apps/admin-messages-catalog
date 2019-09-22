@@ -1,5 +1,3 @@
-import { SpecificationFields } from '../typings/typings'
-
 export function range(from: number, to: number, step: number = 1): number[] {
   const values: number[] = []
   for (let value = from; value <= to; value += step) {

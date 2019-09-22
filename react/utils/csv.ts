@@ -4,9 +4,12 @@ import { uniqBy } from 'ramda'
 import { MessagesOfProvider, TranslationMessage } from '../typings/typings'
 import { Entity, ENTITY_FIELDS } from './constants'
 
-const entityId: Partial<Record<Entity, string>> = {
+const ENTITY_ID_HEADER: Partial<Record<Entity, string>> = {
+  brand: '_BrandId',
+  category: '_CategoryId',
   product: '_ProductId',
   sku: '_SkuId',
+  specification: '_Name',
 }
 
 const uniqueByProvider = uniqBy(({ provider }: MessagesOfProvider) => provider)
@@ -71,7 +74,7 @@ export async function getMessages(entity: Entity, csv: File): Promise<MessagesOf
     throw new Error('NO_TRANSLATABLE_FIELD_FOUND')
   }
 
-  const id = entityId[entity] || ''
+  const id = ENTITY_ID_HEADER[entity] || ''
   const idIndex = headers.findIndex(header => header.startsWith(id))
   if (idIndex === -1) {
     throw new Error('ID_NOT_FOUND')
@@ -80,7 +83,7 @@ export async function getMessages(entity: Entity, csv: File): Promise<MessagesOf
   const messagesByProvider = uniqueByProvider(
     data.map(row => ({
       messages: getProviderMessages(fieldAndIndex, row),
-      provider: row[idIndex].toString(),
+      provider: row[idIndex] && row[idIndex].toString(),
     }))
   ).filter(({ messages, provider }) => messages.length > 0 && !!provider)
 

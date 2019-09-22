@@ -18,26 +18,36 @@ declare global {
   type Context = ServiceContext<Clients>
 }
 
+export const clientOptions = {
+  admin: { 
+    timeout: HUGE_TIMEOUT_MS,
+  },
+  catalog: {
+    concurrency: CATALOG_CONCURRENCY,
+    retries: CATALOG_RETRIES,
+    timeout: CATALOG_TIMEOUT_MS,
+  },
+  default: {
+    verbose: false,
+  },
+  messagesGraphQL: {
+    concurrency: TRANSLATION_CONCURRENCY,
+    retries: TRANSLATION_RETRIES,
+    timeout: SMALL_TIMEOUT_MS,
+  },
+}
+
 export default new Service<Clients>({
   clients: {
     implementation: Clients,
-    options: {
-      admin: { timeout: HUGE_TIMEOUT_MS },
-      catalog: {
-        concurrency: CATALOG_CONCURRENCY,
-        retries: CATALOG_RETRIES,
-        timeout: CATALOG_TIMEOUT_MS,
-      },
-      messagesGraphQL: {
-        concurrency: TRANSLATION_CONCURRENCY,
-        retries: TRANSLATION_RETRIES,
-        timeout: SMALL_TIMEOUT_MS,
-      },
-    },
+    options: clientOptions,
   },
   graphql: {
     resolvers: {
-      Mutation: { addTranslations, exportProductCatalog },
+      Mutation: { 
+        addTranslations, 
+        exportProductCatalog,
+      },
     },
   },
   routes,

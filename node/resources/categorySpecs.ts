@@ -1,5 +1,4 @@
 import { uniqBy, unnest } from 'ramda'
-import { Category, Specification, SpecificationTranslatables, SpecificationValueTranslatables } from '../typings/typings'
 import { createXLSX, jsonToXLSXFields } from './xlsx'
 
 const specificationToXLSXMap: Record<keyof SpecificationTranslatables, string> = {
@@ -36,10 +35,10 @@ export async function getSpecificationsXLXS(ctx: Context) {
     .then(uniqBy(({ FieldValueId }) => FieldValueId))
 
   const specificationsXLSX = specifications.map(specification =>
-    jsonToXLSXFields(specification, specificationToXLSXMap)
+    jsonToXLSXFields(specification as any, specificationToXLSXMap)
   )
   const valuesXLSX = specificationValues.map(value =>
-    jsonToXLSXFields(value, valueToXLSXMap)
+    jsonToXLSXFields(value as any, valueToXLSXMap)
   )
 
   return createXLSX({ 
