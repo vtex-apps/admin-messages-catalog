@@ -1,6 +1,5 @@
 import { chain, uniq, unnest } from 'ramda'
 import { Catalog } from '../clients/catalog'
-import { Category, ProductSpecification, SpecificationFields } from '../typings/typings'
 import { getSpecifications } from './categorySpecs'
 import { isProductSpecification, range } from './utils'
 import { createXLSX, jsonToXLSXFields } from './xlsx'

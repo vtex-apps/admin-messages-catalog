@@ -7,6 +7,7 @@ import { SupportedLocale } from '../../typings/typings'
 
 const {
   english,
+  french,
   pickLang,
   portuguese,
   spanish,
@@ -15,6 +16,10 @@ const {
   english: {
     defaultMessage: '',
     id: 'admin/messages.messages-upload.pick-lang.en',
+  },
+  french: {
+    defaultMessage: '',
+    id: 'admin/messages.messages-upload.pick-lang.fr',
   },
   pickLang: {
     defaultMessage: '',
@@ -40,6 +45,7 @@ export const LOCALE_TO_MESSAGE: Record<
 > = {
   en: english,
   es: spanish,
+  fr: french,
   pt: portuguese,
 }
 
@@ -56,6 +62,10 @@ function getLanguageOptions(intl: InjectedIntl) {
     {
       label: intl.formatMessage(LOCALE_TO_MESSAGE.es),
       value: 'es',
+    },
+    {
+      label: intl.formatMessage(LOCALE_TO_MESSAGE.fr),
+      value: 'fr',
     },
   ]
 }

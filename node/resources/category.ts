@@ -1,5 +1,4 @@
 import { pick } from 'ramda'
-import { CategoryTranslatables } from '../typings/typings'
 import { createXLSX, jsonToXLSXFields } from './xlsx'
 
 

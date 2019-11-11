@@ -1,14 +1,17 @@
 {
+  "$schema": "https://raw.githubusercontent.com/vtex/node-vtex-api/master/gen/manifest.schema",
   "name": "admin-messages",
   "vendor": "vtex",
-  "version": "0.1.0",
+  "version": "0.2.0-beta.1",
   "title": "Admin Messages",
   "description": "Translation functionalities inside the Store Admin",
   "mustUpdateAt": "2020-06-25",
   "categories": [],
   "dependencies": {
     "vtex.admin-graphql": "1.x",
-    "vtex.styleguide": "9.x"
+    "vtex.styleguide": "9.x",
+    "vtex.catalog-graphql": "1.x",
+    "vtex.messages": "1.x"
   },
   "builders": {
     "admin": "0.x",
@@ -29,7 +32,10 @@
       "name": "colossus-write-logs"
     },
     {
-      "name": "graphql-query"
+      "name": "vtex.catalog-graphql:resolve-graphql"
+    },
+    {
+      "name": "vtex.messages:graphql-save-translation-messages"
     },
     {
       "name": "outbound-access",
@@ -45,9 +51,5 @@
         "path": "/api/*"
       }
     }
-  ],
-  "registries": [
-    "smartcheckout"
-  ],
-  "$schema": "https://raw.githubusercontent.com/vtex/node-vtex-api/master/gen/manifest.schema"
+  ]
 }

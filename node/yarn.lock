@@ -74,6 +74,11 @@
   dependencies:
     "@types/node" "*"
 
+"@types/bluebird@^3.5.27":
+  version "3.5.27"
+  resolved "https://registry.yarnpkg.com/@types/bluebird/-/bluebird-3.5.27.tgz#61eb4d75dc6bfbce51cf49ee9bbebe941b2cb5d0"
+  integrity sha512-6BmYWSBea18+tSjjSC3QIyV93ZKAeNWGM7R6aYt1ryTZXrlHF+QLV0G2yV0viEGVyRkyQsWfMoJ0k/YghBX5sQ==
+
 "@types/body-parser@*":
   version "1.17.0"
   resolved "https://registry.yarnpkg.com/@types/body-parser/-/body-parser-1.17.0.tgz#9f5c9d9bd04bb54be32d5eb9fc0d8c974e6cf58c"
@@ -206,13 +211,14 @@
     "@types/events" "*"
     "@types/node" "*"
 
-"@vtex/api@^3.21.3":
-  version "3.26.3"
-  resolved "https://registry.yarnpkg.com/@vtex/api/-/api-3.26.3.tgz#000826238b7f8448ed37b522928e85dc3951fe2a"
-  integrity sha512-g9ZD47h90T92xvqeZlGnjggMRTp+swWd2PuQLFn6wod1aK5+1N9ooSQ5kgZyt3xsMKG/f300JbZ6KrH7/B8mTQ==
+"@vtex/api@^3.53.0":
+  version "3.53.0"
+  resolved "https://registry.yarnpkg.com/@vtex/api/-/api-3.53.0.tgz#aa821fd0c6ad0aa3dfc049ae1b0d3ace0074faa9"
+  integrity sha512-Jrtd0t0JUJswFclrMGwjIVSbbpvihuDmQEkg+eH9djauuXzSz3yda1T4NeinxcsIKbTuBTk4/Ku2YUFD5VAWcQ==
   dependencies:
     "@types/koa" "^2.0.48"
     "@types/koa-compose" "^3.2.3"
+    "@wry/equality" "^0.1.9"
     apollo-datasource "^0.3.1"
     apollo-server-core "^2.4.8"
     apollo-server-errors "^2.2.1"
@@ -220,6 +226,7 @@
     axios "^0.18.0"
     axios-retry "^3.1.2"
     bluebird "^3.5.4"
+    chalk "^2.4.2"
     co-body "^6.0.0"
     cookie "^0.3.1"
     dataloader "^1.4.0"
@@ -239,6 +246,13 @@
     semver "^5.5.1"
     stats-lite vtex/node-stats-lite#dist
     tar-fs "^2.0.0"
+
+"@wry/equality@^0.1.9":
+  version "0.1.9"
+  resolved "https://registry.yarnpkg.com/@wry/equality/-/equality-0.1.9.tgz#b13e18b7a8053c6858aa6c85b54911fb31e3a909"
+  integrity sha512-mB6ceGjpMGz1ZTza8HYnrPGos2mC6So4NhS1PtZ8s4Qt0K7fBiIGhpSxUbQmhwcSWE3no+bYxmI2OL6KuXYmoQ==
+  dependencies:
+    tslib "^1.9.3"
 
 adler-32@~1.2.0:
   version "1.2.0"
@@ -499,7 +513,7 @@ bl@^3.0.0:
   dependencies:
     readable-stream "^3.0.1"
 
-bluebird@^3.5.4:
+bluebird@^3.5.4, bluebird@^3.5.5:
   version "3.5.5"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.5.tgz#a8d0afd73251effbbd5fe384a77d73003c17a71f"
   integrity sha512-5am6HnnfN+urzt4yfg7IgTbotDjIT/u8AJpEt0sIU9FtXfVeezXAPKswrG+xKUCOYAINpSdgZVDU6QFh+cuH3w==
@@ -581,6 +595,15 @@ chalk@^1.1.3:
 chalk@^2.3.0:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-2.4.1.tgz#18c49ab16a037b6eb0152cc83e3471338215b66e"
+  dependencies:
+    ansi-styles "^3.2.1"
+    escape-string-regexp "^1.0.5"
+    supports-color "^5.3.0"
+
+chalk@^2.4.2:
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/chalk/-/chalk-2.4.2.tgz#cd42541677a54333cf541a49108c1432b44c9424"
+  integrity sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ==
   dependencies:
     ansi-styles "^3.2.1"
     escape-string-regexp "^1.0.5"

@@ -49,6 +49,7 @@
   "admin/messages.messages-upload.pick-lang.en": "Inglés",
   "admin/messages.messages-upload.pick-lang.es": "Español",
   "admin/messages.messages-upload.pick-lang.pt": "Portugués",
+  "admin/messages.messages-upload.pick-lang.fr": "Francés",
   "admin/messages.messages-upload.error-supported-file": "Archivo no soportado. Incluya solo .csv y .xls de menos de 20MB.",
   "admin/messages.messages-upload.error-id-column": "Columna \"_ProductId\" no encontrada en el archivo cargado.",
   "admin/messages.messages-upload.error-no-translatable-field": "No se ha encontrado ningún campo traducible.",

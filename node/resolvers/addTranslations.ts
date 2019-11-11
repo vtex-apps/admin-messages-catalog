@@ -1,5 +1,4 @@
 import addTranslations from '../resources/addTranslations'
-import { Entity, FailedTranslation, MessagesOfProvider } from '../typings/typings'
 
 interface AddTranslationsArgs {
   entity: Entity

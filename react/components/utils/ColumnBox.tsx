@@ -1,32 +1,42 @@
 import React, { FC } from 'react'
 import { defineMessages, InjectedIntlProps, injectIntl } from 'react-intl'
 import { Box } from 'vtex.styleguide'
+
+import { BrandTranslatableField } from '../../../node/clients/catalogGraphQL/brand'
+import { CategoryTranslatableField } from '../../../node/clients/catalogGraphQL/category'
+import { ProductTranslatableField } from '../../../node/clients/catalogGraphQL/product'
+import { SKUTranslatableField } from '../../../node/clients/catalogGraphQL/sku'
 import { Entity, ENTITY_FIELDS } from '../../utils/constants'
 
-const productMessages = defineMessages({
+interface ReactIntlMessage { 
+  id: string
+  defaultMessage?: string
+}
+
+const productMessages: Record<keyof ProductTranslatableField, ReactIntlMessage> = defineMessages({
   description: { defaultMessage: '', id: 'admin/messages.catalog.product.description' },
   descriptionShort: { defaultMessage: '', id: 'admin/messages.catalog.product.descriptionShort' },
-  keywords: { defaultMessage: '', id: 'admin/messages.catalog.product.keywords' },
+  // keywords: { defaultMessage: '', id: 'admin/messages.catalog.product.keywords' },
   metaTagDescription: { defaultMessage: '', id: 'admin/messages.catalog.product.metaTagDescription' },
   name: { defaultMessage: '', id: 'admin/messages.catalog.product.name' },
   titleTag: { defaultMessage: '', id: 'admin/messages.catalog.product.titleTag' },
 })
 
-const skuMessages = defineMessages({
+const skuMessages: Record<keyof SKUTranslatableField, ReactIntlMessage>  = defineMessages({
   name: { defaultMessage: '', id: 'admin/messages.catalog.sku.name' },
-  nameComplete: { defaultMessage: '', id: 'admin/messages.catalog.sku.name-complete' },
+  // nameComplete: { defaultMessage: '', id: 'admin/messages.catalog.sku.name-complete' },
 })
 
-const brandMessages = defineMessages({
-  metaTagDescription: { defaultMessage: '', id: 'admin/messages.catalog.brand.metaTagDescription' },
+const brandMessages: Record<keyof BrandTranslatableField, ReactIntlMessage> = defineMessages({
+  // metaTagDescription: { defaultMessage: '', id: 'admin/messages.catalog.brand.metaTagDescription' },
   name: { defaultMessage: '', id: 'admin/messages.catalog.brand.name' },
-  title: { defaultMessage: '', id: 'admin/messages.catalog.brand.title' },
+  // title: { defaultMessage: '', id: 'admin/messages.catalog.brand.title' },
 })
 
-const categoryMessages = defineMessages({
-  MetaTagDescription: { defaultMessage: '', id: 'admin/messages.catalog.category.metaTagDescription' },
-  Title: { defaultMessage: '', id: 'admin/messages.catalog.category.title' },
+const categoryMessages: Record<keyof CategoryTranslatableField, ReactIntlMessage> = defineMessages({
+  // MetaTagDescription: { defaultMessage: '', id: 'admin/messages.catalog.category.metaTagDescription' },
   name: { defaultMessage: '', id: 'admin/messages.catalog.category.name' },
+  title: { defaultMessage: '', id: 'admin/messages.catalog.category.title' },
 })
 
 const entityMessages: Record<Entity, ReactIntl.Messages> = {

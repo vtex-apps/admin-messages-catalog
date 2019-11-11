@@ -1,5 +1,4 @@
 import { ExternalClient, InstanceOptions, IOContext } from '@vtex/api'
-import { Brand, Category, ProductAndSkuByCategoryResult, ProductSpecification, Specification, SpecificationFields, SpecificationValue } from '../typings/typings'
 
 /** Catalog API
  * Docs: https://documenter.getpostman.com/view/845/catalogsystem-102/Hs44
