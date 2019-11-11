@@ -1,6 +1,6 @@
 {
   "name": "vtex.admin-example",
-  "version": null,
+  "version": "0.2.0",
   "scripts": {
     "lint": "tsc --noEmit --pretty && tslint -c tslint.json './**/*.ts'",
     "test": "echo \"Error: no test specified\" && exit 1"
