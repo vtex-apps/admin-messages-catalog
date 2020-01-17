@@ -7,7 +7,7 @@ import { Clients } from '../clients'
 
 type MessagesOfProvider = TranslateMessageArgs['messagesByProvider'][0]
 
-const saveInputV1InputToSaveInputV2 = async (clients: Clients, entity: Entity, entityId: string) => {
+const saveInputV1InputToSaveInputV2 = async (clients: Clients, entity: Entity, entityId: string, srcLang: string) => {
   const fetcher = clients.catalogGraphQL[entity]
   const response = typeof fetcher === 'function' 
     ? await fetcher(entityId)
@@ -26,6 +26,7 @@ const saveInputV1InputToSaveInputV2 = async (clients: Clients, entity: Entity, e
 
     return {
       groupContext: entity,
+      srcLang,
       srcMessage,
       targetMessage: content,
     }
@@ -41,28 +42,33 @@ async function addProductTranslations(
   const { clients: { segment, messagesGraphQL }, clients } = ctx
 
   const { cultureInfo: defaultLang } = await segment.getSegment()
+  console.log({messagesByProvider})
 
-  const messagesFormattedV2 = await map(
+  const messagesFormattedV2Byprovider = await map(
     messagesByProvider,
     async ({provider: entityId, messages}) => {
-      const toV2 = await saveInputV1InputToSaveInputV2(clients, entity, entityId)
-      return {
-        from: defaultLang,
+      const toV2 = await saveInputV1InputToSaveInputV2(clients, entity, entityId, defaultLang)
+      const a = {
         messages: messages.map(toV2).filter(x => !!x) as MessageSaveInputV2[],
         provider: entityId,
         to: language,
       }
+      console.log(a)
+      return a
     }
   )
 
   if (clientOptions.default.verbose) {
-    console.log('saving', JSON.stringify(messagesFormattedV2, null, 2))
+    console.log('saving', JSON.stringify(messagesFormattedV2Byprovider, null, 2))
   }
 
+  console.log({messagesFormattedV2Byprovider})
+
   const results = await map(
-    messagesFormattedV2,
-    ({from, messages, provider, to}) => messagesGraphQL
-      .saveV2({from, messages, to})
+    messagesFormattedV2Byprovider,
+    ({messages, provider, to}) => 
+      messagesGraphQL
+      .saveV2({messages, to})
       .then(success => [success, { provider }] as [boolean, { provider: string }])
       .catch(err => {
         const errors = path(['response', 'data', 'errors'], err)
