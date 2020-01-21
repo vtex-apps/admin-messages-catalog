@@ -48,21 +48,17 @@ async function addProductTranslations(
     messagesByProvider,
     async ({provider: entityId, messages}) => {
       const toV2 = await saveInputV1InputToSaveInputV2(clients, entity, entityId, defaultLang)
-      const a = {
+      return {
         messages: messages.map(toV2).filter(x => !!x) as MessageSaveInputV2[],
         provider: entityId,
         to: language,
       }
-      console.log(a)
-      return a
     }
   )
 
   if (clientOptions.default.verbose) {
     console.log('saving', JSON.stringify(messagesFormattedV2Byprovider, null, 2))
   }
-
-  console.log({messagesFormattedV2Byprovider})
 
   const results = await map(
     messagesFormattedV2Byprovider,
