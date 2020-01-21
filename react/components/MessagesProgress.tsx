@@ -118,8 +118,8 @@ const MessagesProgress: FC<Props> = ({
 
     const start = batchProgress * BATCH_SIZE
     const end = Math.min(
-      start + BATCH_SIZE - 1,
-      translationMessages.length - 1
+      start + BATCH_SIZE,
+      translationMessages.length
     )
     const translations = translationMessages.slice(start, end)
 
