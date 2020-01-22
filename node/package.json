@@ -10,10 +10,10 @@
     "@types/csv-parse": "^1.2.2",
     "@types/node": "^10.12.17",
     "@types/ramda": "types/npm-ramda#dist",
-    "@vtex/api": "^3.53.0",
+    "@vtex/api": "^3.71.1",
     "tslint": "^5.12.0",
     "tslint-config-vtex": "^2.1.0",
-    "typescript": "3.5.2"
+    "typescript": "3.7.3"
   },
   "scripts": {
     "lint": "tsc --noEmit && tslint -c tslint.json './**/*.ts'"

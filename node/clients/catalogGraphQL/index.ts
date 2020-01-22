@@ -9,7 +9,7 @@ import { query as getSKU, SKU } from './sku'
 
 export class CatalogGraphQL extends AppGraphQLClient {
   public constructor(ctx: IOContext, opts?: InstanceOptions) {
-    super('vtex.catalog-graphql', ctx, {
+    super('vtex.catalog-graphql@1.x', ctx, {
       ...opts, 
       headers: {
         ...opts && opts.headers,
