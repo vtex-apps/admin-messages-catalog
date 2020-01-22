@@ -42,7 +42,6 @@ async function addProductTranslations(
   const { clients: { segment, messagesGraphQL }, clients } = ctx
 
   const { cultureInfo: defaultLang } = await segment.getSegment()
-  console.log({messagesByProvider})
 
   const messagesFormattedV2Byprovider = await map(
     messagesByProvider,
