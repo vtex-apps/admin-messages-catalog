@@ -8,6 +8,9 @@ import { SupportedLocale } from '../../typings/typings'
 const {
   english,
   french,
+  german,
+  romanian,
+  bulgarian,
   pickLang,
   portuguese,
   spanish,
@@ -20,6 +23,18 @@ const {
   french: {
     defaultMessage: '',
     id: 'admin/messages.messages-upload.pick-lang.fr',
+  },
+  german: {
+    defaultMessage: '',
+    id: 'admin/messages.messages-upload.pick-lang.de',
+  },
+  romanian: {
+    defaultMessage: '',
+    id: 'admin/messages.messages-upload.pick-lang.ro',
+  },
+  bulgarian: {
+    defaultMessage: '',
+    id: 'admin/messages.messages-upload.pick-lang.bg',
   },
   pickLang: {
     defaultMessage: '',
@@ -47,6 +62,9 @@ export const LOCALE_TO_MESSAGE: Record<
   es: spanish,
   fr: french,
   pt: portuguese,
+  ro: romanian,
+  de: german,
+  bg: bulgarian
 }
 
 function getLanguageOptions(intl: InjectedIntl) { 
@@ -66,6 +84,18 @@ function getLanguageOptions(intl: InjectedIntl) {
     {
       label: intl.formatMessage(LOCALE_TO_MESSAGE.fr),
       value: 'fr',
+    },
+    {
+      label: intl.formatMessage(LOCALE_TO_MESSAGE.ro),
+      value: 'ro',
+    },
+    {
+      label: intl.formatMessage(LOCALE_TO_MESSAGE.de),
+      value: 'de',
+    },
+    {
+      label: intl.formatMessage(LOCALE_TO_MESSAGE.bg),
+      value: 'bg',
     },
   ]
 }

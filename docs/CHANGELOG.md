@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.4.1]
+### Added
+- Included support for Romanian, Bulgarian & German locales
+- Included translation for Romanian
+
 ### Fixed
 - Use new Messages API
 - Fix logic in slice to get batch of translations
