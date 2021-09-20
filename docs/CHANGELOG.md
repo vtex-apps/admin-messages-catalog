@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+- I18n bg
+
+### Fixed
+- I18n es and nl
+
 ### Fixed
 - Use new Messages API
 - Fix logic in slice to get batch of translations
