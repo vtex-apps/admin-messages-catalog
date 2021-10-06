@@ -7,14 +7,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-### Fixed
-- I18n bg
+### Fixed 
+- English, Spanish and Bulgarian translation.
+
+### Removed
+- Pseudolanguage.
 
 ### Added
-- I18n bg
+- Bulgarian translation.
 
 ### Fixed
-- I18n es and nl
+- Spanish and Dutch translation.
 
 ### Fixed
 - Use new Messages API
