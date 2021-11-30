@@ -20,10 +20,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Pseudolanguage.
 
 ### Added
-- Bulgarian translation
+- I18n bg
 
 ### Fixed
-- Spanish and Dutch translation.
+- I18n es and nl
 
 ### Fixed
 - Use new Messages API
