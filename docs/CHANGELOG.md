@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Thai translation.
 
 ### Fixed 
-- English, French, Spanish and Bulgarian translation.
+- French, Spanish and Bulgarian translation.
 
 ### Fixed
 - English and Spanish translation.
