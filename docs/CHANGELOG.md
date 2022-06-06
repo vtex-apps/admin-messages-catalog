@@ -7,18 +7,23 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+- Thai translation.
+
 ### Fixed 
-- English, Spanish and Bulgarian translation.
+- English, French, Spanish and Bulgarian translation.
+
+### Fixed
+- English and Spanish translation.
 
 ### Removed
 - Pseudolanguage.
-- Spanish (Mexico) translation.
 
 ### Added
-- I18n bg
+- Bulgarian translation
 
 ### Fixed
-- I18n es and nl
+- Spanish and Dutch translation.
 
 ### Fixed
 - Use new Messages API
