@@ -26,6 +26,6 @@
   },
   "dependencies": {
     "react-dropzone": "^10.1.5",
-    "xlsx": "^0.14.3"
+    "xlsx": "^0.17.0"
   }
 }
