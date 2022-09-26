@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/vtex/node-vtex-api/master/gen/manifest.schema",
   "name": "admin-messages",
   "vendor": "vtex",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "title": "Admin Messages",
   "description": "Translation functionalities inside the Store Admin",
   "mustUpdateAt": "2020-06-25",
