@@ -1,60 +1,234 @@
 {
-  "admin/messages.header.product.title": "",
-  "admin/messages.header.sku.title": "",
-  "admin/messages.header.brand.title": "",
-  "admin/messages.header.category.title": "",
-  "admin/messages.header.specification.title": "",
-  "admin/messages.navigation.label": "",
-  "admin/messages.navigation.product-label": "",
-  "admin/messages.navigation.sku-label": "",
-  "admin/messages.navigation.category-label": "",
-  "admin/messages.navigation.brand-label": "",
-  "admin/messages.navigation.specification-label": "",
-  "admin/messages.next": "",
-  "admin/messages.back": "",
-  "admin/messages.cancel": "",
-  "admin/messages.retry": "",
-  "admin/messages.done": "",
-  "admin/messages.catalog.download.instruction1": "",
-  "admin/messages.catalog.download.instruction2": "",
-  "admin/messages.catalog.download.instruction3": "",
-  "admin/messages.catalog.download.instruction4": "",
-  "admin/messages.catalog.export.catalog-exported": "",
-  "admin/messages.catalog.export.something-wrong": "",
-  "admin/messages.catalog.export.export-began": "",
-  "admin/messages.catalog.export.exportCatalog": "",
-  "admin/messages.catalog.export.instruction1": "",
-  "admin/messages.catalog.export.instruction2": "",
-  "admin/messages.catalog.export.instruction3": "",
-  "admin/messages.catalog.export.instruction4": "",
-  "admin/messages.catalog.export.instruction5": "",
-  "admin/messages.catalog.product.description": "",
-  "admin/messages.catalog.product.descriptionShort": "",
-  "admin/messages.catalog.product.keywords": "",
-  "admin/messages.catalog.product.metaTagDescription": "",
-  "admin/messages.catalog.product.name": "",
-  "admin/messages.catalog.product.titleTag": "",
-  "admin/messages.catalog.sku.name": "",
-  "admin/messages.catalog.sku.name-complete": "",
-  "admin/messages.catalog.brand.name": "",
-  "admin/messages.catalog.brand.title": "",
-  "admin/messages.catalog.brand.metaTagDescription": "",
-  "admin/messages.catalog.category.name": "",
-  "admin/messages.catalog.category.title": "",
-  "admin/messages.catalog.category.metaTagDescription": "",
-  "admin/messages.stepCounter": "",
-  "admin/messages.messages-upload.target-lang": "",
-  "admin/messages.messages-upload.upload-label": "",
-  "admin/messages.messages-upload.pick-lang": "",
-  "admin/messages.messages-upload.pick-lang.en": "",
-  "admin/messages.messages-upload.pick-lang.es": "",
-  "admin/messages.messages-upload.pick-lang.pt": "",
-  "admin/messages.messages-upload.pick-lang.fr": "",
-  "admin/messages.messages-upload.error-supported-file": "",
-  "admin/messages.messages-upload.error-id-column": "",
-  "admin/messages.messages-upload.error-no-translatable-field": "",
-  "admin/messages.messages-upload.catalog-label": "",
-  "admin/messages.messages-progress.translate-progress": "",
-  "admin/messages.messages-progress.translation-faileded": "",
-  "admin/messages.messages-progress.translation-succeeded": ""
+  "admin/messages.header.product.title": {
+    "value": "Product Translations",
+    "_context": "Usage Location: AdminMessages.tsx (PageHeader title). UI Element Type: Page header. Variable Description: none. Purpose: Title shown when viewing the Product translations workflow."
+  },
+  "admin/messages.header.sku.title": {
+    "value": "SKU Translations",
+    "_context": "Usage Location: AdminMessages.tsx (PageHeader title). UI Element Type: Page header. Variable Description: none. Purpose: Title shown when viewing the SKU translations workflow."
+  },
+  "admin/messages.header.brand.title": {
+    "value": "Brand Translations",
+    "_context": "Usage Location: AdminMessages.tsx (PageHeader title). UI Element Type: Page header. Variable Description: none. Purpose: Title shown when viewing the Brand translations workflow."
+  },
+  "admin/messages.header.category.title": {
+    "value": "Category Translations",
+    "_context": "Usage Location: AdminMessages.tsx (PageHeader title). UI Element Type: Page header. Variable Description: none. Purpose: Title shown when viewing the Category translations workflow."
+  },
+  "admin/messages.header.specification.title": {
+    "value": "Specification Translations",
+    "_context": "Usage Location: AdminMessages.tsx (PageHeader title). UI Element Type: Page header. Variable Description: none. Purpose: Title shown when viewing the Specification translations workflow."
+  },
+  "admin/messages.navigation.label": {
+    "value": "Translation",
+    "_context": "Usage Location: AdminMessagesWrapper.tsx (Helmet title) and admin/navigation.json. UI Element Type: Document title and navigation section label. Variable Description: none. Purpose: Labels the Messages admin section."
+  },
+  "admin/messages.navigation.product-label": {
+    "value": "Product",
+    "_context": "Usage Location: admin/navigation.json. UI Element Type: Navigation item label. Variable Description: none. Purpose: Menu label to open Product translations page."
+  },
+  "admin/messages.navigation.sku-label": {
+    "value": "SKU",
+    "_context": "Usage Location: admin/navigation.json. UI Element Type: Navigation item label. Variable Description: none. Purpose: Menu label to open SKU translations page."
+  },
+  "admin/messages.navigation.category-label": {
+    "value": "Category",
+    "_context": "Usage Location: admin/navigation.json. UI Element Type: Navigation item label. Variable Description: none. Purpose: Menu label to open Category translations page."
+  },
+  "admin/messages.navigation.brand-label": {
+    "value": "Brand",
+    "_context": "Usage Location: admin/navigation.json. UI Element Type: Navigation item label. Variable Description: none. Purpose: Menu label to open Brand translations page."
+  },
+  "admin/messages.navigation.specification-label": {
+    "value": "Specification",
+    "_context": "Usage Location: admin/navigation.json. UI Element Type: Navigation item label. Variable Description: none. Purpose: Menu label to open Specification translations page."
+  },
+  "admin/messages.next": {
+    "value": "Next",
+    "_context": "Usage Location: react/components/utils/StepCounter.tsx. UI Element Type: Button label. Variable Description: none. Purpose: Advances to the next step in the translation flow."
+  },
+  "admin/messages.back": {
+    "value": "Back",
+    "_context": "Usage Location: react/components/utils/StepCounter.tsx. UI Element Type: Button label. Variable Description: none. Purpose: Returns to the previous step in the translation flow."
+  },
+  "admin/messages.cancel": {
+    "value": "Cancel",
+    "_context": "Usage Location: react/components/MessagesProgress.tsx. UI Element Type: Button label. Variable Description: none. Purpose: Cancels the current translation upload/process and exits."
+  },
+  "admin/messages.retry": {
+    "value": "Retry",
+    "_context": "Usage Location: react/components/MessagesProgress.tsx. UI Element Type: Button label. Variable Description: none. Purpose: Retries failed translations after a batch completes."
+  },
+  "admin/messages.done": {
+    "value": "Done",
+    "_context": "Usage Location: react/components/MessagesProgress.tsx. UI Element Type: Button label. Variable Description: none. Purpose: Completes the translation workflow after success."
+  },
+  "admin/messages.catalog.download.instruction1": {
+    "value": "1. Download the data you want to translate from your catalog",
+    "_context": "Usage Location: react/components/utils/DownloadCatalogDataInstruction.tsx. UI Element Type: Instruction text. Variable Description: none. Purpose: Guides the user to download brand/category data before translating."
+  },
+  "admin/messages.catalog.download.instruction2": {
+    "value": "2. Open the exported file in Excel or Numbers",
+    "_context": "Usage Location: react/components/utils/DownloadCatalogRemainingInstructions.tsx. UI Element Type: Instruction text. Variable Description: none. Purpose: Tells the user to open the exported file with a spreadsheet app."
+  },
+  "admin/messages.catalog.download.instruction3": {
+    "value": "3. Translate the following columns in the spreadsheet:",
+    "_context": "Usage Location: react/components/utils/DownloadCatalogRemainingInstructions.tsx (above ColumnBox). UI Element Type: Instruction text. Variable Description: none. Purpose: Introduces the list of fields to translate."
+  },
+  "admin/messages.catalog.download.instruction4": {
+    "value": "4. After translating, save the file and click Next to continue",
+    "_context": "Usage Location: react/components/utils/DownloadCatalogRemainingInstructions.tsx. UI Element Type: Instruction text. Variable Description: none. Purpose: Instructs how to proceed after manual translation."
+  },
+  "admin/messages.catalog.export.catalog-exported": {
+    "value": "Catalog exported",
+    "_context": "Usage Location: react/components/MessagesExport.tsx (ExportButton when exported). UI Element Type: Button label state. Variable Description: none. Purpose: Indicates the export action has completed."
+  },
+  "admin/messages.catalog.export.something-wrong": {
+    "value": "Something went wrong. Please try again.",
+    "_context": "Usage Location: react/components/MessagesExport.tsx (Alert error). UI Element Type: Error alert text. Variable Description: none. Purpose: Notifies the user that exporting failed."
+  },
+  "admin/messages.catalog.export.export-began": {
+    "value": "Catalog is being exported. Check your email in a few moments.",
+    "_context": "Usage Location: react/components/MessagesExport.tsx (toast message). UI Element Type: Toast notification. Variable Description: none. Purpose: Confirms export started and instructs to check email."
+  },
+  "admin/messages.catalog.export.exportCatalog": {
+    "value": "Export Catalog",
+    "_context": "Usage Location: react/components/MessagesExport.tsx (ExportButton label). UI Element Type: Button label. Variable Description: none. Purpose: Initiates product/SKU export or links to brand/category CSV."
+  },
+  "admin/messages.catalog.export.instruction1": {
+    "value": "1. Export your product catalog to your email",
+    "_context": "Usage Location: react/components/utils/ExportCatalogInstruction.tsx and ExportCatalogRemainingInstructions.tsx. UI Element Type: Instruction text. Variable Description: none. Purpose: Tells user to trigger product/SKU export to email."
+  },
+  "admin/messages.catalog.export.instruction2": {
+    "value": "2. After exporting, open your email and download the attached file",
+    "_context": "Usage Location: react/components/utils/ExportCatalogRemainingInstructions.tsx. UI Element Type: Instruction text. Variable Description: none. Purpose: Next step after export."
+  },
+  "admin/messages.catalog.export.instruction3": {
+    "value": "3. Open the exported file in Excel or Numbers",
+    "_context": "Usage Location: react/components/utils/ExportCatalogRemainingInstructions.tsx. UI Element Type: Instruction text. Variable Description: none. Purpose: Open the exported CSV/XLS for editing."
+  },
+  "admin/messages.catalog.export.instruction4": {
+    "value": "4. Translate the following columns in the spreadsheet:",
+    "_context": "Usage Location: react/components/utils/ExportCatalogRemainingInstructions.tsx (above ColumnBox). UI Element Type: Instruction text. Variable Description: none. Purpose: Introduces fields to translate."
+  },
+  "admin/messages.catalog.export.instruction5": {
+    "value": "5. After translating:  save the file and click Next to continue",
+    "_context": "Usage Location: react/components/utils/ExportCatalogRemainingInstructions.tsx. UI Element Type: Instruction text. Variable Description: none. Purpose: Final step to proceed after translation."
+  },
+  "admin/messages.catalog.product.description": {
+    "value": "Product description",
+    "_context": "Usage Location: react/components/utils/ColumnBox.tsx (productMessages). UI Element Type: Field description label. Variable Description: none. Purpose: Describes the product field that should be translated."
+  },
+  "admin/messages.catalog.product.descriptionShort": {
+    "value": "Short product description",
+    "_context": "Usage Location: react/components/utils/ColumnBox.tsx (productMessages). UI Element Type: Field description label. Variable Description: none. Purpose: Describes the short description field to translate."
+  },
+  "admin/messages.catalog.product.keywords": {
+    "value": "Keywords",
+    "_context": "Usage Location: (defined in messages/en.json; currently commented out in ColumnBox.tsx). UI Element Type: Field description label. Variable Description: none. Purpose: Label for product keywords field when enabled."
+  },
+  "admin/messages.catalog.product.metaTagDescription": {
+    "value": "Meta tag description",
+    "_context": "Usage Location: react/components/utils/ColumnBox.tsx (productMessages). UI Element Type: Field description label. Variable Description: none. Purpose: Describes the product meta tag description to translate."
+  },
+  "admin/messages.catalog.product.name": {
+    "value": "Name",
+    "_context": "Usage Location: react/components/utils/ColumnBox.tsx (productMessages). UI Element Type: Field description label. Variable Description: none. Purpose: Describes the product name field to translate."
+  },
+  "admin/messages.catalog.product.titleTag": {
+    "value": "Title tag",
+    "_context": "Usage Location: react/components/utils/ColumnBox.tsx (productMessages). UI Element Type: Field description label. Variable Description: none. Purpose: Describes the product title tag field to translate."
+  },
+  "admin/messages.catalog.sku.name": {
+    "value": "Name",
+    "_context": "Usage Location: react/components/utils/ColumnBox.tsx (skuMessages). UI Element Type: Field description label. Variable Description: none. Purpose: Describes the SKU name field to translate."
+  },
+  "admin/messages.catalog.sku.name-complete": {
+    "value": "Full name",
+    "_context": "Usage Location: (defined in messages/en.json; currently commented out in ColumnBox.tsx). UI Element Type: Field description label. Variable Description: none. Purpose: Describes the full SKU name field when enabled."
+  },
+  "admin/messages.catalog.brand.name": {
+    "value": "Name",
+    "_context": "Usage Location: react/components/utils/ColumnBox.tsx (brandMessages). UI Element Type: Field description label. Variable Description: none. Purpose: Describes the brand name field to translate."
+  },
+  "admin/messages.catalog.brand.title": {
+    "value": "Title",
+    "_context": "Usage Location: (defined in messages/en.json; currently commented out in ColumnBox.tsx). UI Element Type: Field description label. Variable Description: none. Purpose: Describes the brand title field when enabled."
+  },
+  "admin/messages.catalog.brand.metaTagDescription": {
+    "value": "Meta tag description",
+    "_context": "Usage Location: (defined in messages/en.json; currently commented out in ColumnBox.tsx). UI Element Type: Field description label. Variable Description: none. Purpose: Describes the brand meta tag description field when enabled."
+  },
+  "admin/messages.catalog.category.name": {
+    "value": "Name",
+    "_context": "Usage Location: react/components/utils/ColumnBox.tsx (categoryMessages). UI Element Type: Field description label. Variable Description: none. Purpose: Describes the category name field to translate."
+  },
+  "admin/messages.catalog.category.title": {
+    "value": "Title",
+    "_context": "Usage Location: react/components/utils/ColumnBox.tsx (categoryMessages). UI Element Type: Field description label. Variable Description: none. Purpose: Describes the category title field to translate."
+  },
+  "admin/messages.catalog.category.metaTagDescription": {
+    "value": "Meta tag description",
+    "_context": "Usage Location: (defined in messages/en.json; currently commented out in ColumnBox.tsx). UI Element Type: Field description label. Variable Description: none. Purpose: Describes the category meta tag description field when enabled."
+  },
+  "admin/messages.stepCounter": {
+    "value": "Step {current} of {total}",
+    "_context": "Usage Location: react/components/utils/StepCounter.tsx. UI Element Type: Informational text. Variable Description: {current}: current step number; {total}: total number of steps. Purpose: Shows progress within the multi-step workflow."
+  },
+  "admin/messages.messages-upload.target-lang": {
+    "value": "Target language",
+    "_context": "Usage Location: react/components/utils/LanguagePicker.tsx. UI Element Type: Field label text. Variable Description: none. Purpose: Labels the selected language display above the dropdown."
+  },
+  "admin/messages.messages-upload.upload-label": {
+    "value": "Upload",
+    "_context": "Usage Location: react/components/CSVUploader.tsx (upload button). UI Element Type: Button label. Variable Description: none. Purpose: Opens file picker to upload the translated catalog file."
+  },
+  "admin/messages.messages-upload.pick-lang": {
+    "value": "Select a language",
+    "_context": "Usage Location: react/components/utils/LanguagePicker.tsx (Dropdown placeholder). UI Element Type: Placeholder text. Variable Description: none. Purpose: Prompts the user to choose a language."
+  },
+  "admin/messages.messages-upload.pick-lang.en": {
+    "value": "English",
+    "_context": "Usage Location: react/components/utils/LanguagePicker.tsx (Dropdown option). UI Element Type: Dropdown option label. Variable Description: none. Purpose: Language option label for English."
+  },
+  "admin/messages.messages-upload.pick-lang.es": {
+    "value": "Spanish",
+    "_context": "Usage Location: react/components/utils/LanguagePicker.tsx (Dropdown option). UI Element Type: Dropdown option label. Variable Description: none. Purpose: Language option label for Spanish."
+  },
+  "admin/messages.messages-upload.pick-lang.pt": {
+    "value": "Portuguese",
+    "_context": "Usage Location: react/components/utils/LanguagePicker.tsx (Dropdown option). UI Element Type: Dropdown option label. Variable Description: none. Purpose: Language option label for Portuguese."
+  },
+  "admin/messages.messages-upload.pick-lang.fr": {
+    "value": "French",
+    "_context": "Usage Location: react/components/utils/LanguagePicker.tsx (Dropdown option). UI Element Type: Dropdown option label. Variable Description: none. Purpose: Language option label for French."
+  },
+  "admin/messages.messages-upload.error-supported-file": {
+    "value": "File not supported. Please only include .csv and .xls under 20 MB.",
+    "_context": "Usage Location: react/components/CSVUploader.tsx (Alert error via errorToMessage). UI Element Type: Error alert text. Variable Description: none. Purpose: Explains why an uploaded file was rejected."
+  },
+  "admin/messages.messages-upload.error-id-column": {
+    "value": "\"_ProductId\" column not found in the uploaded file.",
+    "_context": "Usage Location: react/components/CSVUploader.tsx (Alert error via errorToMessage). UI Element Type: Error alert text. Variable Description: none. Purpose: Notifies that the required _ProductId column is missing."
+  },
+  "admin/messages.messages-upload.error-no-translatable-field": {
+    "value": "No translatable fields found.",
+    "_context": "Usage Location: react/components/CSVUploader.tsx (Alert error via errorToMessage). UI Element Type: Error alert text. Variable Description: none. Purpose: Indicates the uploaded file has no supported fields to translate."
+  },
+  "admin/messages.messages-upload.catalog-label": {
+    "value": "Translated catalog",
+    "_context": "Usage Location: react/components/CSVUploader.tsx (left panel text). UI Element Type: Section label text. Variable Description: none. Purpose: Labels the area where the translated catalog file is uploaded."
+  },
+  "admin/messages.messages-progress.translate-progress": {
+    "value": "Translated {progress} out of {total} products to {language}",
+    "_context": "Usage Location: react/components/MessagesProgress.tsx (getUploadProgressMessage while uploading). UI Element Type: Status text. Variable Description: {progress}: number of successful translations so far; {total}: total items; {language}: target language label. Purpose: Shows translation progress."
+  },
+  "admin/messages.messages-progress.translation-faileded": {
+    "value": "{failed} translation(s) failed. Would you like to retry them?",
+    "_context": "Usage Location: react/components/MessagesProgress.tsx (getUploadProgressMessage when failures occur). UI Element Type: Status text/question. Variable Description: {failed}: count of failed translations. Purpose: Informs failures and prompts a retry."
+  },
+  "admin/messages.messages-progress.translation-succeeded": {
+    "value": "Translation to {language} completed successfully",
+    "_context": "Usage Location: react/components/MessagesProgress.tsx (getUploadProgressMessage when all succeed). UI Element Type: Success status text. Variable Description: {language}: target language label. Purpose: Confirms translations finished successfully."
+  }
 }
